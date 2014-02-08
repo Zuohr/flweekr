@@ -5,6 +5,8 @@ import javax.servlet.http.HttpServletRequest;
 import pentagon.apibean.FlickrBean;
 import pentagon.sdk.FlickrAPI;
 
+
+
 public class GetPic implements Action {
 
 	public GetPic(){
