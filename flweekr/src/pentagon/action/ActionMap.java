@@ -11,7 +11,7 @@ public class ActionMap {
 
 	public boolean addAction(Action action) {
 		Action curr = map.get(action.getName());
-		if (curr != null) {
+		if (curr == null) {
 			map.put(action.getName(), action);
 			return true;
 		} else {

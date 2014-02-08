@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import pentagon.action.Action;
 import pentagon.action.ActionMap;
+import pentagon.action.GetPic;
 
 /**
  * Servlet implementation class Controller
@@ -23,6 +24,8 @@ public class Controller extends HttpServlet {
 	@Override
 	public void init() throws ServletException {
 		actions = new ActionMap();
+		//add actions
+		actions.addAction(new GetPic());
 	}
 
 	/**
@@ -52,6 +55,7 @@ public class Controller extends HttpServlet {
 		String actionName = getActionName(request.getServletPath());
 		Action action = actions.getAction(actionName);
 		if (action == null) {
+			System.out.println(actionName);
 			return "404";
 		} else {
 			return action.perform(request);
