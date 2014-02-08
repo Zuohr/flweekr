@@ -36,10 +36,10 @@ public class FlickrAPI {
     		while(null!=(line = br.readLine())){
     			sb.append(line);
     		}
+    		String str = sb.toString().substring("jsonFlickrApi(".length(), sb.length()-1);
     		Gson gson = new GsonBuilder().create();
-    		Photos tagbean = gson.fromJson(isr, Photos.class);
+    		Photos tagbean = gson.fromJson(str, Photos.class);
     		System.out.println(tagbean.getPhotos()[0].getImgUrl());
-    		System.out.println("111");
     		return sb.toString();
     	} catch (MalformedURLException e) {  
             e.printStackTrace();  
