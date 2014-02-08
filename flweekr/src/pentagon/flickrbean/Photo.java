@@ -1,8 +1,12 @@
 package pentagon.flickrbean;
 
+import com.google.gson.annotations.SerializedName;
+
 public class Photo {
 //	private int id;
+	@SerializedName("owner")
 	private String owner;
+	@SerializedName("secret")
 	private String secret;
 //	private int server;
 //	private int farm;

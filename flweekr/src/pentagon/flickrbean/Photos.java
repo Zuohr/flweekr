@@ -1,10 +1,17 @@
 package pentagon.flickrbean;
 
+import com.google.gson.annotations.SerializedName;
+
 public class Photos {
+	@SerializedName("page")
 	private String page;
+	@SerializedName("pages")
 	private String pages;
+	@SerializedName("perpage")
 	private String perpage;
+	@SerializedName("total")
 	private String total;
+	@SerializedName("photo")
 	private Photo[] photo;
 	
 	public Photo[] getPhotos(){
