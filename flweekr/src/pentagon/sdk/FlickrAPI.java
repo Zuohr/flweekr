@@ -7,7 +7,11 @@ import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
 import pentagon.apibean.FlickrBean;
+import pentagon.flickrbean.Photos;
 
 public class FlickrAPI {
     FlickrBean flkBean;
@@ -32,6 +36,10 @@ public class FlickrAPI {
     		while(null!=(line = br.readLine())){
     			sb.append(line);
     		}
+    		Gson gson = new GsonBuilder().create();
+    		Photos tagbean = gson.fromJson(isr, Photos.class);
+    		System.out.println(tagbean.getPhotos()[0].getImgUrl());
+    		System.out.println("111");
     		return sb.toString();
     	} catch (MalformedURLException e) {  
             e.printStackTrace();  
