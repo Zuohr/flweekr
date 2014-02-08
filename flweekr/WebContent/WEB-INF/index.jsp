@@ -18,7 +18,12 @@
   </head>
 
   <body>
-
+  
+  
+    <!-- map -->
+  <jsp:include page="map.jsp" />
+   <!-- map end -->
+   
     <!-- Fixed navbar -->
     <div class="navbar navbar-default navbar-fixed-top" role="navigation">
       <div class="container">
