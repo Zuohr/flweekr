@@ -2,7 +2,7 @@
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
-   <div style="height:300px;width:1000px;margin-left:auto;margin-right:auto; ">
+   <div style="height:300px;width:100% ; margin-left:auto;margin-right:auto; ">
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
    <style>
       html, body, #map-canvas {
