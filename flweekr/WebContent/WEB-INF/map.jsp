@@ -1,8 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
+    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
-   <div style="height:300px;width:100% ; margin-left:auto;margin-right:auto; ">
+   <div style="height:550px;width:100% ; margin-left:auto;margin-right:auto; ">
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
    <style>
       html, body, #map-canvas {
@@ -13,6 +17,12 @@
     </style>
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
     <script>
+    
+
+var lat='${map.latitude}';
+var lon='${map.longitude}';
+
+    
 function initialize() {
   var mapOptions = {
     zoom: 1,
@@ -24,7 +34,19 @@ function initialize() {
 
   // Add 5 markers to the map at random locations
 
-  var southWest = new google.maps.LatLng(40, -80);
+ var position = new google.maps.LatLng(lat,lon);
+  
+  
+  var marker = new google.maps.Marker({
+      position: position,
+	  draggable:true,
+      animation: google.maps.Animation.DROP,
+      map: map
+    });
+  marker.setTitle((1).toString());
+  attachSecretMessage(marker, 0);
+  
+ /*  var southWest = new google.maps.LatLng(40, -80);
   var northEast = new google.maps.LatLng(42, -78);
   
   var bounds = new google.maps.LatLngBounds(southWest, northEast);
@@ -47,15 +69,17 @@ function initialize() {
  
     marker.setTitle((i + 1).toString());
     attachSecretMessage(marker, i);
-  }
+  } */
 }
 
 // The five markers show a secret message when clicked
 // but that message is not within the marker's instance data
 function attachSecretMessage(marker, num) {
-  var message = ['This', 'is', 'the', 'secret', 'message'];
+ /*  var message = ['This', 'is', 'the', 'secret', 'message']; */
+ var pic='${map.imgURL}';
+
   var infowindow = new google.maps.InfoWindow({
-    content: message[num]
+    content: '<img src="${map.imgURL}">'
   });
 
   google.maps.event.addListener(marker, 'click', function() {

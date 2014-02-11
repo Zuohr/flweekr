@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import pentagon.action.Action;
 import pentagon.action.ActionMap;
 import pentagon.action.GetPic;
+import pentagon.action.SetMap;
 
 /**
  * Servlet implementation class Controller
@@ -26,6 +27,7 @@ public class Controller extends HttpServlet {
 		actions = new ActionMap();
 		//add actions
 		actions.addAction(new GetPic());
+		actions.addAction(new SetMap());
 	}
 
 	/**
