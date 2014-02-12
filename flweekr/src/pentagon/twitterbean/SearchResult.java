@@ -6,5 +6,4 @@ public class SearchResult {
 	public Status[] getStatuses() {
 		return statuses;
 	}
-	
 }

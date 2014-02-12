@@ -85,7 +85,7 @@ public class Controller extends HttpServlet {
 		} else if (nextStep.endsWith(".jsp")) {
 			request.getRequestDispatcher(jspPath + nextStep).forward(request,
 					response);
-		} else if ("404".equals(nextStep)){
+		} else if ("404".equals(nextStep)) {
 			response.sendError(404);
 		} else {
 			response.sendRedirect(nextStep);

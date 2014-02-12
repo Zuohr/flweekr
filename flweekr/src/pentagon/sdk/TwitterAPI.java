@@ -6,7 +6,6 @@ import org.scribe.model.Token;
 import org.scribe.model.Verb;
 import org.scribe.oauth.OAuthService;
 
-import pentagon.model.Model;
 import pentagon.twitterbean.SearchResult;
 import pentagon.twitterbean.Status;
 
@@ -18,8 +17,8 @@ public class TwitterAPI {
 	private Token accessToken;
 	private static final String SEARCH_URL = "https://api.twitter.com/1.1/search/tweets.json?q=";
 
-	public TwitterAPI(Token accessToken, Model model) {
-		service = model.getService();
+	public TwitterAPI(Token accessToken, OAuthService service) {
+		this.service = service;
 		this.accessToken = accessToken;
 	}
 
