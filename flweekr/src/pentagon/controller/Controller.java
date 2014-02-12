@@ -3,6 +3,7 @@ package pentagon.controller;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebInitParam;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -11,23 +12,36 @@ import javax.servlet.http.HttpServletResponse;
 import pentagon.action.Action;
 import pentagon.action.ActionMap;
 import pentagon.action.GetPic;
+import pentagon.action.SendTweet;
 import pentagon.action.SetMap;
+import pentagon.action.TwitterLogin;
+import pentagon.action.TwitterLogout;
+import pentagon.action.TwitterSearch;
+import pentagon.model.Model;
 
 /**
  * Servlet implementation class Controller
  */
-@WebServlet("*.do")
+@WebServlet(urlPatterns = { "*.do" }, initParams = {
+		@WebInitParam(name = "API_key", value = "RlwN23E3OgcGV6wCJzA0A"),
+		@WebInitParam(name = "API_secret", value = "uHM1wCrDHK7JoCF7uV4aetM6ujVbUtTTYOyT70MKyK4") })
 public class Controller extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private final String jspPath = "/WEB-INF/";
 	private ActionMap actions;
+	private Model model;
 
 	@Override
 	public void init() throws ServletException {
+		this.model = new Model(getServletConfig());
 		actions = new ActionMap();
-		//add actions
+		// add actions
 		actions.addAction(new GetPic());
 		actions.addAction(new SetMap());
+		actions.addAction(new TwitterLogin(model));
+		actions.addAction(new TwitterLogout());
+		actions.addAction(new SendTweet(model));
+		actions.addAction(new TwitterSearch(model));
 	}
 
 	/**
@@ -71,8 +85,10 @@ public class Controller extends HttpServlet {
 		} else if (nextStep.endsWith(".jsp")) {
 			request.getRequestDispatcher(jspPath + nextStep).forward(request,
 					response);
-		} else {
+		} else if ("404".equals(nextStep)){
 			response.sendError(404);
+		} else {
+			response.sendRedirect(nextStep);
 		}
 	}
 

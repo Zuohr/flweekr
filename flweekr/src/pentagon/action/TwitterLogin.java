@@ -10,8 +10,8 @@ import org.scribe.model.Verb;
 import org.scribe.model.Verifier;
 import org.scribe.oauth.OAuthService;
 
-import pentagon.twitterlab.Model;
-import pentagon.twitterlab.User;
+import pentagon.model.Model;
+import pentagon.model.User;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -74,7 +74,7 @@ public class TwitterLogin implements Action {
 
 	@Override
 	public String getName() {
-		return "login.tw";
+		return "login.do";
 	}
 
 }

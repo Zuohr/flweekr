@@ -1,4 +1,4 @@
-package pentagon.twitterlab;
+package pentagon.model;
 
 import javax.servlet.ServletConfig;
 
@@ -8,7 +8,7 @@ import org.scribe.oauth.OAuthService;
 
 public class Model {
 	private OAuthService service;
-	private static final String callbackUrl = "http://localhost:8080/flweekr/login.tw";
+	private static final String callbackUrl = "http://localhost:8080/flweekr/login.do";
 
 	public Model(ServletConfig config) {
 		String key = config.getInitParameter("API_key");

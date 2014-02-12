@@ -1,4 +1,4 @@
-package pentagon.twitterlab;
+package pentagon.model;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
@@ -11,8 +11,6 @@ public class TestCh {
 		for (String cd : code) {
 			String s1 = URLEncoder.encode(s, cd);
 			System.out.println(s1);
-//			String s2 = s1.replace("*", "%FF");
-//			System.out.println(s2);
 		}
 	}
 }

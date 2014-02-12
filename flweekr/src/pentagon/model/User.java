@@ -1,4 +1,4 @@
-package pentagon.twitterlab;
+package pentagon.model;
 
 import org.scribe.model.Token;
 

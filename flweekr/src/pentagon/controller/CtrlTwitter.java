@@ -16,7 +16,7 @@ import pentagon.action.ActionMap;
 import pentagon.action.SendTweet;
 import pentagon.action.TwitterLogin;
 import pentagon.action.TwitterLogout;
-import pentagon.twitterlab.Model;
+import pentagon.model.Model;
 
 /**
  * Servlet implementation class TestTwitter

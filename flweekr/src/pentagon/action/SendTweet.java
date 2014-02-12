@@ -12,8 +12,8 @@ import org.scribe.model.Token;
 import org.scribe.model.Verb;
 import org.scribe.oauth.OAuthService;
 
-import pentagon.twitterlab.Model;
-import pentagon.twitterlab.User;
+import pentagon.model.Model;
+import pentagon.model.User;
 
 public class SendTweet implements Action {
 	private OAuthService service;
@@ -49,7 +49,7 @@ public class SendTweet implements Action {
 
 	@Override
 	public String getName() {
-		return "send_tweet.tw";
+		return "send_tweet.do";
 	}
 
 }

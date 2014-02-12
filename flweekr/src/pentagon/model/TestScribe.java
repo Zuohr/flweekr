@@ -1,4 +1,4 @@
-package pentagon.twitterlab;
+package pentagon.model;
 
 import java.util.Scanner;
 
