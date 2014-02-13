@@ -19,7 +19,7 @@ public class FlickrAPI {
     	this.flkBean = flkBean;
     }
     
-    public String getFlickrImage(){
+    public Photos getFlickrImage(){
     	String url =  flkBean.getBaseUrl() + "?method=" + flkBean.getMethod() + "&api_key=" + flkBean.getApiKey() + "&per_page=" 
     			+ flkBean.getPerPage() + "&format=" + flkBean.getFormat() + "&tags=" + flkBean.getTags() + "&extras=original_format";  
     	
@@ -27,7 +27,6 @@ public class FlickrAPI {
     	InputStream is = null;
     	InputStreamReader isr = null;
     	BufferedReader br = null;
-    	
     	try{
     		is = new URL(url).openConnection().getInputStream();
     		isr = new InputStreamReader(is, "UTF-8");
@@ -39,8 +38,8 @@ public class FlickrAPI {
     		String str = sb.toString().substring("jsonFlickrApi(".length(), sb.length()-1);
     		Gson gson = new GsonBuilder().create();
     		Photos tagbean = gson.fromJson(str, Photos.class);
-    		System.out.println(tagbean.getPhotos()[0].getImgUrl());
-    		return sb.toString();
+    		
+    		return tagbean;
     	} catch (MalformedURLException e) {  
             e.printStackTrace();  
         } catch (IOException e) {  
@@ -68,7 +67,7 @@ public class FlickrAPI {
                 }  
             }  
         } 
-    	return "";
+    	return null;
     }
     
     

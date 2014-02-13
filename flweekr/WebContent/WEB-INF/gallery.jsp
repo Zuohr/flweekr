@@ -71,7 +71,7 @@
 <div class="main">
 <!--=======content================================-->
 
-<div class="content"><div class="ic">More Website Templates @ TemplateMonster.com - August 05, 2013!</div>
+<div class="content">
   <div class="container_12">
       <div class="grid_12">
         <h3>Our Gallery</h3>
