@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
      <head>
@@ -52,22 +57,11 @@
            <div class="clear"></div>
       </div>
 <div class="menu_block">
-           <nav  class="" >
-             <ul class="sf-menu">
-                   <li><a href="index.html">Home</a></li>
-                   <li><a href="index-1.html">About</a>
-                     <ul>
-                        <li><a href="#"> Agency</a></li>
-                        <li><a href="#">News</a></li>
-                        <li><a href="#">Team</a></li>
-                     </ul>
-                   </li>
-                   <li class="current"><a href="index-2.html">Gallery</a></li>
-                   <li><a href="index-3.html">Tours</a></li>
-                   <li><a href="index-4.html">Blog</a></li>
-                   <li><a href="index-5.html">Contacts</a></li>
-                 </ul>
-              </nav>
+			
+			
+			<jsp:include page="nav.jsp" />
+			
+			
            <div class="clear"></div>
            </div>
            <div class="clear"></div>

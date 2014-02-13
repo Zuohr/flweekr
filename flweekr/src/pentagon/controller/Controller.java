@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import pentagon.action.Action;
 import pentagon.action.ActionMap;
-import pentagon.action.GetPic;
+import pentagon.action.GetHot;
 import pentagon.action.SendTweet;
 import pentagon.action.SetMap;
 import pentagon.action.TwitterLogin;
@@ -36,7 +36,7 @@ public class Controller extends HttpServlet {
 		this.model = new Model(getServletConfig());
 		actions = new ActionMap();
 		// add actions
-		actions.addAction(new GetPic());
+		actions.addAction(new GetHot());
 		actions.addAction(new SetMap());
 		actions.addAction(new TwitterLogin(model));
 		actions.addAction(new TwitterLogout());

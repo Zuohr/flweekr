@@ -7,9 +7,9 @@ import pentagon.sdk.FlickrAPI;
 
 
 
-public class GetPic implements Action {
+public class GetHot implements Action {
 
-	public GetPic(){
+	public GetHot(){
 		
 	}
 	@Override
@@ -25,16 +25,15 @@ public class GetPic implements Action {
 		FlickrAPI flkAPI = new FlickrAPI(flkBean);
 		
 //		String jsonData = flkAPI.getFlickrImage();
-//		
 //		//String img = "http://farm8.static.flickr.com/7356/12351753145_3b4ffc01c2_t.jpg"
 //		System.out.println(jsonData);
 //		
-		return "homepage.jsp";
+		return "gallery.jsp";
 	}
 
 	@Override
 	public String getName() {
-		return "getpic.do";
+		return "gethot.do";
 	}
 
 }
