@@ -68,15 +68,13 @@
 				 
 		  <div class="clear"></div>
 			</div>
-<div class="menu_block">
-					 <nav	class="" >
-						<ul class="sf-menu">
+		<div class="menu_block">
+					 		<nav class="" >
+								<ul class="sf-menu">
 									 <li class="current"><a href="index.html">Home</a></li>
-									 <li><a href="index-1.html">About</a> </li>
-									 <li><a href="gallery.do">Gallery</a></li>
-									 <li><a href="index-3.html">Tours</a></li>
-									 <li><a href="index-4.html">Blog</a></li>
-									 <li><a href="index-5.html">Contacts</a></li>
+									 <li><a href="gallery.do">Most Popular</a></li>
+									 <li><a href="index-3.html">Discover Place</a></li>
+									 <li><a href="index-4.html">Travel Map</a></li>
 								 </ul>
 							</nav>
 					 <div class="clear"></div>
