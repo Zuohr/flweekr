@@ -136,17 +136,54 @@
     </div>
     <div class="clear"></div>
   </div>
+</div>
 
+<!--=======bottom================================-->
+<div class="bottom_block">
+  <div class="container_12">
+    <div class="grid_2 prefix_2">
+      <ul>
+        <li><a href="#">FAQS Page</a></li>
+        <li><a href="#">People Say</a></li>
+      </ul>
+    </div>
+    <div class="grid_2">
+      <ul>
+        <li><a href="#">Useful links</a></li>
+        <li><a href="#">Partners</a></li>
+      </ul>
+    </div>
+    <div class="grid_2">
+      <ul>
+        <li><a href="#">Insurance</a></li>
+        <li><a href="#">Family Travel</a></li>
+      </ul>
+    </div>
+    <div class="grid_2">
+      <h4>Contact Us:</h4>
+      TEL: 1-800-234-5678<br><a href="#">info@demolink.org</a>
+     
+    </div>
+    <div class="clear"></div>
+    </div>
+  </div>
+<!--==============================footer=================================-->
 
+</div>
+<footer>    
+  <div class="container_12">
+  <div class="grid_12">
+    <div class="socials">
+      <a href="#"></a>
+      <a href="#"></a>
+      <a href="#"></a>
+      <a href="#"></a>
+    </div>
 
+     <div class="clear"></div>
+  </div>
 
-    </div> <!-- /container -->
+</footer>
 
-
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-  </body>
+</body>
 </html>
