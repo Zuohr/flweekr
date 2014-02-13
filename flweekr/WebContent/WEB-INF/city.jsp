@@ -26,6 +26,7 @@
   
   
     <!-- Fixed navbar -->
+<<<<<<< HEAD
     <div class="navbar navbar-default navbar-fixed-top" role="navigation">
          <!-- Fixed navbar -->
     <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -74,6 +75,38 @@
       
       <h3>Top Attraction </h3>      
       
+=======
+<header> 
+	<div class="container_12">
+		<div class="grid_12"> 
+		<h1><a href="index.html"><img src="images/logo.png" alt="Gerald Harris attorney at law"></a> </h1>
+					
+				 
+		  <div class="clear"></div>
+			</div>
+<div class="menu_block">
+					 <nav	class="" >
+						<ul class="sf-menu">
+									 <li class="current"><a href="index.html">Home</a></li>
+									 <li><a href="index-1.html">About</a> </li>
+									 <li><a href="gallery.do">Gallery</a></li>
+									 <li><a href="index-3.html">Tours</a></li>
+									 <li><a href="index-4.html">Blog</a></li>
+									 <li><a href="index-5.html">Contacts</a></li>
+								 </ul>
+							</nav>
+					 <div class="clear"></div>
+					 </div>
+					 <div class="clear"></div>
+					</div>
+</header>
+<div class="main">
+
+  <div class="container_12">
+    <div class="grid_9">
+
+      <h3>New York City top attraction</h3>            
+>>>>>>> branch 'add_template' of https://github.com/Zuohr/flweekr.git
       <div class="boxes">
 		<div class="grid_4">
 					<figure>
