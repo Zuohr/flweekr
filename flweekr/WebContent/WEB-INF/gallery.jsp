@@ -1,4 +1,6 @@
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
      <head>
      <title>Gallery</title>
@@ -158,7 +160,7 @@
       <a href="#"></a>
     </div>
       <div class="copy">
-     Journey &copy; 2013 | <a href="#">Privacy Policy</a> | Website designed Collect from  <a href="http://www.cssmoban.com/" rel="nofollow">模板之家</a>
+     Journey &copy; 2013 | <a href="#">Privacy Policy
      </div></div>
      <div class="clear"></div>
   </div>

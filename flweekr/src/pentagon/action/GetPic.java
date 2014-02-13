@@ -29,7 +29,7 @@ public class GetPic implements Action {
 //		//String img = "http://farm8.static.flickr.com/7356/12351753145_3b4ffc01c2_t.jpg"
 //		System.out.println(jsonData);
 //		
-		return "index.jsp";
+		return "homepage.jsp";
 	}
 
 	@Override

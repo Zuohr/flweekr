@@ -27,7 +27,7 @@
 }
 
 
-/*
+
 
 .pagination {
 bottom: 14px;
@@ -58,7 +58,7 @@ z-index: 999;
 .pagination li a:hover, .pagination li.current a {
 	background-position: 0 0;
 }
-*/
+
 
 
 a.prev, a.next {
