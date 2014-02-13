@@ -7,6 +7,7 @@ import org.scribe.oauth.OAuthService;
 import pentagon.model.Model;
 import pentagon.model.User;
 import pentagon.sdk.TwitterAPI;
+import pentagon.twitterbean.Oembed;
 import pentagon.twitterbean.Status;
 
 public class TwitterSearch implements Action {
@@ -29,7 +30,11 @@ public class TwitterSearch implements Action {
 				TwitterAPI twapi = new TwitterAPI(user.getAccessToken(),
 						service);
 				Status[] result = twapi.search(keyword);
-				request.setAttribute("result_list", result);
+				Oembed[] oembeds = new Oembed[result.length];
+				for (int i = 0; i < result.length; i++) {
+					oembeds[i] = twapi.getOembed(result[i]);
+				}
+				request.setAttribute("oembeds_list", oembeds);
 			}
 		}
 		return "twresult.jsp";
