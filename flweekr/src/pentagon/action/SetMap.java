@@ -15,8 +15,8 @@ public class SetMap implements Action {
 			return "hotmap.jsp";
 		} else if ("submit".equals(btn)) {
 			MapBean map = new MapBean();
-			map.setLatitude(40);
-			map.setLongitude(-80);
+			map.setLatitude(40.44);
+			map.setLongitude(-79.999);
 			map.setImgURL("http://upload.wikimedia.org/wikipedia/commons/6/61/Pittsburgh_skyline_night.jpg");
 			request.setAttribute("map", map);
 

@@ -19,8 +19,8 @@ var lon='${map.longitude}';
     
 function initialize() {
   var mapOptions = {
-    zoom: 15,
-    center: new google.maps.LatLng(40, -80),
+    zoom: 12,
+    center: new google.maps.LatLng(40.44, -79.999),
     scrollwheel: false,
     panControl: false,
     streetViewControl: false,
