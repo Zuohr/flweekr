@@ -28,7 +28,6 @@ public class TwitterAPI {
 		this.accessToken = accessToken;
 	}
 
-	// send twitter
 	public Status[] searchByCoordination(Photo photo, String keyword) {
 		if (photo == null || keyword == null) {
 			throw new IllegalArgumentException("null parameter");
@@ -91,6 +90,9 @@ public class TwitterAPI {
 
 		return oembed;
 	}
-
-	// timeline
+	
+	public Status sendStatus(String text) {
+		
+		return null;
+	}
 }
