@@ -17,6 +17,7 @@ import pentagon.action.SetMap;
 import pentagon.action.TwitterLogin;
 import pentagon.action.TwitterLogout;
 import pentagon.action.TwitterSearch;
+import pentagon.action.TwitterSearchByCoordination;
 import pentagon.model.Model;
 
 /**
@@ -42,6 +43,7 @@ public class Controller extends HttpServlet {
 		actions.addAction(new TwitterLogout());
 		actions.addAction(new SendTweet(model));
 		actions.addAction(new TwitterSearch(model));
+		actions.addAction(new TwitterSearchByCoordination(model));
 	}
 
 	/**

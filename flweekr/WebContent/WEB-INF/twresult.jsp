@@ -22,7 +22,7 @@
 		<input type="text" name="keyword" placeholder="your search"> <input
 			type="submit" name="search_btn" value="search_tweet">
 	</form>
-	<form action="search_tweet.do" action="post">
+	<form action="search_tweet_byloc.do" action="post">
 		<input type="text" name="keyword" placeholder="your search"> <input
 			type="submit" name="searchloc_btn" value="searchloc_tweet">
 	</form>
