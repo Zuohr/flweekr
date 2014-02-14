@@ -11,6 +11,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import pentagon.apibean.FlickrBean;
+import pentagon.flickrbean.JsonFlickrApi;
 import pentagon.flickrbean.Photos;
 
 public class FlickrAPI {
@@ -19,7 +20,7 @@ public class FlickrAPI {
     	this.flkBean = flkBean;
     }
     
-    public Photos getFlickrImage(){
+    public JsonFlickrApi getFlickrImage(){
     	String url =  flkBean.getBaseUrl() + "?method=" + flkBean.getMethod() + "&api_key=" + flkBean.getApiKey() + "&per_page=" 
     			+ flkBean.getPerPage() + "&format=" + flkBean.getFormat() + "&tags=" + flkBean.getTags() + "&extras=original_format";  
     	
@@ -36,9 +37,8 @@ public class FlickrAPI {
     			sb.append(line);
     		}
     		String str = sb.toString().substring("jsonFlickrApi(".length(), sb.length()-1);
-    		Gson gson = new GsonBuilder().create();
-    		Photos tagbean = gson.fromJson(str, Photos.class);
-    		
+    		Gson gson = new Gson();
+    		JsonFlickrApi tagbean = gson.fromJson(str, JsonFlickrApi.class);
     		return tagbean;
     	} catch (MalformedURLException e) {  
             e.printStackTrace();  

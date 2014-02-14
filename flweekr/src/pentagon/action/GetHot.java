@@ -3,6 +3,9 @@ package pentagon.action;
 import javax.servlet.http.HttpServletRequest;
 
 import pentagon.apibean.FlickrBean;
+import pentagon.flickrbean.JsonFlickrApi;
+import pentagon.flickrbean.Photo;
+import pentagon.flickrbean.Photos;
 import pentagon.sdk.FlickrAPI;
 
 
@@ -23,11 +26,11 @@ public class GetHot implements Action {
 		flkBean.setTags("pittsburgh");
 		
 		FlickrAPI flkAPI = new FlickrAPI(flkBean);
+		JsonFlickrApi jfa = flkAPI.getFlickrImage();
 		
-//		String jsonData = flkAPI.getFlickrImage();
-//		//String img = "http://farm8.static.flickr.com/7356/12351753145_3b4ffc01c2_t.jpg"
-//		System.out.println(jsonData);
-//		
+		System.out.println(jfa.photos.photo.get(0).getImgUrl());
+		request.setAttribute("flk_plist", jfa.photos.photo);
+		
 		return "gallery.jsp";
 	}
 

@@ -1,51 +1,44 @@
 package pentagon.flickrbean;
 
-import com.google.gson.annotations.SerializedName;
-
 public class Photo {
-	private String id;
-	private String owner;
-	private String secret;
-	private int server;
-	private int farm;
-	private String title;
-	private boolean ispublic;
-	private boolean isfriend;
-	private boolean isfamily;
-	private String originalsecret;
-	private String originalformat;
-	public String getId() {
-		return id;
+	public String id;
+	public String owner;
+	public String secret;
+	public String server;
+	public String farm;
+	public String title;
+	public String ispublic;
+	public String isfriend;
+	public String isfamily;
+	public String originalsecret;
+	public String originalformat;
+	
+	public String latitude;
+	public String longitude;
+	
+	public String getLatitude() {
+		return latitude;
 	}
-	public String getOwner() {
-		return owner;
+
+	public String getLongitude() {
+		return longitude;
 	}
-	public String getSecret() {
-		return secret;
-	}
-	public int getServer() {
-		return server;
-	}
-	public int getFarm() {
-		return farm;
-	}
-	public String getTitle() {
-		return title;
-	}
-	public boolean isIspublic() {
-		return ispublic;
-	}
-	public boolean isIsfriend() {
-		return isfriend;
-	}
-	public boolean isIsfamily() {
-		return isfamily;
-	}
-	public String getOriginalsecret() {
-		return originalsecret;
-	}
-	public String getOriginalformat() {
-		return originalformat;
+
+	public String imgUrl;
+
+	public String getImgUrl() {
+		imgUrl = "http://farm" + farm + ".static.flickr.com/" + server + "/" + id + "_" + secret + ".jpg";
+		return imgUrl;
 	}
 	
 }
+
+/*
+http://farm" + photo.farm + ".static.flickr.com/" + 
+        photo.server + "/" + photo.id + "_" + photo.secret + "_" + "t.jpg";
+*/
+
+//[{"id":"12392750014", "owner":"34540272@N08", "secret":"91c6d52bbf", "server":"3754", "farm":4, "title":"Longfellow", 
+//"ispublic":1, "isfriend":0, "isfamily":0, "originalsecret":"1511e6db52", "originalformat":"jpg"}
+
+//"id":"12507937913", "owner":"76833726@N05", "secret":"715638a3e9", "server":"7311", "farm":8, "title":"PAT M-210 on 2-14-73", "ispublic":1, "isfriend":0, "isfamily":0, "originalsecret":"548ab5159b", "originalformat":"jpg"}
