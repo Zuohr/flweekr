@@ -23,7 +23,11 @@ public class GetHot implements Action {
 		flkBean.setMethod("flickr.photos.search");
 		flkBean.setPerPage("200");
 		flkBean.setFormat("json");
-		flkBean.setTags("pittsburgh");
+		flkBean.setFlickrText("Yellow+Stone");
+//		flkBean.setFlickrContent_type("1");
+//		flkBean.setFlickrLat("37.779");
+//		flkBean.setFlickrLon("-122.420");
+		flkBean.setFlickrSort("interestingness-desc");
 		
 		FlickrAPI flkAPI = new FlickrAPI(flkBean);
 		JsonFlickrApi jfa = flkAPI.getFlickrImage();
