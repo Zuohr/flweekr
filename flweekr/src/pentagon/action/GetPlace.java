@@ -32,7 +32,7 @@ public class GetPlace implements Action {
 		}
 System.out.println("sd");
 			//String keyword = request.getParameter("keyword");
-			String keyword = "Empire state building";
+			String keyword = "time square";
 			if (keyword != null) {
 				TwitterAPI twapi = new TwitterAPI(user.getAccessToken(),
 						service);

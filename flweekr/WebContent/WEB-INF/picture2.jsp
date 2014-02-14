@@ -42,36 +42,24 @@
 		 <body	class="page1" >
 <!--==============================header=================================-->
  <header> 
-	<div class="container_12">
-		<div class="grid_12"> 
-		<h1><a href="index.html"><img src="images/logo.png" alt="Gerald Harris attorney at law"></a> </h1>
-					
-				 
-		  <div class="clear"></div>
-			</div>
+  <div class="container_12">
+    <div class="grid_12"> 
+    <h1><a href="index.html"><img src="images/logo.png" alt="Gerald Harris attorney at law"></a> </h1>
+          
+         
+           <div class="clear"></div>
+      </div>
 <div class="menu_block">
-					 <nav	class="" >
-						<ul class="sf-menu">
-									 <li class="current"><a href="index.html">Home</a></li>
-									 <li class="with_ul"><a href="index-1.html">About</a>
-										 <ul>
-												<li><a href="#"> Agency</a></li>
-												<li><a href="#">News</a></li>
-												<li><a href="#">Team</a></li>
-										 </ul>
-									 </li>
-									 <li><a href="index-2.html">Gallery</a></li>
-									 <li><a href="index-3.html">Tours</a></li>
-									 <li><a href="index-4.html">Blog</a></li>
-									 <li><a href="index-5.html">Contacts</a></li>
-								 </ul>
-							</nav>
-					 <div class="clear"></div>
-					 </div>
-					 <div class="clear"></div>
-					</div>
+			
+			
+			<jsp:include page="nav.jsp" />
+			
+			
+           <div class="clear"></div>
+           </div>
+           <div class="clear"></div>
+          </div>
 </header>
-<div class="copyrights">Collect from <a href="http://www.cssmoban.com/" >Website Template</a></div>
 
 <div class="main">
 
