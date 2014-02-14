@@ -9,6 +9,7 @@ import org.scribe.model.Token;
 import org.scribe.model.Verb;
 import org.scribe.oauth.OAuthService;
 
+import pentagon.flickrbean.Photo;
 import pentagon.twitterbean.Oembed;
 import pentagon.twitterbean.SearchResult;
 import pentagon.twitterbean.Status;
@@ -19,7 +20,7 @@ import com.google.gson.GsonBuilder;
 public class TwitterAPI {
 	private OAuthService service;
 	private Token accessToken;
-	private static final String GET_SEARCH = "https://api.twitter.com/1.1/search/tweets.json?q=";
+	private static final String GET_SEARCH = "https://api.twitter.com/1.1/search/tweets.json?";
 	private static final String GET_OEMBED = "https://api.twitter.com/1.1/statuses/oembed.json?align=none&id=";
 
 	public TwitterAPI(Token accessToken, OAuthService service) {
@@ -28,32 +29,66 @@ public class TwitterAPI {
 	}
 
 	// send twitter
+	public Status[] searchByCoordination(Photo photo, String keyword) {
+		if (photo == null || keyword == null) {
+			throw new IllegalArgumentException("null parameter");
+		}
+		String latitude = photo.getLatitude();
+		String longitude = photo.getLongitude();
+		String range = "1mi";
+		String geocode = String.format("%s,%s,%s", latitude, longitude, range);
 
-	public Status[] search(String keyword) {
+		try {
+			keyword = URLEncoder.encode(keyword, "UTF-8");
+			geocode = URLEncoder.encode(geocode, "UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+		String query = String.format("q=%s&geocode=%s", keyword, geocode);
+		return search(query);
+	}
+
+	public Status[] searchKeyWordOnly(String keyword) {
 		try {
 			keyword = URLEncoder.encode(keyword, "UTF-8");
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
 		}
-		String url = GET_SEARCH + keyword;
+		String query = String.format("q=%s", keyword);
+		return search(query);
+	}
+
+	private Status[] search(String query) {
+		String url = GET_SEARCH + query;
 		OAuthRequest req = new OAuthRequest(Verb.GET, url);
 		service.signRequest(accessToken, req);
 		Response rsp = req.send();
 
 		Gson gson = new GsonBuilder().create();
-		SearchResult searchResult = gson.fromJson(rsp.getBody(), SearchResult.class);
+		SearchResult searchResult = gson.fromJson(rsp.getBody(),
+				SearchResult.class);
 		return searchResult.getStatuses();
 	}
-	
+
+	public Oembed[] getOembeds(Status[] statuses) {
+		int len = statuses.length;
+		Oembed[] result = new Oembed[len];
+		for (int i = 0; i < len; i++) {
+			result[i] = getOembed(statuses[i]);
+		}
+
+		return result;
+	}
+
 	public Oembed getOembed(Status status) {
 		String url = GET_OEMBED + status.getId_str();
 		OAuthRequest req = new OAuthRequest(Verb.GET, url);
 		service.signRequest(accessToken, req);
 		Response rsp = req.send();
-		
+
 		Gson gson = new GsonBuilder().create();
 		Oembed oembed = gson.fromJson(rsp.getBody(), Oembed.class);
-		
+
 		return oembed;
 	}
 
