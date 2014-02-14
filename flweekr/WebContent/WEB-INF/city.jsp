@@ -28,20 +28,26 @@
     <!-- Fixed navbar -->
 
 <header> 
-	<div class="container_12">
-		<div class="grid_12"> 
-		<h1><a href="index.html"><img src="images/logo.png" alt="Gerald Harris attorney at law"></a> </h1>
-					
-				 
-		  <div class="clear"></div>
-			</div>
+  <div class="container_12">
+    <div class="grid_12"> 
+    <h1><a href="index.html"><img src="images/logo.png" alt="Gerald Harris attorney at law"></a> </h1>
+          
+         
+           <div class="clear"></div>
+      </div>
 <div class="menu_block">
+			
+			
 			<jsp:include page="nav.jsp" />
-					 <div class="clear"></div>
-					 </div>
-					 <div class="clear"></div>
-					</div>
+			
+			
+           <div class="clear"></div>
+           </div>
+           <div class="clear"></div>
+          </div>
 </header>
+
+<div class="main">
 <div class="main">
 
   <div class="container_12">
@@ -51,6 +57,7 @@
       <div class="boxes">
 		<div class="grid_4">
 					<figure>
+					
 						<div><img src="images/page1_img2.jpg" alt=""></div>
 				  <figcaption>
 							<h3>Time Square</h3>
@@ -61,6 +68,8 @@
 				 <div class="extra_wrapper">
           <p class="text1">Gellentesque imperdiet gerti loki holewvelit neque. Ut vestibulum mi sit amet ornare. </p>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse jew wligulawe dolor, condimentum ac justo sed, tincidunt commodo molity wer massarete. Nulla non urnatr nisi. Donec varius lectus in vestibulum auctor. Spendisse magna veliternowe dignissim eu commodo ut vestibulum nectro quam. Pellentesque imperdiet velit neque. Ut vestibulum mi sit ametwertilo ornare consectetur. Quisque sed quamhy loi justo. Nulla congue sed turpis nec lacinia. Nulla facilisi. Ut sit amet gravidatylo wtellus. Morbi id wer nolit consequat eros. </p>Vivamus imperdiet ante vitae lorem varius tristique meli. Phasellus tristique lectus id volutpat condimentum. Mauris quam lectus cursus at congue nec ultrices luctus orci quam lectus cursus at congue.
+                    <a href="./getplace.do" class="btn">Details</a>
+          
           <br>
         </div>
 				<div class="clear"></div>
