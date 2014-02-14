@@ -22,7 +22,7 @@ public class FlickrAPI {
     
     public JsonFlickrApi getFlickrImage(){
     	String url =  flkBean.getBaseUrl() + "?method=" + flkBean.getMethod() + "&api_key=" + flkBean.getApiKey() + "&per_page=" 
-    			+ flkBean.getPerPage() + "&format=" + flkBean.getFormat() + "&tags=" + flkBean.getTags() + "&extras=original_format";  
+    			+ flkBean.getPerPage() + "&format=" + flkBean.getFormat() + /*"&lat="+flkBean.getFlickrLat()+ "&lon="+flkBean.getFlickrLon()+ "&content_type="+flkBean.getFlickrContent_type()+*/"&text=" + flkBean.getFlickrText() + "&sort="+ flkBean.getFlickrSort()+ "&extras=original_format";  
     	
     	StringBuffer sb = new StringBuffer();
     	InputStream is = null;
