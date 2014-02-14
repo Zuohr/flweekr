@@ -39,7 +39,7 @@ public class Controller extends HttpServlet {
 		this.model = new Model(getServletConfig());
 		actions = new ActionMap();
 		// add actions
-		actions.addAction(new GetHot());
+		actions.addAction(new GetHot(model));
 		actions.addAction(new SetMap());
 		actions.addAction(new TwitterLogin(model));
 		actions.addAction(new TwitterLogout());

@@ -20,6 +20,10 @@ public class Photo {
 		return latitude;
 	}
 
+	public String getTitle() {
+		return title;
+	}
+
 	public String getLongitude() {
 		return longitude;
 	}

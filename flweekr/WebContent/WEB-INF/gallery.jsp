@@ -14,6 +14,7 @@
      <link rel="shortcut icon" href="images/favicon.ico" />
      <link rel="stylesheet" href="css/style.css">
      <link rel="stylesheet" href="css/touchTouch.css">
+  	 <link rel='stylesheet' href='css/block.css' media='screen' />
      <script src="js/jquery.js"></script>
      <script src="js/jquery-migrate-1.1.1.js"></script>
      <script src="js/superfish.js"></script>
@@ -21,18 +22,62 @@
      <script src="js/jquery.easing.1.3.js"></script>
      <script src="js/jquery.ui.totop.js"></script>
      <script src="js/touchTouch.jquery.js"></script>
-     <script>
-     $(window).load(function(){
-       $().UItoTop({ easingType: 'easeOutQuart' });
-      });
-       $(function(){
-  
-  // Initialize the gallery
-  $('.gallery a.gal').touchTouch();
- });  
-      
-      
+     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+     <script src="js/blocksit.min.js"></script>
+     <script>      
+     $(document).ready(function() {
+    		//vendor script
+    		$('#header')
+    		.css({ 'top':-50 })
+    		.delay(1000)
+    		.animate({'top': 0}, 800);
+    		
+    		$('#footer')
+    		.css({ 'bottom':-15 })
+    		.delay(1000)
+    		.animate({'bottom': 0}, 800);
+    		
+    		//blocksit define
+    		$(window).load( function() {
+    			$('#container').BlocksIt({
+    				numOfCol: 4,
+    				offsetX: 8,
+    				offsetY: 8
+    			});
+    		});
+    		
+    		//window resize
+    		var currentWidth = 1100;
+    		$(window).resize(function() {
+    			var winWidth = $(window).width();
+    			var conWidth;
+    			if(winWidth < 660) {
+    				conWidth = 440;
+    				col = 2
+    			} else if(winWidth < 880) {
+    				conWidth = 660;
+    				col = 3
+    			} else if(winWidth < 1100) {
+    				conWidth = 880;
+    				col = 4;
+    			} else {
+    				conWidth = 1100;
+    				col = 5;
+    			}
+    			
+    			if(conWidth != currentWidth) {
+    				currentWidth = conWidth;
+    				$('#container').width(conWidth);
+    				$('#container').BlocksIt({
+    					numOfCol: col,
+    					offsetX: 8,
+    					offsetY: 8
+    				});
+    			}
+    		});
+    	});
      </script>
+     
      <!--[if lt IE 8]>
        <div style=' clear: both; text-align:center; position: relative;'>
          <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
@@ -78,11 +123,24 @@
       </div>
       <div class="clear"></div>
        <div class="gallery">
+       
+       <section id="wrapper">
+       <div id="container">
        <c:forEach var="plist" items="${requestScope.flk_plist}">
-	      <div class="grid_4">
-	        <a href="images/big1.jpg" class="gal img_inner"><img src="${plist.imgUrl}" alt=""></a>
-	      </div>
+	      
+	<div class="grid">
+		<div class="imgholder">
+			<img src="${plist.imgUrl}" />
+		</div>
+		<strong>${plist.title}</strong>
+		<p>A peaceful sunset view...</p>
+		<div class="meta">by j osborn</div>
+	</div>
+	      
 	   </c:forEach>
+	   </div>
+	   </section>
+	   
     </div>
       <div class="clear"></div>
   </div>

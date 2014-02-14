@@ -6,13 +6,14 @@ import pentagon.apibean.FlickrBean;
 import pentagon.flickrbean.JsonFlickrApi;
 import pentagon.flickrbean.Photo;
 import pentagon.flickrbean.Photos;
+import pentagon.model.Model;
 import pentagon.sdk.FlickrAPI;
 
 
 
 public class GetHot implements Action {
 
-	public GetHot(){
+	public GetHot(Model model){
 		
 	}
 	@Override
@@ -32,7 +33,6 @@ public class GetHot implements Action {
 		FlickrAPI flkAPI = new FlickrAPI(flkBean);
 		JsonFlickrApi jfa = flkAPI.getFlickrImage();
 		
-		System.out.println(jfa.photos.photo.get(0).getImgUrl());
 		request.setAttribute("flk_plist", jfa.photos.photo);
 		
 		return "gallery.jsp";
