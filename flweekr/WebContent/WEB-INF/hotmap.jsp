@@ -54,22 +54,8 @@
            <div class="clear"></div>
       </div>
 <div class="menu_block">
-           <nav  class="" >
-             <ul class="sf-menu">
-                   <li><a href="index.html">Home</a></li>
-                   <li><a href="index-1.html">About</a>
-                     <ul>
-                        <li><a href="#"> Agency</a></li>
-                        <li><a href="#">News</a></li>
-                        <li><a href="#">Team</a></li>
-                     </ul>
-                   </li>
-                   <li><a href="index-2.html">Gallery</a></li>
-                   <li class="current"><a href="index-3.html">Tours</a></li>
-                   <li><a href="index-4.html">Blog</a></li>
-                   <li><a href="index-5.html">Contacts</a></li>
-                 </ul>
-              </nav>
+          <jsp:include page="nav.jsp" />
+          
            <div class="clear"></div>
            </div>
            <div class="clear"></div>
@@ -82,11 +68,11 @@
 
 
 <div class="search" style="text-align:center;;padding:50px 50px 0px;margin-top:60px;">
-			<input type="email" value="Search City"  style="height:30px; border-radius: 10px 10px 10px 10px; width:500px;font-family:Cursive;font-size:20px ">
+			<input type="email" placeholder="Search City"  style="height:30px; border-radius: 10px 10px 10px 10px; width:500px;font-family:Cursive;font-size:20px ">
 			<input type="button" value="Submit"  style="height:40px; border-radius: 10px 10px 10px 10px;width:100px;font-family:Cursive;font-size:20px"  >
 		
 				</div>
-<div style="height:auto;padding:60px;">
+<div style="height:auto;padding:60px;display:block;">
 
 
 <jsp:include page="map.jsp" />

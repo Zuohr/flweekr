@@ -4,7 +4,7 @@
    <style>
      #map-canvas {
         height: 500px;
-        width: 100%;
+     
         border-radius: 20px 20px 20px 20px;
         border: 2px solid rgb(34, 100, 255);
     
@@ -22,8 +22,19 @@ function initialize() {
   var mapOptions = {
     zoom: 6,
     center: new google.maps.LatLng(40, -80),
-    disableDefaultUI: true,
+    scrollwheel: false,
+    panControl: false,
+    streetViewControl: false,
+    scaleControl: false,
     
+    mapTypeControlOptions: {
+        style: google.maps.MapTypeControlStyle.DROPDOWN_MENU
+      },
+      zoomControl: true,
+      zoomControlOptions: {
+  
+        position: google.maps.ControlPosition.RIGHT_CENTER,
+      },
   };
 
   
@@ -40,7 +51,7 @@ function initialize() {
   
   var marker = new google.maps.Marker({
       position: position,
-	  draggable:true,
+	  draggable:false,
       animation: google.maps.Animation.DROP,
       map: map
     });
