@@ -1,8 +1,8 @@
 					 		<nav class="" >
 								<ul class="sf-menu">
-									 <li class="current"><a href="index.html">Home</a></li>
+									 <li class="current"><a href="homepage.html">Home</a></li>
 									 <li><a href="gethot.do">Most Popular</a></li>
-									 <li><a href="index-3.html">Discover Place</a></li>
-									 <li><a href="index-4.html">Travel Map</a></li>
+									 <li><a href="getplace.do">Discover Place</a></li>
+									 <li><a href="hotmap.do">Travel Map</a></li>
 								 </ul>
 							</nav>
