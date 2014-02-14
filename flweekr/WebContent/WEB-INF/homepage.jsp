@@ -63,7 +63,7 @@
  <header> 
 	<div class="container_12">
 		<div class="grid_12"> 
-		<h1><a href="login.do"><img src="images/logo.png" alt="Gerald Harris attorney at law"></a> </h1>
+		<h1><a href="login.do?sign_in_button=twitter_sign_in"><img src="images/logo.png" alt="Gerald Harris attorney at law"></a> </h1>
 					
 				 
 		  <div class="clear"></div>
