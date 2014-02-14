@@ -68,10 +68,17 @@ public class TwitterAPI {
 		Gson gson = new GsonBuilder().create();
 		SearchResult searchResult = gson.fromJson(rsp.getBody(),
 				SearchResult.class);
-		return searchResult.getStatuses();
+		if (searchResult.getStatuses() == null) {
+			return null;
+		} else {
+			return searchResult.getStatuses();
+		}
 	}
 
 	public Oembed[] getOembeds(Status[] statuses) {
+		if (statuses == null) {
+			return new Oembed[] {};
+		}
 		int len = statuses.length;
 		Oembed[] result = new Oembed[len];
 		for (int i = 0; i < len; i++) {
@@ -82,6 +89,10 @@ public class TwitterAPI {
 	}
 
 	public Oembed getOembed(Status status) {
+		if (status == null) {
+			return null;
+		}
+
 		String url = GET_OEMBED + status.getId_str();
 		OAuthRequest req = new OAuthRequest(Verb.GET, url);
 		service.signRequest(accessToken, req);
@@ -94,6 +105,10 @@ public class TwitterAPI {
 	}
 
 	public Status sendStatus(String text) {
+		if (text == null || text.isEmpty()) {
+			return null;
+		}
+
 		try {
 			text = StringEscapeUtils.unescapeHtml4(text);
 			text = URLEncoder.encode(text, "UTF-8");
