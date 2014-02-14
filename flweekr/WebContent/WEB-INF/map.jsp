@@ -4,9 +4,8 @@
    <style>
      #map-canvas {
         height: 500px;
-     
-        border-radius: 20px 20px 20px 20px;
-        border: 2px solid rgb(34, 100, 255);
+       	overflow:hidden;
+
     
       }
     </style>
@@ -20,7 +19,7 @@ var lon='${map.longitude}';
     
 function initialize() {
   var mapOptions = {
-    zoom: 6,
+    zoom: 15,
     center: new google.maps.LatLng(40, -80),
     scrollwheel: false,
     panControl: false,
@@ -113,9 +112,10 @@ function toggleBounce() {
 google.maps.event.addDomListener(window, 'load', initialize);
 
     </script>
- 
+
     <div id="map-canvas"/>
 	</div>
+
   
 
 

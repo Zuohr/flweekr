@@ -72,7 +72,7 @@
 			<input type="submit" name="submit_btn" value="submit"  style="height:40px; border-radius: 10px 10px 10px 10px;width:100px;font-family:Cursive;font-size:20px"  >
 		
 				</form>
-<div style="height:auto;padding:60px;display:block;">
+<div style=" margin:30px; padding:10px; overflow:hidden; border-radius: 20px 20px 20px 20px; border: 2px solid rgb(34, 100, 255);">
 
 
 <jsp:include page="map.jsp" />
