@@ -32,10 +32,13 @@ public class TwitterAPI {
 
 	public Status[] searchByCoordination(Photo photo, String keyword) {
 		if (photo == null || keyword == null) {
-			throw new IllegalArgumentException("null parameter");
+			return null;
 		}
 		String latitude = photo.getLatitude();
 		String longitude = photo.getLongitude();
+		if (latitude == null || latitude.isEmpty() || longitude == null || longitude.isEmpty()) {
+			return null;
+		}
 		String range = "1mi";
 		String geocode = String.format("%s,%s,%s", latitude, longitude, range);
 
