@@ -17,7 +17,7 @@ public class SetMap implements Action {
 		request.setAttribute("map", map);
 		
 		
-		return "index.jsp";
+		return "hotmap.jsp";
 	}
 
 	@Override

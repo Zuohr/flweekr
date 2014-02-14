@@ -1,18 +1,13 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
-    
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
-   <div style="height:550px;width:100% ; margin-left:auto;margin-right:auto; ">
-    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+   <div>
    <style>
-      html, body, #map-canvas {
-        height: 100%;
-        margin: 0px;
-        padding: 0px
+     #map-canvas {
+        height: 500px;
+        width: 100%;
+        border-radius: 20px 20px 20px 20px;
+        border: 2px solid rgb(34, 100, 255);
+    
       }
     </style>
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
@@ -25,13 +20,19 @@ var lon='${map.longitude}';
     
 function initialize() {
   var mapOptions = {
-    zoom: 1,
-    center: new google.maps.LatLng(40, -80)
+    zoom: 6,
+    center: new google.maps.LatLng(40, -80),
+    disableDefaultUI: true,
+    
   };
 
+  
+
+  
+  
   var map = new google.maps.Map(document.getElementById('map-canvas'),
       mapOptions);
-
+  
   // Add 5 markers to the map at random locations
 
  var position = new google.maps.LatLng(lat,lon);
