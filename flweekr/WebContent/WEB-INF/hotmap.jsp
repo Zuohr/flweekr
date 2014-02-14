@@ -48,7 +48,7 @@
  <header> 
   <div class="container_12">
     <div class="grid_12"> 
-    <h1><a href="index.html"><img src="images/logo.png" alt="Gerald Harris attorney at law"></a> </h1>
+    <h1><a href="login.do"><img src="images/logo.png" alt="Gerald Harris attorney at law"></a> </h1>
           
          
            <div class="clear"></div>
@@ -67,11 +67,11 @@
 
 
 
-<div class="search" style="text-align:center;;padding:50px 50px 0px;margin-top:60px;">
-			<input type="email" placeholder="Search City"  style="height:30px; border-radius: 10px 10px 10px 10px; width:500px;font-family:Cursive;font-size:20px ">
-			<input type="button" value="Submit"  style="height:40px; border-radius: 10px 10px 10px 10px;width:100px;font-family:Cursive;font-size:20px"  >
+<form class="search" action="setmap.do" method="post" style="text-align:center;;padding:50px 50px 0px;margin-top:60px;">
+			<input type="text" placeholder="Search City"  style="height:30px; border-radius: 10px 10px 10px 10px; width:500px;font-family:Cursive;font-size:20px ">
+			<input type="submit" name="submit_btn" value="submit"  style="height:40px; border-radius: 10px 10px 10px 10px;width:100px;font-family:Cursive;font-size:20px"  >
 		
-				</div>
+				</form>
 <div style="height:auto;padding:60px;display:block;">
 
 
