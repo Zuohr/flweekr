@@ -25,7 +25,9 @@ import pentagon.model.Model;
  */
 @WebServlet(urlPatterns = { "*.do" }, initParams = {
 		@WebInitParam(name = "API_key", value = "RlwN23E3OgcGV6wCJzA0A"),
-		@WebInitParam(name = "API_secret", value = "uHM1wCrDHK7JoCF7uV4aetM6ujVbUtTTYOyT70MKyK4") })
+		@WebInitParam(name = "API_secret", value = "uHM1wCrDHK7JoCF7uV4aetM6ujVbUtTTYOyT70MKyK4"),
+		@WebInitParam(name = "jdbcName", value = "com.mysql.jdbc.Driver"),
+		@WebInitParam(name = "jdbcURL", value = "jdbc:mysql:///trip") })
 public class Controller extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private final String jspPath = "/WEB-INF/";
