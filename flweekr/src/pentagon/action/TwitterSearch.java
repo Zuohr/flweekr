@@ -29,7 +29,7 @@ public class TwitterSearch implements Action {
 			if (keyword != null) {
 				TwitterAPI twapi = new TwitterAPI(user.getAccessToken(),
 						service);
-				Status[] result = twapi.search(keyword);
+				Status[] result = twapi.searchKeyWordOnly(keyword);
 				Oembed[] oembeds = new Oembed[result.length];
 				for (int i = 0; i < result.length; i++) {
 					oembeds[i] = twapi.getOembed(result[i]);

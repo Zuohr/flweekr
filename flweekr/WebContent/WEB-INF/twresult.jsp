@@ -22,6 +22,10 @@
 		<input type="text" name="keyword" placeholder="your search"> <input
 			type="submit" name="search_btn" value="search_tweet">
 	</form>
+	<form action="search_tweet.do" action="post">
+		<input type="text" name="keyword" placeholder="your search"> <input
+			type="submit" name="searchloc_btn" value="searchloc_tweet">
+	</form>
 	<script>
 		!function(d, s, id) {
 			var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/
