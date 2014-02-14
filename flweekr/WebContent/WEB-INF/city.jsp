@@ -48,8 +48,7 @@
 </header>
 
 <div class="main">
-<div class="main">
-
+<div class="content">
   <div class="container_12">
     <div class="grid_9">
 
@@ -58,7 +57,7 @@
 		<div class="grid_4">
 					<figure>
 					
-						<div><img src="images/page1_img2.jpg" alt=""></div>
+						<div><img src="images/page1_img1.jpg" alt=""></div>
 				  <figcaption>
 							<h3>Time Square</h3>
 							Lorem ipsum dolor site geril amet, consectetur cing eliti. Suspendisse nulla leo mew dignissim eu velite a rew qw vehicula lacinia arcufasec ro. Aenean lacinia ucibusy fase tortor ut feugiat. Rabi tur oliti aliquam bibendum olor quis malesuadivamu.
@@ -79,7 +78,7 @@
 				 <div class="boxes">
 		<div class="grid_4">
 					<figure>
-						<div><img src="images/page1_img1.jpg" alt=""></div>
+						<div><img src="images/page1_img2.jpg" alt=""></div>
 				  <figcaption>
 							<h3>Empire State Building</h3>
 							Lorem ipsum dolor site geril amet, consectetur cing eliti. Suspendisse nulla leo mew dignissim eu velite a rew qw vehicula lacinia arcufasec ro. Aenean lacinia ucibusy fase tortor ut feugiat. Rabi tur oliti aliquam bibendum olor quis malesuadivamu.
@@ -137,6 +136,8 @@
     <div class="clear"></div>
   </div>
 </div>
+
+
 
 <!--=======bottom================================-->
 <div class="bottom_block">
