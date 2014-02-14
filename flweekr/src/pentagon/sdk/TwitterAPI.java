@@ -34,6 +34,7 @@ public class TwitterAPI {
 		if (photo == null || keyword == null) {
 			return null;
 		}
+		
 		String latitude = photo.getLatitude();
 		String longitude = photo.getLongitude();
 		if (latitude == null || latitude.isEmpty() || longitude == null || longitude.isEmpty()) {
@@ -46,7 +47,7 @@ public class TwitterAPI {
 			keyword = URLEncoder.encode(keyword, "UTF-8");
 			geocode = URLEncoder.encode(geocode, "UTF-8");
 		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
+			return null;
 		}
 		String query = String.format("q=%s&geocode=%s", keyword, geocode);
 		return search(query);
@@ -56,7 +57,7 @@ public class TwitterAPI {
 		try {
 			keyword = URLEncoder.encode(keyword, "UTF-8");
 		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
+			return null;
 		}
 		String query = String.format("q=%s", keyword);
 		return search(query);
@@ -82,6 +83,7 @@ public class TwitterAPI {
 		if (statuses == null) {
 			return new Oembed[] {};
 		}
+		
 		int len = statuses.length;
 		Oembed[] result = new Oembed[len];
 		for (int i = 0; i < len; i++) {
@@ -116,7 +118,7 @@ public class TwitterAPI {
 			text = StringEscapeUtils.unescapeHtml4(text);
 			text = URLEncoder.encode(text, "UTF-8");
 		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
+			return null;
 		}
 		String query = POST_STATUS + text;
 		OAuthRequest req = new OAuthRequest(Verb.POST, query);
