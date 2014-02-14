@@ -3,6 +3,7 @@ package pentagon.sdk;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 
+import org.apache.commons.lang3.StringEscapeUtils;
 import org.scribe.model.OAuthRequest;
 import org.scribe.model.Response;
 import org.scribe.model.Token;
@@ -22,6 +23,7 @@ public class TwitterAPI {
 	private Token accessToken;
 	private static final String GET_SEARCH = "https://api.twitter.com/1.1/search/tweets.json?";
 	private static final String GET_OEMBED = "https://api.twitter.com/1.1/statuses/oembed.json?align=none&id=";
+	private static final String POST_STATUS = "https://api.twitter.com/1.1/statuses/update.json?status=";
 
 	public TwitterAPI(Token accessToken, OAuthService service) {
 		this.service = service;
@@ -90,9 +92,25 @@ public class TwitterAPI {
 
 		return oembed;
 	}
-	
+
 	public Status sendStatus(String text) {
-		
-		return null;
+		try {
+			text = StringEscapeUtils.unescapeHtml4(text);
+			text = URLEncoder.encode(text, "UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+		String query = POST_STATUS + text;
+		OAuthRequest req = new OAuthRequest(Verb.POST, query);
+		service.signRequest(accessToken, req);
+		Response rsp = req.send();
+
+		Gson gson = new GsonBuilder().create();
+		Status result = gson.fromJson(rsp.getBody(), Status.class);
+		if (result.getId_str() == null) {
+			return null;
+		} else {
+			return result;
+		}
 	}
 }
