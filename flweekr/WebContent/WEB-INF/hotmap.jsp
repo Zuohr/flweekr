@@ -48,7 +48,7 @@
  <header> 
   <div class="container_12">
     <div class="grid_12"> 
-    <h1><a href="hotmap.jsp"><img src="images/logo.png" alt="Gerald Harris attorney at law"></a> </h1>
+    <h1><a href=hotmap.jsp"><img src="images/logo.png" alt="Gerald Harris attorney at law"></a> </h1>
           
          
            <div class="clear"></div>
@@ -72,7 +72,8 @@
 			<input type="submit" name="submit_btn" value="submit"  style="height:40px; border-radius: 10px 10px 10px 10px;width:100px;font-family:Cursive;font-size:20px"  >
 		
 				</form>
-<div style=" margin:30px; padding:10px; overflow:hidden; border-radius: 20px 20px 20px 20px; border: 2px solid rgb(34, 100, 255);">
+<div style="height:auto;margin:60px;display:block;
+	border: 5px solid rgb(0, 100, 255);">
 
 
 <jsp:include page="map.jsp" />

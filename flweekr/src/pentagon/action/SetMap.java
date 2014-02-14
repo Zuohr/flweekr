@@ -17,7 +17,7 @@ public class SetMap implements Action {
 			MapBean map = new MapBean();
 			map.setLatitude(40);
 			map.setLongitude(-80);
-			map.setImgURL("http://img.9so.cc/timg/703204536572916331.jpg");
+			map.setImgURL("http://upload.wikimedia.org/wikipedia/commons/6/61/Pittsburgh_skyline_night.jpg");
 			request.setAttribute("map", map);
 
 		}

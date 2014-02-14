@@ -90,7 +90,7 @@ function attachSecretMessage(marker, num) {
  var pic='${map.imgURL}';
 
   var infowindow = new google.maps.InfoWindow({
-    content: '<img src="${map.imgURL}">'
+    content: '<img src="${map.imgURL}" style="width:200px;height:100px">'
   });
 
   google.maps.event.addListener(marker, 'click', function() {
