@@ -7,12 +7,10 @@ import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-
 import pentagon.apibean.FlickrBean;
 import pentagon.flickrbean.JsonFlickrApi;
-import pentagon.flickrbean.Photos;
+
+import com.google.gson.Gson;
 
 public class FlickrAPI {
     FlickrBean flkBean;
