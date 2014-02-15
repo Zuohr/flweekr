@@ -6,26 +6,35 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<p>cookies</p>
+	<c:forEach var="cookie" items="${requestScope.cookies }">
+		<p>name: ${cookie.name }, value: ${cookie.value }
+	</c:forEach>
 	<p>
 		<a href="logout.do">Sign out</a>
-	<p>${requestScope.result}</p>
-	<p>welcome to flweekr, ${sessionScope.user.name} @
+	<p>${requestScope.result}<p>welco
+	me to flweekr, ${sessionScope.user.name} @
 		${sessionScope.user.screen_name }!</p>
 	<c:forEach var="tweet" items="${requestScope.oembeds_list }">
 		${tweet.html }
 	</c:forEach>
 	<p>${requestScope.status.html }</p>
-	<form action="send_tweet.do" action="post">
+	<form action="send_tweet.do" method="POST">
 		<input type="text" name="text" placeholder="your tweet"> <input
 			type="submit" name="send_btn" value="send_tweet">
 	</form>
-	<form action="search_tweet.do" action="post">
+	<form action="search_tweet.do" method="POST">
 		<input type="text" name="keyword" placeholder="your search"> <input
 			type="submit" name="search_btn" value="search_tweet">
 	</form>
-	<form action="search_tweet_byloc.do" action="post">
+	<form action="search_tweet_byloc.do" method="POST">
 		<input type="text" name="keyword" placeholder="your search"> <input
 			type="submit" name="searchloc_btn" value="searchloc_tweet">
+	</form>
+	<form action="add_cookie.do" method="POST">
+		<input type="text" name="key" placeholder="key">
+		<input type="text" name="value" placeholder="value"> 
+		<input type="submit" name="add_cookie_btn" value="submit">
 	</form>
 	<script>
 		!function(d, s, id) {

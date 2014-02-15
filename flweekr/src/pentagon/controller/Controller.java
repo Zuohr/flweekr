@@ -13,7 +13,8 @@ import pentagon.action.Action;
 import pentagon.action.ActionMap;
 import pentagon.action.GetHot;
 import pentagon.action.GetPlace;
-import pentagon.action.SendTweet;
+import pentagon.action.SendStatus;
+import pentagon.action.SetCookie;
 import pentagon.action.SetMap;
 import pentagon.action.TwitterLogin;
 import pentagon.action.TwitterLogout;
@@ -45,9 +46,10 @@ public class Controller extends HttpServlet {
 		actions.addAction(new SetMap());
 		actions.addAction(new TwitterLogin(model));
 		actions.addAction(new TwitterLogout());
-		actions.addAction(new SendTweet(model));
+		actions.addAction(new SendStatus(model));
 		actions.addAction(new TwitterSearch(model));
 		actions.addAction(new TwitterSearchByCoordination(model));
+		actions.addAction(new SetCookie());
 	}
 
 	/**
@@ -66,21 +68,22 @@ public class Controller extends HttpServlet {
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		try {
-			String nextStep = processRequest(request);
+			String nextStep = processRequest(request, response);
 			proceedToNext(nextStep, request, response);
 		} catch (Exception e) {
 			throw new RuntimeException(e.getCause());
 		}
 	}
 
-	private String processRequest(HttpServletRequest request) {
+	private String processRequest(HttpServletRequest request,
+			HttpServletResponse response) {
 		String actionName = getActionName(request.getServletPath());
 		Action action = actions.getAction(actionName);
 		if (action == null) {
 			System.out.println(actionName);
 			return "404";
 		} else {
-			return action.perform(request);
+			return action.perform(request, response);
 		}
 	}
 

@@ -1,6 +1,7 @@
 package pentagon.action;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.scribe.model.Token;
 import org.scribe.oauth.OAuthService;
@@ -11,20 +12,21 @@ import pentagon.sdk.TwitterAPI;
 import pentagon.twitterbean.Oembed;
 import pentagon.twitterbean.Status;
 
-public class SendTweet implements Action {
+public class SendStatus implements Action {
 	private OAuthService service;
 
-	public SendTweet(Model model) {
+	public SendStatus(Model model) {
 		service = model.getService();
 	}
 
 	@Override
-	public String perform(HttpServletRequest request) {
+	public String perform(HttpServletRequest request,
+			HttpServletResponse response) {
 		User user = (User) request.getSession().getAttribute("user");
 		if (user == null) {
 			return "homepage.jsp";
 		}
-		
+
 		String text = request.getParameter("text");
 		if (text != null && text.length() > 0) {
 			Token accessToken = user.getAccessToken();

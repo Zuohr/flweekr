@@ -1,13 +1,15 @@
 package pentagon.action;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import pentagon.google.MapBean;
 
 public class SetMap implements Action {
 
 	@Override
-	public String perform(HttpServletRequest request) {
+	public String perform(HttpServletRequest request,
+			HttpServletResponse response) {
 		// TODO Auto-generated method stub
 
 		String btn = request.getParameter("submit_btn");

@@ -1,6 +1,7 @@
 package pentagon.action;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import pentagon.apibean.FlickrBean;
 import pentagon.flickrbean.JsonFlickrApi;
@@ -17,7 +18,7 @@ public class GetHot implements Action {
 		
 	}
 	@Override
-	public String perform(HttpServletRequest request) {
+	public String perform(HttpServletRequest request, HttpServletResponse response) {
 		FlickrBean flkBean = new FlickrBean();
 		flkBean.setAPIKey("8e2749644cb6405b3ee6a2c7b5f73eef");
 		flkBean.setBaseUrl("http://api.flickr.com/services/rest/");

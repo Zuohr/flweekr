@@ -1,6 +1,7 @@
 package pentagon.action;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.scribe.model.OAuthRequest;
@@ -26,12 +27,13 @@ public class TwitterLogin implements Action {
 	}
 
 	@Override
-	public String perform(HttpServletRequest request) {
+	public String perform(HttpServletRequest request,
+			HttpServletResponse response) {
 		HttpSession session = request.getSession();
 		User user = (User) session.getAttribute("user");
 		// check if session exists
 		if (user != null) {
-//			return "homepage.jsp";
+			// return "homepage.jsp";
 			return "twresult.jsp";
 		}
 
@@ -66,7 +68,7 @@ public class TwitterLogin implements Action {
 					request.setAttribute("result", String
 							.format("token:%s verifier:%s", oauth_token,
 									oauth_verifier));
-//					return "homepage.jsp";
+					// return "homepage.jsp";
 					return "twresult.jsp";
 				}
 			}

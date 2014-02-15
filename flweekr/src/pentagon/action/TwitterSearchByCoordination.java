@@ -1,6 +1,7 @@
 package pentagon.action;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.scribe.oauth.OAuthService;
 
@@ -18,7 +19,8 @@ public class TwitterSearchByCoordination implements Action {
 	}
 
 	@Override
-	public String perform(HttpServletRequest request) {
+	public String perform(HttpServletRequest request,
+			HttpServletResponse response) {
 		User user = (User) request.getSession().getAttribute("user");
 		if (user == null) {
 			return "twlogin.jsp";
