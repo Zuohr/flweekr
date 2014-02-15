@@ -222,7 +222,7 @@
     		$(window).load( function() {
     			$('#container').BlocksIt({
     				numOfCol: 4,
-    				offsetX: 8,
+    				offsetX: 1,
     				offsetY: 8
     			});
     		});
