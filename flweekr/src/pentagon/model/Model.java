@@ -22,8 +22,8 @@ public class Model {
 	private SearchKeyDAO searchKeyDAO;
 
 	public Model(ServletConfig config) throws ServletException {
-		String key = config.getInitParameter("API_key");
-		String secret = config.getInitParameter("API_secret");
+		String key = config.getInitParameter("twitter_key");
+		String secret = config.getInitParameter("twitter_secret");
 		this.service = new ServiceBuilder().provider(TwitterApi.SSL.class)
 				.apiKey(key).apiSecret(secret).callback(callbackUrl).build();
 

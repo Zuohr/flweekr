@@ -39,7 +39,7 @@ public class Search implements Action {
 
 	@Override
 	public String getName() {
-		return "gethot.do";
+		return "search.do";
 	}
 
 }
