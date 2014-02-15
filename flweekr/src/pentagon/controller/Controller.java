@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import pentagon.action.Action;
 import pentagon.action.ActionMap;
+import pentagon.action.Home;
 import pentagon.action.Search;
 import pentagon.action.GetDetail;
 import pentagon.action.SendStatus;
@@ -41,6 +42,7 @@ public class Controller extends HttpServlet {
 		this.model = new Model(getServletConfig());
 		actions = new ActionMap();
 		// add actions
+		actions.addAction(new Home(model));
 		actions.addAction(new Search(model));
 		actions.addAction(new GetDetail(model));
 		actions.addAction(new SetMap());

@@ -1,284 +1,160 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-<html lang="en">
-     <head>
-     <title>Tours</title>
-     <meta charset="utf-8">
-     <link rel="icon" href="images/favicon.ico">
-     <link rel="shortcut icon" href="images/favicon.ico" />
-     <link rel="stylesheet" href="css/style.css">
-     
-      <script src="js/jquery.js"></script>
-		 <script src="js/jquery-migrate-1.1.1.js"></script>
-		 <script src="js/superfish.js"></script>
-		 <script src="js/sForm.js"></script>
-		 <script src="js/jquery.jqtransform.js"></script>
-		 <script src="js/jquery.equalheights.js"></script>
-		 <script src="js/jquery.easing.1.3.js"></script>
-		 <script src="js/tms-0.4.1.js"></script>
-		<script src="js/jquery-ui-1.10.3.custom.min.js"></script>
-		 <script src="js/jquery.ui.totop.js"></script>
-     
-     
-     <script>
-			$(window).load(function(){
-			$('.slider')._TMS({
-							show:0,
-							pauseOnHover:false,
-							prevBu:'.prev',
-							nextBu:'.next',
-							playBu:false,
-							duration:800,
-							preset:'random', 
-							pagination:false,//'.pagination',true,'<ul></ul>'
-							pagNums:false,
-							slideshow:8000,
-							numStatus:false,
-							banners:true,
-					waitBannerAnimation:false,
-				progressBar:false
-			})	;
-			 $( "#tabs" ).tabs();
-		 
-		$().UItoTop({ easingType: 'easeOutQuart' });
-			});
-			
-			
-			
-		 </script>
-     <script>
-     $(window).load(function(){
-       $().UItoTop({ easingType: 'easeOutQuart' });
-      });
-      
-      $(function() {
-    //find all form with class jqtransform and apply the plugin
-    $(".form1").jqTransform();
-});
-     </script>
-     <!--[if lt IE 8]>
-       <div style=' clear: both; text-align:center; position: relative;'>
-         <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
-           <img src="http://storage.ie6countdown.com/assets/100/images/banners/warning_bar_0000_us.jpg" border="0" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today." />
-         </a>
-      </div>
-    <![endif]-->
-    <!--[if lt IE 9]>
-      <script src="js/html5shiv.js"></script>
-      <link rel="stylesheet" media="screen" href="css/ie.css">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 
-    <![endif]-->
+	<!--
+		Supersized - Fullscreen Slideshow jQuery Plugin
+		Version : 3.2.7
+		Site	: www.buildinternet.com/project/supersized
+		
+		Author	: Sam Dunn
+		Company : One Mighty Roar (www.onemightyroar.com)
+		License : MIT License / GPL License
+	-->
+
+	<head>
+
+		<title>EasyTrip</title>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+		
+		<link rel="stylesheet" href="css/supersized.css" type="text/css" media="screen" />
+		<link rel="stylesheet" href="theme/supersized.shutter.css" type="text/css" media="screen" />
+		
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+		<script type="text/javascript" src="js/jquery.easing.min.js"></script>
+		
+		<script type="text/javascript" src="js/supersized.3.2.7.min.js"></script>
+		<script type="text/javascript" src="theme/supersized.shutter.min.js"></script>
+		
+		<script type="text/javascript">
+			
+			jQuery(function($){
+				
+				$.supersized({
+				
+					// Functionality
+					slideshow               :   1,			// Slideshow on/off
+					autoplay				:	1,			// Slideshow starts playing automatically
+					start_slide             :   1,			// Start slide (0 is random)
+					stop_loop				:	0,			// Pauses slideshow on last slide
+					random					: 	0,			// Randomize slide order (Ignores start slide)
+					slide_interval          :   3000,		// Length between transitions
+					transition              :   6, 			// 0-None, 1-Fade, 2-Slide Top, 3-Slide Right, 4-Slide Bottom, 5-Slide Left, 6-Carousel Right, 7-Carousel Left
+					transition_speed		:	1000,		// Speed of transition
+					new_window				:	1,			// Image links open in new window/tab
+					pause_hover             :   0,			// Pause slideshow on hover
+					keyboard_nav            :   1,			// Keyboard navigation on/off
+					performance				:	1,			// 0-Normal, 1-Hybrid speed/quality, 2-Optimizes image quality, 3-Optimizes transition speed // (Only works for Firefox/IE, not Webkit)
+					image_protect			:	1,			// Disables image dragging and right click with Javascript
+															   
+					// Size & Position						   
+					min_width		        :   0,			// Min width allowed (in pixels)
+					min_height		        :   0,			// Min height allowed (in pixels)
+					vertical_center         :   1,			// Vertically center background
+					horizontal_center       :   1,			// Horizontally center background
+					fit_always				:	0,			// Image will never exceed browser width or height (Ignores min. dimensions)
+					fit_portrait         	:   1,			// Portrait images will not exceed browser height
+					fit_landscape			:   0,			// Landscape images will not exceed browser width
+															   
+					// Components							
+					slide_links				:	'blank',	// Individual links for each slide (Options: false, 'num', 'name', 'blank')
+					thumb_links				:	1,			// Individual thumb links for each slide
+					thumbnail_navigation    :   0,			// Thumbnail navigation
+					slides 					:  	[			// Slideshow Images
+														{image : 'http://farm6.staticflickr.com/5348/9436623932_20b5af089b_o.jpg', title : 'Image Credit: Maria Kazvan', thumb : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/thumbs/kazvan-1.jpg', url : 'http://www.nonsensesociety.com/2011/04/maria-kazvan/'},
+														{image : 'http://farm9.staticflickr.com/8177/8011151933_8366e9340e_o.png', title : 'Image Credit: Maria Kazvan', thumb : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/thumbs/kazvan-2.jpg', url : 'http://www.nonsensesociety.com/2011/04/maria-kazvan/'},  
+														{image : 'http://farm5.staticflickr.com/4016/4444574582_767aae7a99_o.jpg', title : 'Image Credit: Maria Kazvan', thumb : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/thumbs/kazvan-3.jpg', url : 'http://www.nonsensesociety.com/2011/04/maria-kazvan/'},
+														
+														
+														
+												],
+												
+					// Theme Options			   
+					progress_bar			:	0,			// Timer for each slide							
+					mouse_scrub				:	1
+					
+				});
+		    });
+		    
+		</script>
+		
+	</head>
+	
+	<style type="text/css">
+		ul#demo-block{ margin:0 15px 15px 15px; }
+			ul#demo-block li{ margin:0 0 10px 0; padding:10px; display:inline; float:left; clear:both; color:#aaa; background:url('img/bg-black.png'); font:11px Helvetica, Arial, sans-serif; }
+			ul#demo-block li a{ color:#eee; font-weight:bold; }
+	</style>
+
+<body>
+
+	<!--Demo styles (you can delete this block)-->
+	
+
+	
+	<!--End of styles-->
+
+	<!--Thumbnail Navigation-->
+	<div id="prevthumb"></div>
+	<div id="nextthumb"></div>
+	
+	<!--Arrow Navigation-->
+<!--	<a id="prevslide" class="load-item"></a>
+	<a id="nextslide" class="load-item"></a>-->
+	
+	<div id="thumb-tray" class="load-item">
+		<div id="thumb-back"></div>
+		<div id="thumb-forward"></div>
+	</div>
+	
+	<!--Time Bar-->
+<!--	<div id="progress-back" class="load-item">
+		<div id="progress-bar"></div>
+	</div>-->
+	
+	<!--Control Bar-->
+	<div id="controls-wrapper" class="load-item">
+		<div id="controls">
+			
+			<!--<a id="play-button"><img id="pauseplay" src="img/pause.png"/></a>-->
+		
+			<!--Slide counter-->
+<!--			<div id="slidecounter">
+				<span class="slidenumber"></span> / <span class="totalslides"></span>
+			</div>-->
+			
+			<!--Slide captions displayed here-->
+			<!--<div id="slidecaption"></div>-->
+			
+			<!--Thumb Tray button-->
+			<a id="tray-button"><img id="tray-arrow" src="img/button-tray-up.png"/></a>
+			
+			<!--Navigation-->
+			<ul id="slide-list"></ul>
+			
+		</div>
+	</div>
     
-    
-     </head>
-     <body  class="">
-<!--==============================header=================================-->
- <header> 
-  <div class="container_12">
-    <div class="grid_12"> 
-    <h1><a href=hotmap.jsp"><img src="images/logo.png" alt="Gerald Harris attorney at law"></a> </h1>
-          
-         
-           <div class="clear"></div>
-      </div>
-<div class="menu_block">
-          <jsp:include page="nav.jsp" />
-          
-           <div class="clear"></div>
+    <div id="buscador">
+        <form class="buscador">
+           <div class="caja">
+              <fieldset>
+                 <legend>Buscador</legend>
+                 
+                 <label for="input_q">
+                    <span>EasyTrip</span>
+                    <input type="text" placeholder="begin a journey" id="input_q" name="q" value="">
+                 </label>
+                 <input type="submit" value="Encontrar!">
+               
+              </fieldset>
+              <span style="position:absolute; left:300px; margin-top:10px;"><a href="" style="color:#fff; font-family:arial, serif;   text-decoration:none;   font-size:18px">Have no idea?<img src="img/button.png" height="25" style=" position:absolute; left:125px; bottom:-3px;"></a></span>
+              
            </div>
-           <div class="clear"></div>
-          </div>
-</header>
-
-<div class="main">
-<!--=======content================================-->
-
-
-
-<form class="search" action="setmap.do" method="post" style="text-align:center;;padding:50px 50px 0px;margin-top:60px;">
-			<input type="text" placeholder="Search City"  style="height:30px; border-radius: 10px 10px 10px 10px; width:500px;font-family:Cursive;font-size:20px ">
-			<input type="submit" name="submit_btn" value="submit"  style="height:40px; border-radius: 10px 10px 10px 10px;width:100px;font-family:Cursive;font-size:20px"  >
-		
-				</form>
-<div style="height:auto;margin:60px;display:block;border: 2px solid rgb(0, 100, 255);">
-
-
-<jsp:include page="map.jsp" />
-
-
-</div>
-</div>
-
-<!--=======new================================-->
-
-<div class="container_12">
-		<div class="grid_12">
-			<h3>Let's go trip!</h3>
-		</div>
-		
-				<div class="grid_8">
-					 <div id="tabs" class="ui-tabs ui-widget ui-widget-content ui-corner-all">
-	<ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all" role="tablist">
-		<li class="ui-state-default ui-corner-top" role="tab" tabindex="-1" aria-controls="tabs-1" aria-labelledby="ui-id-1" aria-selected="false"><a href="#tabs-1" class="ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-1">Top Trips</a></li>
-		<li class="ui-state-default ui-corner-top ui-tabs-active ui-state-active" role="tab" tabindex="0" aria-controls="tabs-2" aria-labelledby="ui-id-2" aria-selected="true"><a href="#tabs-2" class="ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-2">Flights</a></li>
-		<li class="ui-state-default ui-corner-top" role="tab" tabindex="-1" aria-controls="tabs-3" aria-labelledby="ui-id-3" aria-selected="false"><a href="#tabs-3" class="ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-3">Hotels</a></li>
-	</ul>
-	<div class="clear"></div>
-	<div class="tab_cont ui-tabs-panel ui-widget-content ui-corner-bottom" id="tabs-1" aria-labelledby="ui-id-1" role="tabpanel" aria-expanded="false" aria-hidden="true" style="display: none;">
-		<img src="images/page1_img4.jpg" alt="">
-		<div class="extra_wrapper">
-			<div class="text1">Flights </div>
-			<p class="style1"><a class="col2" href="http://www.cssmoban.com/" rel="nofollow">Click here</a> for more info about this free website template created by TemplateMonster.com </p>
-			
-Nulla facilisi. Ut ut tincidunt lacus, ut auctor libero. Duis ommodo vel ipsum sed volutpat. Phasellus a sagittis dui, eu adipiscinget nisiestibulum eutro.
-<a href="#" class="btn">Details</a>
-<div class="clear "></div>
-
-		</div>
-		<div class="clear cl1"></div>
-		<img src="images/page1_img5.jpg" alt="">
-		<div class="extra_wrapper">
-			<div class="text1 tx1">Hem psuf abr sit dmety. </div>
-			Julla facilisi. Ut ut tincidunt lacus, ut auctor libero. Fuis ommodo vel ipsum sed volutpat. Phasellus a sagittis dui, eu adipiscinget nisi. Vestibulum eu eleifend metus, ut ornare nibh. Vestibulumul tincidunt interdum libero vitae faucibus. Gonec dapibus feugiate auctor. In ac dapibus lacus. Maecenas in pharetra mim asellus a sagittis dui, eu adipiscinget nisi. 
-			<div class="clear"></div>
-			<a href="#" class="btn bt1">Details</a>
-			<div class="clear "></div>
-
-		</div>		
-	</div>
-	<div class="tab_cont ui-tabs-panel ui-widget-content ui-corner-bottom" id="tabs-2" aria-labelledby="ui-id-2" role="tabpanel" aria-expanded="true" aria-hidden="false" style="display: block;">
-<img src="images/page1_img4.jpg" alt="">
-		<div class="extra_wrapper">
-			<div class="text1">Hotels </div>
-			<p class="style1">Nulla facilisi. Ut ut tincidunt lacus, ut auctor libero. Duis ommodo vel ipsum sed volutpat. Phasellus a sagittis dui, eu adipiscinget nisiestibulum eutro.</p>
-			
-Nulla facilisi. Ut ut tincidunt lacus, ut auctor libero. Duis ommodo vel ipsum sed volutpat. Phasellus a sagittis dui, eu adipiscinget nisiestibulum eutro.
-<a href="#" class="btn">Details</a>
-<div class="clear "></div>
-
-		</div>
-		<div class="clear cl1"></div>
-		<img src="images/page1_img5.jpg" alt="">
-		<div class="extra_wrapper">
-			<div class="text1 tx1">Hem psuf abr sit dmety. </div>
-			Julla facilisi. Ut ut tincidunt lacus, ut auctor libero. Fuis ommodo vel ipsum sed volutpat. Phasellus a sagittis dui, eu adipiscinget nisi. Vestibulum eu eleifend metus, ut ornare nibh. Vestibulumul tincidunt interdum libero vitae faucibus. Gonec dapibus feugiate auctor. In ac dapibus lacus. Maecenas in pharetra mim asellus a sagittis dui, eu adipiscinget nisi. 
-			<div class="clear"></div>
-			<a href="#" class="btn bt1">Details</a>
-			<div class="clear "></div>
-
-		</div>
-	</div>
- <div class="tab_cont ui-tabs-panel ui-widget-content ui-corner-bottom" id="tabs-3" aria-labelledby="ui-id-3" role="tabpanel" aria-expanded="false" aria-hidden="true" style="display: none;">
- 
-<img src="images/page1_img4.jpg" alt="">
-		<div class="extra_wrapper">
-			<div class="text1">Top Trips</div>
-			<p class="style1">Nulla facilisi. Ut ut tincidunt lacus, ut auctor libero. Duis ommodo vel ipsum sed volutpat. Phasellus a sagittis dui, eu adipiscinget nisiestibulum eutro.</p>
-			
-Nulla facilisi. Ut ut tincidunt lacus, ut auctor libero. Duis ommodo vel ipsum sed volutpat. Phasellus a sagittis dui, eu adipiscinget nisiestibulum eutro.
-<a href="#" class="btn">Details</a>
-<div class="clear "></div>
-
-		</div>
-		<div class="clear cl1"></div>
-		<img src="images/page1_img5.jpg" alt="">
-		<div class="extra_wrapper">
-			<div class="text1 tx1">Hem psuf abr sit dmety. </div>
-			Julla facilisi. Ut ut tincidunt lacus, ut auctor libero. Fuis ommodo vel ipsum sed volutpat. Phasellus a sagittis dui, eu adipiscinget nisi. Vestibulum eu eleifend metus, ut ornare nibh. Vestibulumul tincidunt interdum libero vitae faucibus. Gonec dapibus feugiate auctor. In ac dapibus lacus. Maecenas in pharetra mim asellus a sagittis dui, eu adipiscinget nisi. 
-			<div class="clear"></div>
-			<a href="#" class="btn bt1">Details</a>
-			<div class="clear "></div>
-
-		</div>	
-		
-	</div>
-</div>
-		</div>
-	
-	<div class="grid_4">
-	 <div class="newsletter_title">NewsLetter </div>
-	 <div class="n_container">
-			 <form id="newsletter">
-									<div class="success" style="display: none;">Your subscribe request has been sent!</div>
-									<div class="text1">Sign up to receive our newsletters </div>
-									<label class="email">
-											 <input type="email" value="email address">
-												<span class="error">*This is not a valid email address.</span>
-									</label> 
-									<div class="clear"></div> <a href="#" class="" data-type="submit"></a> 
-							</form> 
-							<ul class="list">
-								<li><a href="#">Fgo psu dr sit amek </a></li>
-								<li><a href="#">Sem psum dr sit ametre </a></li>
-								<li><a href="#">Rame sum dr sit ame </a></li>
-								<li><a href="#">Bem psum dr sit ameteko </a></li>
-								<li><a href="#">Nem dsum dr sit amewas </a></li>
-								<li><a href="#">Vcem psum dr sit </a></li>
-								<li><a href="#">Zdfem psum dr sittr amewe </a></li>
-							</ul>
-			</div>
-	</div>
-	
-	<div class="clear"></div></div>
-	<div class="clear" style="height:40px;"></div>
-
-
-
-<!--=======new================================-->
-
-
-<!--=======bottom================================-->
-<div class="bottom_block">
-  <div class="container_12">
-    <div class="grid_2 prefix_2">
-      <ul>
-        <li><a href="#">FAQS Page</a></li>
-        <li><a href="#">People Say</a></li>
-      </ul>
+           
+        </form>
+    
     </div>
-    <div class="grid_2">
-      <ul>
-        <li><a href="#">Useful links</a></li>
-        <li><a href="#">Partners</a></li>
-      </ul>
-    </div>
-    <div class="grid_2">
-      <ul>
-        <li><a href="#">Insurance</a></li>
-        <li><a href="#">Family Travel</a></li>
-      </ul>
-    </div>
-    <div class="grid_2">
-      <h4>Contact Us:</h4>
-      TEL: 1-800-234-5678<br><a href="#">info@demolink.org</a>
-     
-    </div>
-    <div class="clear"></div>
-    </div>
-  </div>
-<!--==============================footer=================================-->
-
-</div>
-<footer>    
-  <div class="container_12">
-  <div class="grid_12">
-    <div class="socials">
-      <a href="#"></a>
-      <a href="#"></a>
-      <a href="#"></a>
-      <a href="#"></a>
-    </div>
-      <div class="copy">
-     Journey &copy; 2013 | <a href="#">Privacy Policy</a>
-     </div></div>
-     <div class="clear"></div>
-  </div>
-
-</footer>
 
 </body>
 </html>
