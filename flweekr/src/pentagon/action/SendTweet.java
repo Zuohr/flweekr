@@ -24,7 +24,7 @@ public class SendTweet implements Action {
 		if (user == null) {
 			return "homepage.jsp";
 		}
-
+		
 		String text = request.getParameter("text");
 		if (text != null && text.length() > 0) {
 			Token accessToken = user.getAccessToken();

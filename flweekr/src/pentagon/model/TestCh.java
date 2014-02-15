@@ -2,6 +2,7 @@ package pentagon.model;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
+import java.util.Date;
 
 public class TestCh {
 	public static void main(String[] args) throws UnsupportedEncodingException {
@@ -12,5 +13,7 @@ public class TestCh {
 			String s1 = URLEncoder.encode(s, cd);
 			System.out.println(s1);
 		}
+		Date d = new Date(1141841470l * 1000);
+		System.out.println(d);
 	}
 }

@@ -31,6 +31,7 @@ public class TwitterLogin implements Action {
 		User user = (User) session.getAttribute("user");
 		// check if session exists
 		if (user != null) {
+//			return "homepage.jsp";
 			return "twresult.jsp";
 		}
 
@@ -65,11 +66,12 @@ public class TwitterLogin implements Action {
 					request.setAttribute("result", String
 							.format("token:%s verifier:%s", oauth_token,
 									oauth_verifier));
+//					return "homepage.jsp";
 					return "twresult.jsp";
 				}
 			}
 		}
-		return "twlogin.jsp";
+		return "homepage.jsp";
 	}
 
 	@Override

@@ -11,11 +11,9 @@ import pentagon.sdk.TwitterAPI;
 import pentagon.twitterbean.Oembed;
 
 public class TwitterSearchByCoordination implements Action {
-	private Model model;
 	private OAuthService service;
 
 	public TwitterSearchByCoordination(Model model) {
-		this.model = model;
 		this.service = model.getService();
 	}
 

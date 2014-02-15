@@ -14,6 +14,7 @@
 	<c:forEach var="tweet" items="${requestScope.oembeds_list }">
 		${tweet.html }
 	</c:forEach>
+	<p>${requestScope.status.html }</p>
 	<form action="send_tweet.do" action="post">
 		<input type="text" name="text" placeholder="your tweet"> <input
 			type="submit" name="send_btn" value="send_tweet">
