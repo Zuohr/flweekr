@@ -295,35 +295,33 @@
 
 <div class="main">
 <!--=======content================================-->
+          <form id="newsletter" style="width:400px; margin-left:auto; margin-right:auto;">
+			
+			<div class="text1">Search for the destination name</div>
+			<label class="email">
+					 <input type="email" placeholder="destination" >
+			</label> 
+			<div class="clear"></div> <a href="#" class="" data-type="submit"></a> 
+		</form> 
 
-<div class="content">
-  <div class="container_12">
-      <div class="grid_12">
-        <h3>Our Gallery</h3>
-      </div>
-      <div class="clear"></div>
-       <div class="gallery">
-       
-       <section id="wrapper">
        <div id="container">
        <c:forEach var="plist" items="${requestScope.flk_plist}">
 	      
 			<div class="grid">
 				<div class="imgholder">
-					<a class="fancybox fancybox.iframe" href="getplace.do"><img src="${plist.imgUrl}" /></a>
+					<a href="getplace.do?photo_id=${plist.id}" target=_blank><img src="${plist.imgUrl}" /></a>
 				</div>
-				<strong>${plist.title}</strong>
-				<p>A peaceful sunset view...</p>
-				<div class="meta">by josborn</div>
+				<strong></strong>
+				<span style="font-size:14px; font-weight:bold;">${plist.title}</span>
+				<!-- <p>A peaceful sunset view...</p>
+				<div class="meta">by josborn</div>  -->
 			</div>
 	   </c:forEach>
 	   </div>
-	   </section>
 	   
-    </div>
-      <div class="clear"></div>
-  </div>
-</div>
+	   
+    
+      
 
 
 

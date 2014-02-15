@@ -12,6 +12,7 @@ import com.google.gson.GsonBuilder;
 
 import pentagon.apibean.FlickrBean;
 import pentagon.flickrbean.JsonFlickrApi;
+import pentagon.flickrbean.JsonFlickrInfo;
 import pentagon.flickrbean.Photos;
 
 public class FlickrAPI {
@@ -19,6 +20,11 @@ public class FlickrAPI {
     public FlickrAPI(FlickrBean flkBean){
     	this.flkBean = flkBean;
     }
+    
+//    public JsonFlickrInfo getPhotoInfo(){
+//    	String url = flkBean.getBaseUrl() + "?method=" + flkBean.getMethod()+"&api_key=" + flkBean.getApiKey()+ "&photo_id"
+//    			+ flkBean.get
+//    }
     
     public JsonFlickrApi getFlickrImage(){
     	String url =  flkBean.getBaseUrl() + "?method=" + flkBean.getMethod() + "&api_key=" + flkBean.getApiKey() + "&per_page=" 

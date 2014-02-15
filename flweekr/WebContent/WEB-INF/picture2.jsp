@@ -24,6 +24,40 @@
 		 <script src="js/tms-0.4.1.js"></script>
 		<script src="js/jquery-ui-1.10.3.custom.min.js"></script>
 		 <script src="js/jquery.ui.totop.js"></script>
+		 
+	<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+
+          
+          ['Month', 'Times'],
+          ['Janurary', 1232],
+          ['Feburary', 2343],
+          ['March', 5456],
+          ['April', 3278],
+          ['May',  3490],
+          ['June', 6632],
+          ['July', 743],
+          ['August', 56],
+          ['September', 78],
+          ['October', 9090],
+          ['November', 1990],
+          ['December', 90]
+
+        ]);
+
+        var options = {
+          title: 'Most Popular Visiting Month',
+          is3D: true,
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart_3d'));
+        chart.draw(data, options);
+      }
+    </script>
 		
 		 </script>
 		 <!--[if lt IE 8]>
@@ -71,16 +105,17 @@
       <div class="grid_9">
         <div class="">
           <h3>Agency Profile</h3>
-          <img src="images/page2_img1.jpg" alt="" class="img_inner fleft">
+          <img src="${requestScope.imgUrl}" alt="" class="img_inner fleft">
           <p class="text1"><a href="#">Gellentesque imperdiet gerti loki holewvelit neque. Ut vestibulum mi sit amet ornare. </a></p>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse jew wligulawe dolor, condimentum ac justo sed, tincidunt commodo molity wer massarete. Nulla non urnatr nisi. Donec varius lectus in vestibulum auctor. Spendisse magna veliternowe dignissim eu commodo ut vestibulum nectro quam. Pellentesque imperdiet velit neque. Ut vestibulum mi sit ametwertilo ornare consectetur. Quisque sed quamhy loi justo. Nulla congue sed turpis nec lacinia. Nulla facilisi. Ut sit amet gravidatylo wtellus. Morbi id wer nolit consequat eros. </p>
           <p>Vivamus imperdiet ante vitae lorem varius tristique meli. Phasellus tristique lectus id volutpat condimentum. Mauris quam lectus cursus at congue nec ultrices luctus orci quam lectus cursus at congue.</p>
           <div class="clear"></div>
           Duis ac iaculis odio, sed tristique arcu. Cras consequat semper augue. Praesent ut facilisis nisi. Pellentesque consequat felis leorew qwertil condimentumo placerat eros mollis vitae. Interdum et malesuada fames ac ante ipsum primis in faucibus. Praesent iaculis nisl mattis facilisis enim vitae dictumi magna. Pellentesque laoreet purus congue justo laoreet, blandit tempor leo molestie. Vivamus orci sem molestie actre pharetra non scelerisque sit amet orci. Nulla consequat neque pretium sagittis vulputate. Fusce dictum velit at diam facilisis consectetur. 
         </div>
+       <div id="piechart_3d" style=" height:500px;"></div>
       </div>
       
-      
+       
       <!----------->
       <div class="grid_3">
         <h3>Twitter</h3>

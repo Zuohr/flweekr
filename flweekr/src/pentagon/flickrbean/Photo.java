@@ -7,6 +7,7 @@ public class Photo {
 	public String server;
 	public String farm;
 	public String title;
+
 	public String ispublic;
 	public String isfriend;
 	public String isfamily;
@@ -33,6 +34,10 @@ public class Photo {
 	public String getImgUrl() {
 		imgUrl = "http://farm" + farm + ".static.flickr.com/" + server + "/" + id + "_" + secret + ".jpg";
 		return imgUrl;
+	}
+	
+	public String getId() {
+		return id;
 	}
 	
 }

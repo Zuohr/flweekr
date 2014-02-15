@@ -1,5 +1,7 @@
 package pentagon.action;
 
+import java.util.HashMap;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.scribe.oauth.OAuthService;
@@ -30,8 +32,8 @@ public class GetPlace implements Action {
 		if (user == null) {
 			return "login.do";
 		}
-System.out.println("sd");
-			//String keyword = request.getParameter("keyword");
+
+			
 			String keyword = "time square";
 			if (keyword != null) {
 				TwitterAPI twapi = new TwitterAPI(user.getAccessToken(),
@@ -43,6 +45,12 @@ System.out.println("sd");
 				}
 				request.setAttribute("oembeds_list", oembeds);
 			}
+			
+			String pid = request.getParameter("photo_id");
+			HashMap<String, String> map = (HashMap<String, String>) request.getSession().getAttribute("imgUrlMap");
+			
+			request.setAttribute("imgUrl", map.get(pid));
+			
 		
 		return "picture2.jsp";
 	}
