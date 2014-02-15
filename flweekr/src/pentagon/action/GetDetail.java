@@ -41,7 +41,7 @@ public class GetDetail implements Action {
 		request.setAttribute("pic_url", imgUrl);
 
 		// set twitter discussion
-		if ("submit".equals(request.getParameter("send_tweet"))) {
+		if ("send_tweet".equals(request.getParameter("send_btn"))) {
 			User user = (User) request.getSession().getAttribute("user");
 			if (user != null) {
 				String text = request.getParameter("text");
@@ -52,10 +52,12 @@ public class GetDetail implements Action {
 					if (status == null) {
 						request.setAttribute("result", "failed");
 					} else {
+						Oembed oembed = twApi.getOembed(status);
 						String twitter_id = status.getId_str();
 						Post post = new Post();
 						post.setFlickr_id(flickr_id);
 						post.setTwitter_id(twitter_id);
+						post.setTwitter_url(oembed.getHtml());
 						postDAO.create(post);
 					}
 				}
@@ -63,28 +65,17 @@ public class GetDetail implements Action {
 		}
 		
 		Post[] posts = postDAO.read(flickr_id);
-		Status[] statuses = new Status[posts.length];
+		String[] oembeds = new String[posts.length];
 		for (int i = 0; i < posts.length; i++) {
-			Status status = new Status();
-			status.setId_str(posts[i].getTwitter_id());
-			statuses[i] = status;
+			oembeds[i] = posts[i].getTwitter_url();
 		}
-		
-		return "twresult.jsp";
-//		try {
-//			Transaction.begin();
-//
-//			Transaction.commit();
-//		} catch (RollbackException e) {
-//			if (Transaction.isActive()) {
-//				Transaction.rollback();
-//			}
-//		}
+		request.setAttribute("oembeds_list", oembeds);
 
 		// set photo like stats
-
+		
 		// set statistics
 
+		return "twresult.jsp";
 	}
 
 	@Override

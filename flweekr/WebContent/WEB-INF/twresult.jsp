@@ -6,23 +6,23 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<p>cookies</p>
-	<c:forEach var="cookie" items="${requestScope.cookies }">
-		<p>name: ${cookie.name }, value: ${cookie.value }
-	</c:forEach>
+	<form id="form" method="POST" action="login.do"><!--  target="_blank"> -->
+		<input type="image" src="icons/sign-in-with-twitter-gray.png"
+			name="sign_in_button" value="twitter_sign_in">
+	</form>
 	<p>
 		<a href="logout.do">Sign out</a>
 	<p>${requestScope.result}<p>welco
 	me to flweekr, ${sessionScope.user.name} @
 		${sessionScope.user.screen_name }!</p>
 	<c:forEach var="tweet" items="${requestScope.oembeds_list }">
-		${tweet.html }
+		${tweet}
 	</c:forEach>
 	<p>${requestScope.status.html }</p>
-	<form action="send_tweet.do" method="POST">
+	<!-- <form action="send_tweet.do" method="POST">
 		<input type="text" name="text" placeholder="your tweet"> <input
 			type="submit" name="send_btn" value="send_tweet">
-	</form>
+	</form> -->
 	<form action="getdetail.do" method="POST">
 		<input type="text" name="text" placeholder="your tweet"> <input
 			type="submit" name="send_btn" value="send_tweet">
