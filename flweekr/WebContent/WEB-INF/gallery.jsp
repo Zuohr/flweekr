@@ -264,43 +264,27 @@
 <!--navgation -->
     <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
       <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">EasyTrip</a>
+        <div class="navbar-header" style="margin-left:26px;">
+          <a class="navbar-brand" href="#" style="font-family:arial; font-size:24px; color:#fff;">EasyTrip</a>
         </div>
         <div class="navbar-collapse collapse">
-<!--          <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home</a></li>
+        
+         <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Gallery</a></li>
             <li><a href="#about">About</a></li>
             <li><a href="#contact">Contact</a></li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
-              <ul class="dropdown-menu">
-                <li><a href="#">Action</a></li>
-                <li><a href="#">Another action</a></li>
-                <li><a href="#">Something else here</a></li>
-                <li class="divider"></li>
-                <li class="dropdown-header">Nav header</li>
-                <li><a href="#">Separated link</a></li>
-                <li><a href="#">One more separated link</a></li>
-              </ul>
-            </li>
-          </ul>-->
+          </ul>
+
           
            
-          <div class="col-lg-6" style="margin-top:8px; width:350px; float:right;">
-            <div class="input-group">
+          
+            <div class="input-group" style="margin-top:8px; margin-right:38px; width:300px; float:right;">
               <input type="text" class="form-control">
               <span class="input-group-btn">
                 <button class="btn btn-default" type="button">search</button>
               </span>
             </div><!-- /input-group -->
-          </div><!-- /.col-lg-6 -->
+         
            
           
         </div><!--/.nav-collapse -->
@@ -317,9 +301,8 @@
 				<div class="imgholder">
 					<a class="fancybox" href="getdetail.do"><img src="${plist.imgUrl}" /></a>
 				</div>
-				<strong>${plist.title}</strong>
-				<p>A peaceful sunset view...</p>
-				<div class="meta">by josborn</div>
+				<strong></strong>
+				<p style="font-weight:bold; font-size:14px;">${plist.title}</p>
 			</div>
 	   </c:forEach>
 	   </div>
