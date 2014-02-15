@@ -4,8 +4,17 @@ import org.genericdao.PrimaryKey;
 
 @PrimaryKey("id")
 public class SearchKey {
+	private int id;
 	private String keyword;
 	private int number;
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
 
 	public String getKeyword() {
 		return keyword;

@@ -28,13 +28,26 @@ public class GetDetail implements Action {
 			return "search.do";
 		}
 		
-		// get flickr api
-		return "picture2.jsp";
+		// set picture
+		String imgUrl = "";
+		/*
+		 * get picture via flickr api
+		 */
+		request.setAttribute("pic_url", imgUrl);
+		
+		// set twitter discussion
+		
+		
+		// set photo like stats
+		
+		// set statistics
+		
+		return "twresult.jsp";
 	}
 
 	@Override
 	public String getName() {
-		return "getplace.do";
+		return "getdetail.do";
 	}
 
 }

@@ -8,7 +8,7 @@ public class PhotoReview {
 	private String flickr_id;
 	private int wish;
 	private int been_there;
-	private int like;
+	private int num_like;
 
 	public int getId() {
 		return id;
@@ -42,11 +42,12 @@ public class PhotoReview {
 		this.been_there = been_there;
 	}
 
-	public int getLike() {
-		return like;
+	public int getNum_like() {
+		return num_like;
 	}
 
-	public void setLike(int like) {
-		this.like = like;
+	public void setNum_like(int num_like) {
+		this.num_like = num_like;
 	}
+
 }

@@ -35,7 +35,8 @@ public class Model {
 			this.photoReviewDAO = new PhotoReviewDAO("photo_review", cp);
 			this.searchKeyDAO = new SearchKeyDAO("search", cp);
 		} catch (DAOException e) {
-			throw new ServletException();
+			e.printStackTrace();
+			throw new ServletException(e.getMessage());
 		}
 	}
 
