@@ -148,7 +148,7 @@
                  <input type="submit" value="submit">
                
               </fieldset>
-              <span style="position:absolute; left:300px; margin-top:10px;"><a href="" style="color:#fff; font-family:arial, serif;   text-decoration:none;   font-size:18px">Have no idea?<img src="img/button.png" height="25" style=" position:absolute; left:125px; bottom:-3px;"></a></span>
+              <span style="position:absolute; left:300px; margin-top:10px;"><a href="search.do?key=travel" style="color:#fff; font-family:arial, serif;   text-decoration:none;   font-size:18px">Have no idea?<img src="img/button.png" height="25" style=" position:absolute; left:125px; bottom:-3px;"></a></span>
               
            </div>
            

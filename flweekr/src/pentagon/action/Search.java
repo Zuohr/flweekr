@@ -20,12 +20,15 @@ public class Search implements Action {
 		
 		
 		String keyWord = request.getParameter("key");
+		if(keyWord==null||keyWord.isEmpty()){
+			keyWord="travel";
+		} 
 		
 		FlickrBean flkBean = new FlickrBean();
 		flkBean.setAPIKey("8e2749644cb6405b3ee6a2c7b5f73eef");
 		flkBean.setBaseUrl("http://api.flickr.com/services/rest/");
 		flkBean.setMethod("flickr.photos.search");
-		flkBean.setPerPage("200");
+		flkBean.setPerPage("50");
 		flkBean.setFormat("json");
 		flkBean.setFlickrText(keyWord);
 		// flkBean.setFlickrContent_type("1");
