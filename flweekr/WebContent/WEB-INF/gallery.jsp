@@ -275,9 +275,6 @@
             <li><a href="#about">About</a></li>
             <li><a href="#contact">Contact</a></li>
           </ul>
-
-          
-           
           
             <div class="input-group" style="margin-top:8px; margin-right:40px; width:300px; float:right;">
               <input type="text" class="form-control">
@@ -285,14 +282,10 @@
                 <button class="btn btn-default" type="button">search</button>
               </span>
             </div><!-- /input-group -->
-         
-           
-          
+              
         </div><!--/.nav-collapse -->
       </div>
     </div>
-
-
 
        <section id="wrapper">
        <div id="container">
@@ -309,7 +302,5 @@
 	   </div>
 	   </section>
  
-
-
 </body>
 </html>
