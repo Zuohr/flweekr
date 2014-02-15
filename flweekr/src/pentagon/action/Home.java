@@ -14,7 +14,8 @@ public class Home implements Action {
 	@Override
 	public String perform(HttpServletRequest request,
 			HttpServletResponse response) {
-		// TODO Auto-generated method stub
+		
+		
 		return "home.jsp";
 	}
 

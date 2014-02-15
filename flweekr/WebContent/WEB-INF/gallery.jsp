@@ -270,6 +270,7 @@
         <div class="navbar-collapse collapse">
         
          <ul class="nav navbar-nav">
+         <li ><a href="home.do">Home</a></li>
             <li class="active"><a href="#">Gallery</a></li>
             <li><a href="#about">About</a></li>
             <li><a href="#contact">Contact</a></li>
@@ -278,7 +279,7 @@
           
            
           
-            <div class="input-group" style="margin-top:8px; margin-right:38px; width:300px; float:right;">
+            <div class="input-group" style="margin-top:8px; margin-right:40px; width:300px; float:right;">
               <input type="text" class="form-control">
               <span class="input-group-btn">
                 <button class="btn btn-default" type="button">search</button>
