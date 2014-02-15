@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.genericdao.RollbackException;
+
 import pentagon.action.Action;
 import pentagon.action.ActionMap;
 import pentagon.action.Home;
@@ -85,7 +87,11 @@ public class Controller extends HttpServlet {
 			System.out.println(actionName);
 			return "404";
 		} else {
-			return action.perform(request, response);
+			try {
+				return action.perform(request, response);
+			} catch (RollbackException e) {
+				throw new RuntimeException(e.getMessage());
+			}
 		}
 	}
 

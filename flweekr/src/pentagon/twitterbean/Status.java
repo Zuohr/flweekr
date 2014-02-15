@@ -7,4 +7,8 @@ public class Status {
 		return id_str;
 	}
 
+	public void setId_str(String id_str) {
+		this.id_str = id_str;
+	}
+
 }

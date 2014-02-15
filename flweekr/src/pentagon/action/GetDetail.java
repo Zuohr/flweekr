@@ -3,46 +3,88 @@ package pentagon.action;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.genericdao.RollbackException;
 import org.scribe.oauth.OAuthService;
 
+import pentagon.dao.Post;
+import pentagon.dao.PostDAO;
 import pentagon.model.Model;
 import pentagon.model.User;
-import pentagon.sdk.FlickrAPI;
 import pentagon.sdk.TwitterAPI;
 import pentagon.twitterbean.Oembed;
 import pentagon.twitterbean.Status;
 
 public class GetDetail implements Action {
 	private OAuthService service;
+	private PostDAO postDAO;
 
 	public GetDetail(Model model) {
 		this.service = model.getService();
+		this.postDAO = model.getPostDAO();
 	}
 
 	@Override
 	public String perform(HttpServletRequest request,
-			HttpServletResponse response) {
-		
+			HttpServletResponse response) throws RollbackException {
+
 		String flickr_id = request.getParameter("flickr_id");
+		flickr_id = "4675986645";// TODO test
 		if (flickr_id == null || flickr_id.isEmpty()) {
 			return "search.do";
 		}
-		
+
 		// set picture
-		String imgUrl = "";
+		String imgUrl = "http://farm6.staticflickr.com/5348/9436623932_20b5af089b_o.jpg";
 		/*
 		 * get picture via flickr api
 		 */
 		request.setAttribute("pic_url", imgUrl);
-		
+
 		// set twitter discussion
+		if ("submit".equals(request.getParameter("send_tweet"))) {
+			User user = (User) request.getSession().getAttribute("user");
+			if (user != null) {
+				String text = request.getParameter("text");
+				if (text != null && !text.isEmpty()) {
+					TwitterAPI twApi = new TwitterAPI(user.getAccessToken(),
+							service);
+					Status status = twApi.sendStatus(text);
+					if (status == null) {
+						request.setAttribute("result", "failed");
+					} else {
+						String twitter_id = status.getId_str();
+						Post post = new Post();
+						post.setFlickr_id(flickr_id);
+						post.setTwitter_id(twitter_id);
+						postDAO.create(post);
+					}
+				}
+			}
+		}
 		
-		
-		// set photo like stats
-		
-		// set statistics
+		Post[] posts = postDAO.read(flickr_id);
+		Status[] statuses = new Status[posts.length];
+		for (int i = 0; i < posts.length; i++) {
+			Status status = new Status();
+			status.setId_str(posts[i].getTwitter_id());
+			statuses[i] = status;
+		}
 		
 		return "twresult.jsp";
+//		try {
+//			Transaction.begin();
+//
+//			Transaction.commit();
+//		} catch (RollbackException e) {
+//			if (Transaction.isActive()) {
+//				Transaction.rollback();
+//			}
+//		}
+
+		// set photo like stats
+
+		// set statistics
+
 	}
 
 	@Override

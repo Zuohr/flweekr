@@ -23,6 +23,10 @@
 		<input type="text" name="text" placeholder="your tweet"> <input
 			type="submit" name="send_btn" value="send_tweet">
 	</form>
+	<form action="getdetail.do" method="POST">
+		<input type="text" name="text" placeholder="your tweet"> <input
+			type="submit" name="send_btn" value="send_tweet">
+	</form>
 	<form action="search_tweet.do" method="POST">
 		<input type="text" name="keyword" placeholder="your search"> <input
 			type="submit" name="search_btn" value="search_tweet">
