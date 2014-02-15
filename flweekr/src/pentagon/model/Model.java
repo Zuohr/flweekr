@@ -9,13 +9,17 @@ import org.scribe.builder.ServiceBuilder;
 import org.scribe.builder.api.TwitterApi;
 import org.scribe.oauth.OAuthService;
 
+import pentagon.dao.PhotoReviewDAO;
 import pentagon.dao.PostDAO;
+import pentagon.dao.SearchKeyDAO;
 
 public class Model {
 	private OAuthService service;
 	private static final String callbackUrl = "http://localhost:8080/flweekr/login.do";
 	private ConnectionPool cp;
 	private PostDAO postDAO;
+	private PhotoReviewDAO photoReviewDAO;
+	private SearchKeyDAO searchKeyDAO;
 
 	public Model(ServletConfig config) throws ServletException {
 		String key = config.getInitParameter("API_key");
@@ -28,6 +32,8 @@ public class Model {
 		this.cp = new ConnectionPool(jdbcName, jdbcURL);
 		try {
 			this.postDAO = new PostDAO("post", cp);
+			this.photoReviewDAO = new PhotoReviewDAO("photo_review", cp);
+			this.searchKeyDAO = new SearchKeyDAO("search", cp);
 		} catch (DAOException e) {
 			throw new ServletException();
 		}
@@ -39,5 +45,13 @@ public class Model {
 
 	public PostDAO getPostDAO() {
 		return postDAO;
+	}
+
+	public PhotoReviewDAO getPhotoReviewDAO() {
+		return photoReviewDAO;
+	}
+
+	public SearchKeyDAO getSearchKeyDAO() {
+		return searchKeyDAO;
 	}
 }

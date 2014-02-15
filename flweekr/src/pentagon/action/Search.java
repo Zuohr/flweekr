@@ -5,20 +5,18 @@ import javax.servlet.http.HttpServletResponse;
 
 import pentagon.apibean.FlickrBean;
 import pentagon.flickrbean.JsonFlickrApi;
-import pentagon.flickrbean.Photo;
-import pentagon.flickrbean.Photos;
 import pentagon.model.Model;
 import pentagon.sdk.FlickrAPI;
 
+public class Search implements Action {
 
+	public Search(Model model) {
 
-public class GetHot implements Action {
-
-	public GetHot(Model model){
-		
 	}
+
 	@Override
-	public String perform(HttpServletRequest request, HttpServletResponse response) {
+	public String perform(HttpServletRequest request,
+			HttpServletResponse response) {
 		FlickrBean flkBean = new FlickrBean();
 		flkBean.setAPIKey("8e2749644cb6405b3ee6a2c7b5f73eef");
 		flkBean.setBaseUrl("http://api.flickr.com/services/rest/");
@@ -26,16 +24,16 @@ public class GetHot implements Action {
 		flkBean.setPerPage("200");
 		flkBean.setFormat("json");
 		flkBean.setFlickrText("Yellow+Stone");
-//		flkBean.setFlickrContent_type("1");
-//		flkBean.setFlickrLat("37.779");
-//		flkBean.setFlickrLon("-122.420");
+		// flkBean.setFlickrContent_type("1");
+		// flkBean.setFlickrLat("37.779");
+		// flkBean.setFlickrLon("-122.420");
 		flkBean.setFlickrSort("interestingness-desc");
 		
 		FlickrAPI flkAPI = new FlickrAPI(flkBean);
 		JsonFlickrApi jfa = flkAPI.getFlickrImage();
-		
+
 		request.setAttribute("flk_plist", jfa.photos.photo);
-		
+
 		return "gallery.jsp";
 	}
 

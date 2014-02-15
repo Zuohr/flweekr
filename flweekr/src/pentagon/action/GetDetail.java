@@ -5,20 +5,16 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.scribe.oauth.OAuthService;
 
-import pentagon.apibean.FlickrBean;
-import pentagon.flickrbean.Photo;
 import pentagon.model.Model;
 import pentagon.model.User;
-import pentagon.sdk.FlickrAPI;
 import pentagon.sdk.TwitterAPI;
 import pentagon.twitterbean.Oembed;
 import pentagon.twitterbean.Status;
 
-public class GetPlace implements Action {
-	private Model model;
+public class GetDetail implements Action {
 	private OAuthService service;
 
-	public GetPlace(Model model) {
+	public GetDetail(Model model) {
 		this.service = model.getService();
 
 	}
