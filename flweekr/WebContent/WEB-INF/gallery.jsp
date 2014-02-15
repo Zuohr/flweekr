@@ -12,8 +12,9 @@
      <meta charset="utf-8">
      <link rel="icon" href="images/favicon.ico">
      <link rel="shortcut icon" href="images/favicon.ico" />
-     <link rel="stylesheet" href="css/style.css">
-     <link rel="stylesheet" href="css/touchTouch.css">
+	 <link href="css/bootstrap.min.css" rel="stylesheet">
+	 <link href="css/navbar-fixed-top.css" rel="stylesheet">
+     
   	 <link rel='stylesheet' href='css/block.css' media='screen' />
      <script src="js/jquery.js"></script>
      <script src="js/jquery-migrate-1.1.1.js"></script>
@@ -257,60 +258,64 @@
     		});
     	});
      </script>
-     
-     <!--[if lt IE 8]>
-       <div style=' clear: both; text-align:center; position: relative;'>
-         <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
-           <img src="http://storage.ie6countdown.com/assets/100/images/banners/warning_bar_0000_us.jpg" border="0" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today." />
-         </a>
-      </div>
-    <![endif]-->
-    <!--[if lt IE 9]>
-      <script src="js/html5shiv.js"></script>
-      <link rel="stylesheet" media="screen" href="css/ie.css">
-
-    <![endif]-->
      </head>
-     <body  class="">
-<!--==============================header=================================-->
- <header> 
-  <div class="container_12">
-    <div class="grid_12"> 
-    <h1><a href="index.html"><img src="images/logo.png" alt="Gerald Harris attorney at law"></a> </h1>
+<body>
+
+<!--navgation -->
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">EasyTrip</a>
+        </div>
+        <div class="navbar-collapse collapse">
+<!--          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li class="divider"></li>
+                <li class="dropdown-header">Nav header</li>
+                <li><a href="#">Separated link</a></li>
+                <li><a href="#">One more separated link</a></li>
+              </ul>
+            </li>
+          </ul>-->
           
-         
-           <div class="clear"></div>
+           
+          <div class="col-lg-6" style="margin-top:8px; width:350px; float:right;">
+            <div class="input-group">
+              <input type="text" class="form-control">
+              <span class="input-group-btn">
+                <button class="btn btn-default" type="button">search</button>
+              </span>
+            </div><!-- /input-group -->
+          </div><!-- /.col-lg-6 -->
+           
+          
+        </div><!--/.nav-collapse -->
       </div>
-<div class="menu_block">
-			
-			
-			<jsp:include page="nav.jsp" />
-			
-			
-           <div class="clear"></div>
-           </div>
-           <div class="clear"></div>
-          </div>
-</header>
+    </div>
 
-<div class="main">
-<!--=======content================================-->
 
-<div class="content">
-  <div class="container_12">
-      <div class="grid_12">
-        <h3>Our Gallery</h3>
-      </div>
-      <div class="clear"></div>
-       <div class="gallery">
-       
+
        <section id="wrapper">
        <div id="container">
        <c:forEach var="plist" items="${requestScope.flk_plist}">
 	      
 			<div class="grid">
 				<div class="imgholder">
-					<a class="fancybox fancybox.iframe" href="getplace.do"><img src="${plist.imgUrl}" /></a>
+					<a class="fancybox" href="getdetail.do"><img src="${plist.imgUrl}" /></a>
 				</div>
 				<strong>${plist.title}</strong>
 				<p>A peaceful sunset view...</p>
@@ -319,62 +324,8 @@
 	   </c:forEach>
 	   </div>
 	   </section>
-	   
-    </div>
-      <div class="clear"></div>
-  </div>
-</div>
+ 
 
-
-
-<!--=======bottom================================-->
-<div class="bottom_block">
-  <div class="container_12">
-    <div class="grid_2 prefix_2">
-      <ul>
-        <li><a href="#">FAQS Page</a></li>
-        <li><a href="#">People Say</a></li>
-      </ul>
-    </div>
-    <div class="grid_2">
-      <ul>
-        <li><a href="#">Useful links</a></li>
-        <li><a href="#">Partners</a></li>
-      </ul>
-    </div>
-    <div class="grid_2">
-      <ul>
-        <li><a href="#">Insurance</a></li>
-        <li><a href="#">Family Travel</a></li>
-      </ul>
-    </div>
-    <div class="grid_2">
-      <h4>Contact Us:</h4>
-      TEL: 1-800-234-5678<br><a href="#">info@demolink.org</a>
-     
-    </div>
-    <div class="clear"></div>
-    </div>
-  </div>
-<!--==============================footer=================================-->
-
-</div>
-<footer>    
-  <div class="container_12">
-  <div class="grid_12">
-    <div class="socials">
-      <a href="#"></a>
-      <a href="#"></a>
-      <a href="#"></a>
-      <a href="#"></a>
-    </div>
-      <div class="copy">
-     Journey &copy; 2013 | <a href="#">Privacy Policy
-     </div></div>
-     <div class="clear"></div>
-  </div>
-
-</footer>
 
 </body>
 </html>
