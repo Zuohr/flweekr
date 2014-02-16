@@ -125,7 +125,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
     </script>
 
    <ul id="photo-panel" ></ul>
-    <div id="map-canvas" style="width:320px;height:415px;"></div>	
+    <div id="map-canvas" style="width:290px;height:415px; margin-right:40px; "></div>	
 		
 		
 	</div>
