@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletResponse;
 import org.genericdao.RollbackException;
 import org.scribe.oauth.OAuthService;
 
+import pentagon.dao.PhotoReview;
+import pentagon.dao.PhotoReviewDAO;
 import pentagon.dao.Post;
 import pentagon.dao.PostDAO;
 import pentagon.model.Model;
@@ -20,17 +22,20 @@ import pentagon.twitterbean.Status;
 public class GetDetail implements Action {
 	private OAuthService service;
 	private PostDAO postDAO;
+	private PhotoReviewDAO photoReviewDAO;
+	private static final String URL = "http://localhost:8080/getdetail.do?photo_id=";
 
 	public GetDetail(Model model) {
 		this.service = model.getService();
 		this.postDAO = model.getPostDAO();
+		this.photoReviewDAO = model.getPhotoReviewDAO();
 	}
 
 	@Override
 	public String perform(HttpServletRequest request,
 			HttpServletResponse response) throws RollbackException {
 
-		String flickr_id = request.getParameter("flickr_id");
+		String flickr_id = request.getParameter("photo_id");
 		flickr_id = "4675986645";// TODO test
 		if (flickr_id == null || flickr_id.isEmpty()) {
 			return "search.do";
@@ -46,15 +51,18 @@ public class GetDetail implements Action {
 		// set twitter discussion
 		if ("send_tweet".equals(request.getParameter("send_btn"))) {
 			User user = (User) request.getSession().getAttribute("user");
-			
+
 			if (user != null) {
 				String text = request.getParameter("text");
 				if (text != null && !text.isEmpty()) {
 					TwitterAPI twApi = new TwitterAPI(user.getAccessToken(),
 							service);
+					// add website url
+					text += String.format(" from easy trip %s%s", URL,
+							flickr_id);
 					Status status = twApi.sendStatus(text);
 					if (status == null) {
-						request.setAttribute("result", "failed");
+						request.setAttribute("result", "Send tweet failed.");
 					} else {
 						Oembed oembed = twApi.getOembed(status);
 						String html = oembed.getHtml();
@@ -73,7 +81,7 @@ public class GetDetail implements Action {
 				}
 			}
 		}
-		
+
 		Post[] posts = postDAO.read(flickr_id);
 		String[] oembeds = new String[posts.length];
 		for (int i = 0; i < posts.length; i++) {
@@ -82,7 +90,37 @@ public class GetDetail implements Action {
 		request.setAttribute("oembeds_list", oembeds);
 
 		// set photo like stats
-		
+		PhotoReview pr = null;
+		if ("submit".equals(request.getParameter("wish_btn"))) {
+			pr = photoReviewDAO.read(flickr_id);
+			if (pr == null) {
+				pr = new PhotoReview();
+				pr.setFlickr_id(flickr_id);
+				pr.setWish(1);
+			} else {
+				pr.setWish(pr.getWish() + 1);
+				photoReviewDAO.update(pr);
+			}
+		} else if ("submit".equals(request.getParameter("been_btn"))) {
+			pr = photoReviewDAO.read(flickr_id);
+			if (pr == null) {
+				pr = new PhotoReview();
+				pr.setFlickr_id(flickr_id);
+				pr.setBeen_there(1);
+			} else {
+				pr.setBeen_there(pr.getBeen_there() + 1);
+				photoReviewDAO.update(pr);
+			}
+		}
+		if (pr == null) {
+			pr = photoReviewDAO.read(flickr_id);
+			if (pr == null) {
+				pr = new PhotoReview();
+			}
+		}
+		request.setAttribute("wish_num", pr.getWish());
+		request.setAttribute("benn_num", pr.getBeen_there());
+
 		// set statistics
 
 		return "detail.jsp";

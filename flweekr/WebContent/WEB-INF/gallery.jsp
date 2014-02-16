@@ -268,11 +268,17 @@
 	      
 			<div class="grid">
 				<div class="imgholder">
-					<button type="button" class="btn btn-primary btn-xs" >Explore</button>
-					<a class="fancybox" href="${plist.imgUrl}"><img src="${plist.imgUrl}" /></a>
+					
+					<a class="fancybox" title="${plist.title}" href="${plist.imgUrl}"><img src="${plist.imgUrl}" /></a>
 				</div>
 				<strong></strong>
-				<p><a href="getdetail.do?photo_id=${plist.id}" style="color:#000; font-weight:bold; font-size:14px">${plist.title}</a></p>
+				<form id="${plist.id}" action="" method="post">
+				<p><a href="getdetail.do?photo_id=${plist.id}" onclick="document.getElementById('form1').submit();" style="color:#000; font-weight:bold; font-size:14px">${plist.title}</a></p>
+				<input type="hidden" name="imgUrl_b" value="${plist.imgUrl}_b">
+				</form>
+				<button type="button" class="btn btn-primary btn-xs" >Explore</button>
+				<a href="https://twitter.com/share" class="twitter-share-button" data-dnt="true" data-count="none" data-via="twitterapi">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 				
 			</div>
 	   </c:forEach>
