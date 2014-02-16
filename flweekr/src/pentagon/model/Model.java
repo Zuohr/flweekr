@@ -15,7 +15,7 @@ import pentagon.dao.SearchKeyDAO;
 
 public class Model {
 	private OAuthService service;
-	private static final String callbackUrl = "http://localhost:8080/flweekr/login.do";
+	private static final String callbackUrl = Meta.domain + "login.do";
 	private ConnectionPool cp;
 	private PostDAO postDAO;
 	private PhotoReviewDAO photoReviewDAO;
