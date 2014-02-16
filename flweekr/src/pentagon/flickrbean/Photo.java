@@ -2,6 +2,7 @@ package pentagon.flickrbean;
 
 public class Photo {
 	public String id;
+
 	public String getId() {
 		return id;
 	}
@@ -16,10 +17,12 @@ public class Photo {
 	public String isfamily;
 	public String originalsecret;
 	public String originalformat;
-	
+
 	public String latitude;
 	public String longitude;
-	
+
+	public String imgUrl;
+
 	public String getLatitude() {
 		return latitude;
 	}
@@ -32,21 +35,25 @@ public class Photo {
 		return longitude;
 	}
 
-	public String imgUrl;
-
 	public String getImgUrl() {
-		imgUrl = "http://farm" + farm + ".static.flickr.com/" + server + "/" + id + "_" + secret + ".jpg";
+		imgUrl = "http://farm" + farm + ".static.flickr.com/" + server + "/"
+				+ id + "_" + secret + ".jpg";
 		return imgUrl;
 	}
-	
+
 }
 
 /*
-http://farm" + photo.farm + ".static.flickr.com/" + 
-        photo.server + "/" + photo.id + "_" + photo.secret + "_" + "t.jpg";
-*/
+ * http://farm" + photo.farm + ".static.flickr.com/" + photo.server + "/" +
+ * photo.id + "_" + photo.secret + "_" + "t.jpg";
+ */
 
-//[{"id":"12392750014", "owner":"34540272@N08", "secret":"91c6d52bbf", "server":"3754", "farm":4, "title":"Longfellow", 
-//"ispublic":1, "isfriend":0, "isfamily":0, "originalsecret":"1511e6db52", "originalformat":"jpg"}
+// [{"id":"12392750014", "owner":"34540272@N08", "secret":"91c6d52bbf",
+// "server":"3754", "farm":4, "title":"Longfellow",
+// "ispublic":1, "isfriend":0, "isfamily":0, "originalsecret":"1511e6db52",
+// "originalformat":"jpg"}
 
-//"id":"12507937913", "owner":"76833726@N05", "secret":"715638a3e9", "server":"7311", "farm":8, "title":"PAT M-210 on 2-14-73", "ispublic":1, "isfriend":0, "isfamily":0, "originalsecret":"548ab5159b", "originalformat":"jpg"}
+// "id":"12507937913", "owner":"76833726@N05", "secret":"715638a3e9",
+// "server":"7311", "farm":8, "title":"PAT M-210 on 2-14-73", "ispublic":1,
+// "isfriend":0, "isfamily":0, "originalsecret":"548ab5159b",
+// "originalformat":"jpg"}
