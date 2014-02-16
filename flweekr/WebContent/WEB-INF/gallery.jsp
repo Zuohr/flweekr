@@ -272,10 +272,8 @@
 					<a class="fancybox" title="${plist.title}" href="${plist.imgUrl_b}"><img src="${plist.imgUrl}" /></a>
 				</div>
 				<strong></strong>
-				<form id="${plist.id}" action="" method="post">
-				<p><a href="getdetail.do?photo_id=${plist.id}" onclick="document.getElementById('form1').submit();" style="color:#000; font-weight:bold; font-size:14px">${plist.title}</a></p>
-				<input type="hidden" name="imgUrl_b" value="${plist.imgUrl}_b">
-				</form>
+				
+				<p><a href="getdetail.do?photo_id=${plist.id}" style="color:#000; font-weight:bold; font-size:14px">${plist.title}</a></p>
 				<div class="ez_button" style="">
 				
 				<a href="https://twitter.com/share" class="twitter-share-button" data-dnt="true" data-count="none" data-via="twitterapi">Tweet</a>
