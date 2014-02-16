@@ -119,7 +119,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
     </script>
 
   
-    <div id="map-canvas" style="width:300px;height:380px;"></div>	
+    <div id="map-canvas" style="width:300px;height:400px;"></div>	
 		
 		</div>
 		  

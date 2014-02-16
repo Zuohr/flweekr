@@ -1,11 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Panoramio Layer</title>
-    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
-    <meta charset="utf-8">
+
     <style>
       html, body, #map-canvas {
         height: 100%;
@@ -65,21 +58,17 @@ function initialize() {
     var link = document.createElement('a');
     link.innerHTML = photo.featureDetails.title + ': ' +
         photo.featureDetails.author;
-    link.setAttribute('href', photo.featureDetails.url);
+   // link.setAttribute('href', photo.featureDetails.url);
     li.appendChild(link);
     photoPanel.appendChild(li);
-    photoPanel.style.display = 'block';
+   // photoPanel.style.display = 'block';
   });
 }
 
 google.maps.event.addDomListener(window, 'load', initialize);
 
     </script>
-  </head>
-  <body>
-    <ul id="photo-panel">
-      <li><strong>Photos clicked</strong></li>
+ <ul id="photo-panel">
+      <li><strong></strong></li>
     </ul>
     <div id="map-canvas"></div>
-  </body>
-</html>
