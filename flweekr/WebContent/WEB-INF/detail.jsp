@@ -39,7 +39,7 @@
 
 	<div class="ez_twitter" style="margin-top:10px; margin-left:15px;">
 		<c:forEach var="tweet" items="${requestScope.oembeds_list }">
-			<blockquote class="twitter-tweet" width="1350" data-link-color="#cc0000" >
+			<blockquote class="twitter-tweet" data-link-color="#cc0000" >
 				${tweet}
 			</blockquote>
 			
