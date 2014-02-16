@@ -58,13 +58,10 @@ public class GetDetail implements Action {
 					} else {
 						Oembed oembed = twApi.getOembed(status);
 						String html = oembed.getHtml();
-						Pattern p = Pattern.compile("^<blockquote class=\"twitter-tweet\" lang=\"en\">(.*)</blockquote>.*$");
+						Pattern p = Pattern.compile("<p>.*</a>");
 						Matcher m = p.matcher(html);
 						if (m.find()) {
-							html = m.group(1);
-							System.out.println(html);
-						} else {
-							System.out.println("not found");
+							html = m.group();
 						}
 						String twitter_id = status.getId_str();
 						Post post = new Post();
