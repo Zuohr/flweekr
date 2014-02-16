@@ -58,7 +58,12 @@ public class GetDetail implements Action {
 					} else {
 						Oembed oembed = twApi.getOembed(status);
 						String html = oembed.getHtml();
-						
+						System.out.println(html);
+						Pattern p = Pattern.compile("<blockquote class=\"twitter-tweet\" lang=\"en\">(.*)</blockquote>");
+						Matcher m = p.matcher(html);
+						if (m.find()) {
+							html = m.group(1);
+						}
 						String twitter_id = status.getId_str();
 						Post post = new Post();
 						post.setFlickr_id(flickr_id);
