@@ -268,11 +268,11 @@
 	      
 			<div class="grid">
 				<div class="imgholder">
-					<button type="button" class="btn btn-primary btn-xs" style="display:none">Explore</button>
+					<button type="button" class="btn btn-primary btn-xs" >Explore</button>
 					<a class="fancybox" href="${plist.imgUrl}"><img src="${plist.imgUrl}" /></a>
 				</div>
 				<strong></strong>
-				<p style="font-weight:bold; font-size:14px;">${plist.title}</p>
+				<p><a href="getdetail.do?photo_id=${plist.id}" style="color:#000; font-weight:bold; font-size:14px">${plist.title}</a></p>
 				
 			</div>
 	   </c:forEach>

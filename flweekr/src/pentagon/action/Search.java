@@ -27,7 +27,7 @@ public class Search implements Action {
 		flkBean.setAPIKey("8e2749644cb6405b3ee6a2c7b5f73eef");
 		flkBean.setBaseUrl("http://api.flickr.com/services/rest/");
 		flkBean.setMethod("flickr.photos.search");
-		flkBean.setPerPage("50");
+		flkBean.setPerPage("100");
 		flkBean.setFormat("json");
 		flkBean.setFlickrText(keyWord);
 		// flkBean.setFlickrContent_type("1");

@@ -2,6 +2,10 @@ package pentagon.flickrbean;
 
 public class Photo {
 	public String id;
+	public String getId() {
+		return id;
+	}
+
 	public String owner;
 	public String secret;
 	public String server;
