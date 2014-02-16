@@ -24,7 +24,7 @@ public class SetMap implements Action {
 			request.getSession().setAttribute("map", map);
             
 //		}
-		return "tab.jsp";
+		return "mappic.jsp";
 	}
 
 	@Override
