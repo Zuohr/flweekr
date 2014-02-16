@@ -91,9 +91,9 @@ public class GetDetail implements Action {
 		request.setAttribute("oembeds_list", oembeds);
 
 		// set photo like stats
+		PhotoReview pr = new PhotoReview();
 		try {
 			Transaction.begin();
-			PhotoReview pr = null;
 			if ("submit".equals(request.getParameter("wish_btn"))) {
 				pr = photoReviewDAO.read(flickr_id);
 				if (pr == null) {
@@ -117,7 +117,7 @@ public class GetDetail implements Action {
 					photoReviewDAO.update(pr);
 				}
 			}
-			if (pr == null) {
+			if (pr.getFlickr_id() == null) {
 				pr = photoReviewDAO.read(flickr_id);
 				if (pr == null) {
 					pr = new PhotoReview();
@@ -125,8 +125,6 @@ public class GetDetail implements Action {
 					photoReviewDAO.create(pr);
 				}
 			}
-			request.setAttribute("wish_num", pr.getWish());
-			request.setAttribute("benn_num", pr.getBeen_there());
 
 			Transaction.commit();
 		} catch (RollbackException e) {
@@ -134,6 +132,8 @@ public class GetDetail implements Action {
 				Transaction.rollback();
 			}
 		}
+		request.setAttribute("wish_num", pr.getWish());
+		request.setAttribute("benn_num", pr.getBeen_there());
 
 		// set statistics
 
