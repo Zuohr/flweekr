@@ -10,12 +10,16 @@ import org.genericdao.RollbackException;
 import org.genericdao.Transaction;
 import org.scribe.oauth.OAuthService;
 
+import pentagon.apibean.FlickrBean;
 import pentagon.dao.PhotoReview;
 import pentagon.dao.PhotoReviewDAO;
 import pentagon.dao.Post;
 import pentagon.dao.PostDAO;
+import pentagon.flickrbean.JsonFlickrApi;
+import pentagon.flickrbean.JsonFlickrGetInfo;
 import pentagon.model.Model;
 import pentagon.model.User;
+import pentagon.sdk.FlickrAPI;
 import pentagon.sdk.TwitterAPI;
 import pentagon.twitterbean.Oembed;
 import pentagon.twitterbean.Status;
@@ -37,17 +41,25 @@ public class GetDetail implements Action {
 			HttpServletResponse response) throws RollbackException {
 
 		String flickr_id = request.getParameter("photo_id");
-		flickr_id = "4675986645";// TODO test
+		
 		if (flickr_id == null || flickr_id.isEmpty()) {
 			return "search.do";
 		}
 
-		// set picture
-		String imgUrl = "http://farm6.staticflickr.com/5348/9436623932_20b5af089b_o.jpg";
 		/*
 		 * get picture via flickr api
 		 */
-		request.setAttribute("pic_url", imgUrl);
+		FlickrBean flkBean = new FlickrBean();
+		flkBean.setAPIKey("8e2749644cb6405b3ee6a2c7b5f73eef");
+		flkBean.setBaseUrl("http://api.flickr.com/services/rest/");
+		flkBean.setMethod("flickr.photos.getInfo");
+		flkBean.setFlickrPhotoId(flickr_id);
+		flkBean.setFormat("json");
+		
+		FlickrAPI flkAPI = new FlickrAPI(flkBean);
+		JsonFlickrGetInfo jfa = flkAPI.getImgInfo();
+		
+		request.setAttribute("photo_ob", jfa.photo);
 
 		// set twitter discussion
 		if ("send_tweet".equals(request.getParameter("send_btn"))) {
@@ -59,7 +71,7 @@ public class GetDetail implements Action {
 					TwitterAPI twApi = new TwitterAPI(user.getAccessToken(),
 							service);
 					// add website url
-					text += String.format(" from easy trip %s%s", URL,
+					text += String.format(" --from EasyTrip %s%s", URL,
 							flickr_id);
 					Status status = twApi.sendStatus(text);
 					if (status == null) {

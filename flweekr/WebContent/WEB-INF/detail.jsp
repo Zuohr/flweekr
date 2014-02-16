@@ -36,7 +36,7 @@
 <div class="container">	
 	<div class="ez_left" style="float:left;">
 		<div class="ez_photo" style="margin-top:60px; margin-left:15px;">
-			<img class="img-thumbnail" src="http://farm9.staticflickr.com/8317/8065539051_e5ed1c2455_b.jpg" width="780">
+			<img class="img-thumbnail" src="${requestScope.photo_ob.imgUrl_b }" width="780">
 		</div>
 	
 		<div class="ez_twitter" style="margin-top:10px; margin-left:15px;">

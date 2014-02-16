@@ -36,7 +36,7 @@ public class Search implements Action {
 		flkBean.setFlickrSort("interestingness-desc");
 
 		FlickrAPI flkAPI = new FlickrAPI(flkBean);
-		JsonFlickrApi jfa = flkAPI.getFlickrImage("search");
+		JsonFlickrApi jfa = flkAPI.getFlickrImage();
 
 		request.setAttribute("flk_plist", jfa.photos.photo);
 		request.setAttribute("term", keyWord);
