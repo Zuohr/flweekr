@@ -5,7 +5,7 @@
 
     <style>
       html, body, #map-canvas {
-        height: 400px;
+        height: 380px;
         width:300px;
        
       }

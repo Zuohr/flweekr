@@ -32,6 +32,7 @@
 
 <body>
 <jsp:include page="nav.jsp" />
+<iframe src="setmap.do" frameborder="0"  marginheight="0"   marginwidth="0"  style="padding:0px;margin:0px;height:440px;width:300px;" scrolling="no"></iframe>
 <div class="container">	
 	<div class="ez_photo" style="margin-top:60px; margin-left:15px;">
 		<img class="img-thumbnail" src="http://farm9.staticflickr.com/8317/8065539051_e5ed1c2455_b.jpg" width="780">

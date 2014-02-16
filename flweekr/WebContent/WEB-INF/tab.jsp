@@ -31,14 +31,14 @@
 
 
     <br />
-    <div class="container">
+    <div class="container" style="margin:0px;padding:0px;margin-right:0px;">
    
       <br />
       <div class="tab-content">
 
       <ul class="nav nav-pills" id="myTab" style="width:300px;">
-  <li class="active"><a href="#as_employee" data-toggle="tab" style="font-size:18px">Pictures</a></li>
-  <li><a href="#as_customer" data-toggle="tab" style="font-size:18px">Weather</a></li>
+  <li class="active"><a href="#as_employee" data-toggle="tab" style="font-size:15px">Pictures</a></li>
+  <li><a href="#as_customer" data-toggle="tab" style="font-size:15px">Weather</a></li>
 
   
 </ul>
@@ -46,7 +46,7 @@
 <!-- <div class="tab-content"> -->
   <div class="tab-pane active" id="as_employee">
 		
-		<div style="height:500px;wudth:500px;">
+		<div >
 		
 <style>
       html, body, #map-canvas {
@@ -119,13 +119,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
     </script>
 
   
-    <ul id="photo-panel">
-      <li><strong>Photos clicked</strong></li>
-    </ul>
-    <div id="map-canvas" style="width:300px;height:400px;"></div>
- 
-		
-		
+    <div id="map-canvas" style="width:300px;height:380px;"></div>	
 		
 		</div>
 		  
@@ -134,9 +128,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
   
   <div class="tab-pane" id="as_customer">
 		      
-          <iframe src="weather.do" frameborder="0"  marginheight="0"   marginwidth="0"  style="height:400px;width:300px;"></iframe>
-  
-          
+          <iframe src="weather.do" frameborder="0"  marginheight="0"   marginwidth="0"  scrolling="no" style="height:380px;width:300px;"></iframe>
           
  </div>
           
