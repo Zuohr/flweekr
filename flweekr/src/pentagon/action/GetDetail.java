@@ -84,11 +84,13 @@ public class GetDetail implements Action {
 		}
 
 		Post[] posts = postDAO.read(flickr_id);
-		String[] oembeds = new String[posts.length];
-		for (int i = 0; i < posts.length; i++) {
-			oembeds[i] = posts[i].getTwitter_url();
+		if (posts != null) {
+			String[] oembeds = new String[posts.length];
+			for (int i = 0; i < posts.length; i++) {
+				oembeds[i] = posts[i].getTwitter_url();
+			}
+			request.setAttribute("oembeds_list", oembeds);
 		}
-		request.setAttribute("oembeds_list", oembeds);
 
 		// set photo like stats
 		PhotoReview pr = new PhotoReview();
