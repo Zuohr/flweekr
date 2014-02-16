@@ -42,6 +42,7 @@
 			<blockquote class="twitter-tweet" data-conversation="none">
 				${tweet}
 			</blockquote>
+			<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 		</c:forEach>	
 
 		<div class="jumbotron" style="background-color:#fff; padding-top:10px; padding-left:40px; padding-right:30px; padding-bottom:30px; max-width:780px; height:190px;">

@@ -6,10 +6,9 @@
         <div class="navbar-collapse collapse">
         
          <ul class="nav navbar-nav">
-         <li ><a href="home.do">Home</a></li>
-            <li class="active"><a href="#">Gallery</a></li>
+            <li class="active"><a href="search.do">Gallery</a></li>
+            <li><a href="#">Explore</a></li>
             <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
           </ul>
           
             <div class="input-group" style="margin-top:8px; margin-right:40px; width:300px; float:right;">
