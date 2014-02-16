@@ -7,4 +7,8 @@ public class Oembed {
 		return html;
 	}
 
+	public void setHtml(String html) {
+		this.html = html;
+	}
+	
 }

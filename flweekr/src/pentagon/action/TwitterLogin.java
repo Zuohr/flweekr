@@ -69,7 +69,7 @@ public class TwitterLogin implements Action {
 							.format("token:%s verifier:%s", oauth_token,
 									oauth_verifier));
 					// return "homepage.jsp";
-					return "twresult.jsp";
+					return "detail.jsp";
 				}
 			}
 		}

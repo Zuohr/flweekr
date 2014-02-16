@@ -1,5 +1,8 @@
 package pentagon.action;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -43,6 +46,7 @@ public class GetDetail implements Action {
 		// set twitter discussion
 		if ("send_tweet".equals(request.getParameter("send_btn"))) {
 			User user = (User) request.getSession().getAttribute("user");
+			
 			if (user != null) {
 				String text = request.getParameter("text");
 				if (text != null && !text.isEmpty()) {
@@ -53,11 +57,13 @@ public class GetDetail implements Action {
 						request.setAttribute("result", "failed");
 					} else {
 						Oembed oembed = twApi.getOembed(status);
+						String html = oembed.getHtml();
+						
 						String twitter_id = status.getId_str();
 						Post post = new Post();
 						post.setFlickr_id(flickr_id);
 						post.setTwitter_id(twitter_id);
-						post.setTwitter_url(oembed.getHtml());
+						post.setTwitter_url(html);
 						postDAO.create(post);
 					}
 				}
@@ -75,7 +81,7 @@ public class GetDetail implements Action {
 		
 		// set statistics
 
-		return "twresult.jsp";
+		return "detail.jsp";
 	}
 
 	@Override
