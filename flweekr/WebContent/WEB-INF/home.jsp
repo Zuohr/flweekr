@@ -127,7 +127,7 @@
 			<!--<div id="slidecaption"></div>-->
 			
 			<!--Thumb Tray button-->
-			<a id="tray-button"><img id="tray-arrow" src="img/button-tray-up.png"/></a>
+			<!-- <a id="tray-button"><img id="tray-arrow" src="img/button-tray-up.png"/></a>-->
 			
 			<!--Navigation-->
 			<ul id="slide-list"></ul>

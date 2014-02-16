@@ -30,7 +30,7 @@ public class FlickrAPI {
 					 * "&lon="+flkBean.getFlickrLon()+
 					 * "&content_type="+flkBean.getFlickrContent_type()+
 					 */"&text=" + flkBean.getFlickrText() + "&sort="
-					+ flkBean.getFlickrSort() + "&extras=original_format";
+					+ flkBean.getFlickrSort() + "&extras=url_b";
 		} else if(method.equals("getInfo")){
 				url = flkBean.getBaseUrl() + "?method="+ flkBean.getMethod()
 					+ "&api_key=" +flkBean.getApiKey() +"&photo_id="+flkBean.getFlickrPhotoId()
