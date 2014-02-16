@@ -32,7 +32,9 @@ public class FlickrAPI {
 					 */"&text=" + flkBean.getFlickrText() + "&sort="
 					+ flkBean.getFlickrSort() + "&extras=original_format";
 		} else if(method.equals("getInfo")){
-				url = "";
+				url = flkBean.getBaseUrl() + "?method="+ flkBean.getMethod()
+					+ "&api_key=" +flkBean.getApiKey() +"&photo_id="+flkBean.getFlickrPhotoId()
+					+ "&format=" + flkBean.getFormat()+"&nojsoncallback=1";
 		}
 		StringBuffer sb = new StringBuffer();
 		InputStream is = null;

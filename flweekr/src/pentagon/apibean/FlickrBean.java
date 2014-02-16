@@ -12,8 +12,17 @@ public class FlickrBean {
     private String flickrLat;
     private String flickrLon;
     private String flickrSort;
+    private String flickrPhotoId;
     
-    public String getFlickrSort() {
+    public String getFlickrPhotoId() {
+		return flickrPhotoId;
+	}
+
+	public void setFlickrPhotoId(String flickrPhotoId) {
+		this.flickrPhotoId = flickrPhotoId;
+	}
+
+	public String getFlickrSort() {
 		return flickrSort;
 	}
 
