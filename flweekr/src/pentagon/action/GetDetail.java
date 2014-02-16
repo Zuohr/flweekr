@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.genericdao.RollbackException;
+import org.genericdao.Transaction;
 import org.scribe.oauth.OAuthService;
 
 import pentagon.dao.PhotoReview;
@@ -90,36 +91,49 @@ public class GetDetail implements Action {
 		request.setAttribute("oembeds_list", oembeds);
 
 		// set photo like stats
-		PhotoReview pr = null;
-		if ("submit".equals(request.getParameter("wish_btn"))) {
-			pr = photoReviewDAO.read(flickr_id);
-			if (pr == null) {
-				pr = new PhotoReview();
-				pr.setFlickr_id(flickr_id);
-				pr.setWish(1);
-			} else {
-				pr.setWish(pr.getWish() + 1);
-				photoReviewDAO.update(pr);
+		try {
+			Transaction.begin();
+			PhotoReview pr = null;
+			if ("submit".equals(request.getParameter("wish_btn"))) {
+				pr = photoReviewDAO.read(flickr_id);
+				if (pr == null) {
+					pr = new PhotoReview();
+					pr.setFlickr_id(flickr_id);
+					pr.setWish(1);
+					photoReviewDAO.create(pr);
+				} else {
+					pr.setWish(pr.getWish() + 1);
+					photoReviewDAO.update(pr);
+				}
+			} else if ("submit".equals(request.getParameter("been_btn"))) {
+				pr = photoReviewDAO.read(flickr_id);
+				if (pr == null) {
+					pr = new PhotoReview();
+					pr.setFlickr_id(flickr_id);
+					pr.setBeen_there(1);
+					photoReviewDAO.create(pr);
+				} else {
+					pr.setBeen_there(pr.getBeen_there() + 1);
+					photoReviewDAO.update(pr);
+				}
 			}
-		} else if ("submit".equals(request.getParameter("been_btn"))) {
-			pr = photoReviewDAO.read(flickr_id);
 			if (pr == null) {
-				pr = new PhotoReview();
-				pr.setFlickr_id(flickr_id);
-				pr.setBeen_there(1);
-			} else {
-				pr.setBeen_there(pr.getBeen_there() + 1);
-				photoReviewDAO.update(pr);
+				pr = photoReviewDAO.read(flickr_id);
+				if (pr == null) {
+					pr = new PhotoReview();
+					pr.setFlickr_id(flickr_id);
+					photoReviewDAO.create(pr);
+				}
+			}
+			request.setAttribute("wish_num", pr.getWish());
+			request.setAttribute("benn_num", pr.getBeen_there());
+
+			Transaction.commit();
+		} catch (RollbackException e) {
+			if (Transaction.isActive()) {
+				Transaction.rollback();
 			}
 		}
-		if (pr == null) {
-			pr = photoReviewDAO.read(flickr_id);
-			if (pr == null) {
-				pr = new PhotoReview();
-			}
-		}
-		request.setAttribute("wish_num", pr.getWish());
-		request.setAttribute("benn_num", pr.getBeen_there());
 
 		// set statistics
 
