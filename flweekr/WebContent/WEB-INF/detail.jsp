@@ -39,12 +39,12 @@
 
 	<div class="ez_twitter" style="margin-top:10px; margin-left:15px;">
 		<c:forEach var="tweet" items="${requestScope.oembeds_list }">
-			<blockquote class="twitter-tweet" data-conversation="none">
+			<blockquote class="twitter-tweet" width="1350" data-link-color="#cc0000" >
 				${tweet}
 			</blockquote>
-			<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+			
 		</c:forEach>	
-
+		 <script async src="js/widgets.js" charset="utf-8"></script>
 		<div class="jumbotron" style="background-color:#fff; padding-top:10px; padding-left:40px; padding-right:30px; padding-bottom:30px; max-width:780px; height:190px;">
 			<form id="form" method="POST" action="login.do"><!--  target="_blank"> -->
 				<input type="image" src="img/sign-in-with-twitter-gray.png" name="sign_in_button" value="twitter_sign_in">
