@@ -32,32 +32,39 @@
 
 <body>
 <jsp:include page="nav.jsp" />
-<iframe src="setmap.do" frameborder="0"  marginheight="0"   marginwidth="0"  style="padding:0px;margin:0px;height:440px;width:300px;" scrolling="no"></iframe>
+
 <div class="container">	
-	<div class="ez_photo" style="margin-top:60px; margin-left:15px;">
-		<img class="img-thumbnail" src="http://farm9.staticflickr.com/8317/8065539051_e5ed1c2455_b.jpg" width="780">
-	</div>
-
-	<div class="ez_twitter" style="margin-top:10px; margin-left:15px;">
-		<c:forEach var="tweet" items="${requestScope.oembeds_list }">
-			<blockquote class="twitter-tweet" data-link-color="#cc0000" >
-				${tweet}
-			</blockquote>
-			
-		</c:forEach>	
-		 <script async src="js/widgets.js" charset="utf-8"></script>
-		<div class="jumbotron" style="background-color:#fff; padding-top:10px; padding-left:40px; padding-right:30px; padding-bottom:30px; max-width:780px; height:190px;">
-			<form id="form" method="POST" action="login.do"><!--  target="_blank"> -->
-				<input type="image" src="img/sign-in-with-twitter-gray.png" name="sign_in_button" value="twitter_sign_in">
-			</form>
-			<form action="getdetail.do" method="POST" id="twitter_text" >
-				<textarea class="form-control" rows="3" name="text" form="twitter_text" placeholder="Add a comment..."></textarea>
-				<button type="submit" name="send_btn" value="send_tweet" class="btn btn-primary" style="float:right; margin-top:10px;">Tweet</button>
-			</form>
+	<div class="ez_left" style="float:left;">
+		<div class="ez_photo" style="margin-top:60px; margin-left:15px;">
+			<img class="img-thumbnail" src="http://farm9.staticflickr.com/8317/8065539051_e5ed1c2455_b.jpg" width="780">
 		</div>
-
+	
+		<div class="ez_twitter" style="margin-top:10px; margin-left:15px;">
+			<c:forEach var="tweet" items="${requestScope.oembeds_list }">
+				<blockquote class="twitter-tweet" data-link-color="#cc0000" >
+					${tweet}
+				</blockquote>
+				
+			</c:forEach>	
+			 <script async src="js/widgets.js" charset="utf-8"></script>
+			<div class="jumbotron" style="background-color:#fff; padding-top:10px; padding-left:40px; padding-right:30px; padding-bottom:30px; max-width:780px; height:190px;">
+				<form id="form" method="POST" action="login.do"><!--  target="_blank"> -->
+					<input type="image" src="img/sign-in-with-twitter-gray.png" name="sign_in_button" value="twitter_sign_in">
+				</form>
+				<form action="getdetail.do" method="POST" id="twitter_text" >
+					<textarea class="form-control" rows="3" name="text" form="twitter_text" placeholder="Add a comment..."></textarea>
+					<button type="submit" name="send_btn" value="send_tweet" class="btn btn-primary" style="float:right; margin-top:10px;">Tweet</button>
+				</form>
+			</div>
+	
+		</div>
+	</div>
+	<div class="ez_right" style="float:right;">
+		<iframe src="setmap.do" frameborder="0"  marginheight="0"   marginwidth="0"  style="padding:0px;margin:0px;height:440px;width:300px;" scrolling="no"></iframe>
 	</div>
 </div>
+
+
 
 
 
