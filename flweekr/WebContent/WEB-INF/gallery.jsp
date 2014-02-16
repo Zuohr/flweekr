@@ -35,12 +35,7 @@
 <body>
 	<jsp:include page="nav.jsp" />
 
-	<form id="flickr-form" action="">
-		<h1>jQuery Flickr Explorer</h1>
-		<p id="flickr-error">Type a term and press enter.</p>
-		<input type="text" value="" id="flickr-term" /> <input
-			id="flickr-submit" type="button" type="submit" value="Get Images" />
-	</form>
+
 	<div id="flickr-results"></div>
 	<script type="text/javascript" src="js/jquery-1.4.2.min.js"></script>
 	<script type="text/javascript" src="js/jquery.sonar.js"></script>
@@ -49,11 +44,11 @@
 
 			var $flickrTerm = $("#flickr-term"), $flickrError = $("#flickr-error"), $flickrResults = $("#flickr-results");
 
-			$("#flickr-form")
-					.submit(
-							function(evt) {
-
-								evt.preventDefault();
+			//$("#flickr-form")
+			//		.submit(
+				//			function(evt) {
+				if("${requestScope.term}"){
+								//evt.preventDefault();
 
 								var term = '${requestScope.term}', encode = encodeURIComponent, getFlickrUrl = function(
 										term, perPage, pageNum) {
@@ -132,8 +127,9 @@
 									$flickrError
 											.html("Please enter a keyword.");
 								}
+				}
 
-							});
+						//	});
 		})(jQuery);
 	</script>
 </body>

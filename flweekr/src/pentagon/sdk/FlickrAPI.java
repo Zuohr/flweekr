@@ -19,17 +19,21 @@ public class FlickrAPI {
 		this.flkBean = flkBean;
 	}
 
-	public JsonFlickrApi getFlickrImage() {
-		String url = flkBean.getBaseUrl() + "?method=" + flkBean.getMethod()
-				+ "&api_key=" + flkBean.getApiKey() + "&per_page="
-				+ flkBean.getPerPage() + "&format=" + flkBean.getFormat()
-				+ /*
-				 * "&lat="+flkBean.getFlickrLat()+
-				 * "&lon="+flkBean.getFlickrLon()+
-				 * "&content_type="+flkBean.getFlickrContent_type()+
-				 */"&text=" + flkBean.getFlickrText() + "&sort="
-				+ flkBean.getFlickrSort() + "&extras=original_format";
-
+	public JsonFlickrApi getFlickrImage(String method) {
+		String url = "";
+		if(method.equals("search")){
+				url = flkBean.getBaseUrl() + "?method=" + flkBean.getMethod()
+					+ "&api_key=" + flkBean.getApiKey() + "&per_page="
+					+ flkBean.getPerPage() + "&format=" + flkBean.getFormat()
+					+ /*
+					 * "&lat="+flkBean.getFlickrLat()+
+					 * "&lon="+flkBean.getFlickrLon()+
+					 * "&content_type="+flkBean.getFlickrContent_type()+
+					 */"&text=" + flkBean.getFlickrText() + "&sort="
+					+ flkBean.getFlickrSort() + "&extras=original_format";
+		} else if(method.equals("getInfo")){
+				url = "";
+		}
 		StringBuffer sb = new StringBuffer();
 		InputStream is = null;
 		InputStreamReader isr = null;
