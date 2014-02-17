@@ -51,7 +51,7 @@
         cursor: pointer;
         overflow-x: hidden;
         margin-top:70px;
-		margin-left:50px;
+		margin-left:0px;
       }
   
       #locationField{
@@ -62,7 +62,7 @@
         border: 1px solid transparent;
 		top:10px;
 		margin-top:70px;
-		margin-left:130px;
+		margin-left:90px;
       }
       #controls {
         position: absolute;
@@ -72,7 +72,7 @@
 		height:40px;
         z-index: 5;
         margin-top:70px;
-		margin-left:140px;
+		margin-left:100px;
       }
       #autocomplete {
         width: 100%;

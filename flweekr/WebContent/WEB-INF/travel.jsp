@@ -58,6 +58,16 @@
     3
   </li>
   
+   <li class="list-group-item" style="width:290px;margin-right:35px;">
+    <span class="badge" style="width:50px;">$40</span>
+    4
+  </li>
+  
+   <li class="list-group-item" style="width:290px;margin-right:35px;">
+    <span class="badge" style="width:50px;">$40</span>
+    5
+  </li>
+  
 </ul>
  
  

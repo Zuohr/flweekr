@@ -97,7 +97,7 @@
 <body>
 	<jsp:include page="nav.jsp" />
 
-	<div class="container" >
+	<div class="container" style="width:">
 		<div class="ez_left" style="float: left;">
 			<div class="ez_photo" style="margin-top: 60px; margin-left: 15px;">
 				<img class="img-thumbnail" src="${requestScope.photo_ob.imgUrl_b }"
