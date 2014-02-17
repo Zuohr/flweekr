@@ -48,6 +48,7 @@ public class Search implements Action {
 			for (Cookie cookie : cookies) {
 				if ("last_search".equals(cookie.getName())) {
 					keyWord = cookie.getValue();
+					found = true;
 				}
 			}
 			if (!found) {
@@ -70,14 +71,12 @@ public class Search implements Action {
 			request.setAttribute("pageNum", pageNum);
 		}
 		FlickrBean flkBean = new FlickrBean();
-		flkBean.setAPIKey("8e2749644cb6405b3ee6a2c7b5f73eef");
-		flkBean.setBaseUrl("http://api.flickr.com/services/rest/");
 		flkBean.setMethod("flickr.photos.search");
 		flkBean.setPerPage("50");
-		flkBean.setFormat("json");
 		flkBean.setFlickrText(keyBuilder.toString() + "trip");
 		flkBean.setFlickrHasGeo("1");
 		flkBean.setFlickPage(pageNum);
+		flkBean.setFlickrExtra("url_b");
 		flkBean.setFlickrSort("interestingness-desc");//
 
 		FlickrAPI flkAPI = new FlickrAPI(flkBean);

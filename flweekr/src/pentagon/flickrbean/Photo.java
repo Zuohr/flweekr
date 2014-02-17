@@ -14,6 +14,7 @@ public class Photo {
 	public String originalformat;
 	public String imgUrl;
 	public String imgUrl_b;
+	public String url_o;
 
 
 

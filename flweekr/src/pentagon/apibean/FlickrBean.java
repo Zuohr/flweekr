@@ -14,14 +14,23 @@ public class FlickrBean {
     private String flickrSort;
     private String flickrPhotoId;
     private String flickrHasGeo;
-    private String flickPage;
+    private String flickrPage;
+    private String flickrExtra;
     
-    public String getFlickPage() {
-		return flickPage;
+    public String getFlickrExtra() {
+		return flickrExtra;
 	}
 
-	public void setFlickPage(String flickPage) {
-		this.flickPage = flickPage;
+	public void setFlickrExtra(String flickrExtra) {
+		this.flickrExtra = flickrExtra;
+	}
+
+	public String getFlickPage() {
+		return flickrPage;
+	}
+
+	public void setFlickPage(String flickrPage) {
+		this.flickrPage = flickrPage;
 	}
 
 	public String getFlickrHasGeo() {

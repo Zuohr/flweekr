@@ -67,6 +67,7 @@ public class Home implements Action {
 			flkBean.setPerPage("3");
 			flkBean.setFlickrText(last_search+"+trip");
 			flkBean.setFlickrHasGeo("1");
+			flkBean.setFlickrExtra("url_o");
 			flkBean.setFlickrSort("relevance");
 			FlickrAPI flkAPI = new FlickrAPI(flkBean);
 			JsonFlickrApi jfa = flkAPI.getFlickrImage();
