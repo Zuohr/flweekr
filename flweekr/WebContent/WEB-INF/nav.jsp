@@ -1,5 +1,5 @@
-    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-      <div class="container">
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation" >
+      <div class="container" style="width:1140px;" >
         <div class="navbar-header" style="margin-left:26px;">
           <a class="navbar-brand" href="home.do" style="font-family:arial; font-size:24px; color:#fff;">EasyTrip</a>
         </div>

@@ -97,9 +97,9 @@
 <body>
 	<jsp:include page="nav.jsp" />
 
-	<div class="container" style="width:">
+	<div class="container" style="width:1140px;">
 		<div class="ez_left" style="float: left;">
-			<div class="ez_photo" style="margin-top: 60px; margin-left: 15px;">
+			<div class="ez_photo" style="margin-top: 60px; margin-left: 10px;">
 				<img class="img-thumbnail" src="${requestScope.photo_ob.imgUrl_b }"
 					width="780">
 				<div class="jumbotron"
@@ -166,7 +166,7 @@
 			</div>
 		</div>
 
-		<div class="ez_right" style="float:right; margin-top:65px; width:auto;">
+		<div class="ez_right" style=" float:left; margin-left:10px; margin-top:65px; ">
 			<script
 				src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
 			<script>
@@ -231,12 +231,12 @@
 				google.maps.event.addDomListener(window, 'load', initialize);
 			</script>
 
-			<div id="map-canvas" style=" width: 290px; height: 300px; margin-right:40px; " /></div>
+			<div id="map-canvas" style=" width: 290px; height:290px;  " /></div>
 
 		</div>
 
 	</div>
-	<div class="container">
+	<div class="container" >
 		<div class="ez_loc">
 			<div id="container">
 				<c:forEach var="plist" items="${requestScope.flk_loc_plist}">

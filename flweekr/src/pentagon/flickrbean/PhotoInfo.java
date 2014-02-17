@@ -5,9 +5,6 @@ public class PhotoInfo {
 	public String imgUrl_b;
 	public Location location;
 	public Title title;
-
-
-
 	public Description description;
 	public String secret;
 	public String server;
