@@ -13,17 +13,16 @@ import org.genericdao.RollbackException;
 
 import pentagon.action.Action;
 import pentagon.action.ActionMap;
+import pentagon.action.GetDetail;
 import pentagon.action.Home;
 import pentagon.action.Mappic;
 import pentagon.action.Search;
-import pentagon.action.GetDetail;
 import pentagon.action.SendStatus;
 import pentagon.action.SetCookie;
 import pentagon.action.SetMap;
 import pentagon.action.TwitterLogin;
 import pentagon.action.TwitterLogout;
 import pentagon.action.TwitterSearch;
-import pentagon.action.TwitterSearchByCoordination;
 import pentagon.action.Weather;
 import pentagon.model.Model;
 
@@ -54,7 +53,6 @@ public class Controller extends HttpServlet {
 		actions.addAction(new TwitterLogout());
 		actions.addAction(new SendStatus(model));
 		actions.addAction(new TwitterSearch(model));
-		actions.addAction(new TwitterSearchByCoordination(model));
 		actions.addAction(new SetCookie());
 		actions.addAction(new Mappic());
 		actions.addAction(new Weather());
