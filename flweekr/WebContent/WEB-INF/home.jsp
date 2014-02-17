@@ -61,9 +61,9 @@
 					thumb_links				:	1,			// Individual thumb links for each slide
 					thumbnail_navigation    :   0,			// Thumbnail navigation
 					slides 					:  	[			// Slideshow Images
-														{image : 'http://farm6.staticflickr.com/5348/9436623932_20b5af089b_o.jpg', title : 'Image Credit: Maria Kazvan', thumb : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/thumbs/kazvan-1.jpg', url : 'http://www.nonsensesociety.com/2011/04/maria-kazvan/'},
-														{image : 'http://farm9.staticflickr.com/8177/8011151933_8366e9340e_o.png', title : 'Image Credit: Maria Kazvan', thumb : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/thumbs/kazvan-2.jpg', url : 'http://www.nonsensesociety.com/2011/04/maria-kazvan/'},  
-														{image : 'http://farm5.staticflickr.com/4016/4444574582_767aae7a99_o.jpg', title : 'Image Credit: Maria Kazvan', thumb : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/thumbs/kazvan-3.jpg', url : 'http://www.nonsensesociety.com/2011/04/maria-kazvan/'},
+														{image : 'http://farm6.staticflickr.com/5348/9436623932_20b5af089b_o.jpg', title : 'Image Credit: Maria Kazvan', thumb : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/thumbs/kazvan-1.jpg', url : 'getdetail.do?photo_id=9436623932'},
+														{image : 'http://farm9.staticflickr.com/8177/8011151933_8366e9340e_o.png', title : 'Image Credit: Maria Kazvan', thumb : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/thumbs/kazvan-2.jpg', url : 'getdetail.do?photo_id=8011151933'},  
+														{image : 'http://farm5.staticflickr.com/4016/4444574582_767aae7a99_o.jpg', title : 'Image Credit: Maria Kazvan', thumb : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/thumbs/kazvan-3.jpg', url : 'getdetail.do?photo_id=4444574582'},
 														
 														
 														
@@ -148,7 +148,7 @@
                  <input type="submit" value="submit">
                
               </fieldset>
-              <span style="position:absolute; left:300px; margin-top:10px;"><a href="search.do?key=discover" style="color:#fff; font-family:arial, serif;   text-decoration:none;   font-size:18px">Have no idea?<img src="img/button.png" height="25" style=" position:absolute; left:125px; bottom:-3px;"></a></span>
+              <span style="position:absolute; left:300px; margin-top:10px;"><a href="search.do" style="color:#fff; font-family:arial, serif;   text-decoration:none;   font-size:18px">Have no idea?<img src="img/button.png" height="25" style=" position:absolute; left:125px; bottom:-3px;"></a></span>
               
            </div>
            

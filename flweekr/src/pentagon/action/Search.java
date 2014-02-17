@@ -42,24 +42,32 @@ public class Search implements Action {
 				searchKeyDAO.update(searchKey);
 			}
 		} else {
-			keyWord = "trip";
+			keyWord = "discover";
 		}
+		
+		request.setAttribute("searchKey", keyWord);
+		
 		String[] keySet = keyWord.split("\\s");
 		StringBuilder keyBuilder = new StringBuilder();
 		for (int i = 0; i < keySet.length; i++) {
-			keyBuilder.append(keySet[i]+"+");
+			keyBuilder.append(keySet[i] + "+");
 		}
 
-		String pageNum = request.getParameter("page");
+		String pageNum = "1";
+		request.setAttribute("pageNum", pageNum);
+		pageNum = request.getParameter("page");
+		if (pageNum!=null && Integer.parseInt(pageNum) > 1) {
+			request.setAttribute("pageNum", pageNum);
+		}
 		FlickrBean flkBean = new FlickrBean();
 		flkBean.setAPIKey("8e2749644cb6405b3ee6a2c7b5f73eef");
 		flkBean.setBaseUrl("http://api.flickr.com/services/rest/");
 		flkBean.setMethod("flickr.photos.search");
-		flkBean.setPerPage("100");
+		flkBean.setPerPage("50");
 		flkBean.setFormat("json");
 		flkBean.setFlickrText(keyBuilder.toString() + "trip");
 		flkBean.setFlickrHasGeo("1");
-		flkBean.setFlickPage("1");
+		flkBean.setFlickPage(pageNum);
 		flkBean.setFlickrSort("interestingness-desc");//
 
 		FlickrAPI flkAPI = new FlickrAPI(flkBean);

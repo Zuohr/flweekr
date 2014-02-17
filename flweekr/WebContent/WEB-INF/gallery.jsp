@@ -298,8 +298,12 @@
 	   <div id="container">
 		<div class="ez_button" style="height:20px; width:200px; margin-left:auto; margin-right:auto; margin-bottom:20px;">
 			<div class="btn-group">
-				<a href="?page="><button type="button" class="btn btn-default">Last Page</button></a>
-				<a href="?page="><button type="button" class="btn btn-default">Next Page</button></a>
+				<c:choose>
+				<c:when test="${requestScope.pageNum > 1}" >
+					<a href="?key=${requestScope.searchKey}&page=${requestScope.pageNum-1}"><button type="button" class="btn btn-default">Last Page</button></a>
+				</c:when>
+				</c:choose>
+				<a href="?key=${requestScope.searchKey}&page=${requestScope.pageNum+1}"><button type="button" class="btn btn-default">Next Page</button></a>
 			</div>
 		</div>
 		</div>
