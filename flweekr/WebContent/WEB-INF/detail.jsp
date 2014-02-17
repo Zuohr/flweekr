@@ -158,9 +158,10 @@
 
 		</div>
 
-
 	</div>
-
+	<div class="ez_loc" style="border:1px solid #000; width:200px; height:200px;">
+	
+	</div>
 
 
 </body>

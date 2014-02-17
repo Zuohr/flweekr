@@ -63,11 +63,11 @@ public class GetDetail implements Action {
 		 * */
 		
 		FlickrBean locBean = new FlickrBean();
-		locBean.setMethod("flickr.photos.searc");
+		locBean.setMethod("flickr.photos.search");
 		locBean.setFlickrLat(info.photo.getLocation().latitude);
 		locBean.setFlickrLon(info.photo.getLocation().longitude);
 		
-		FlickrAPI flkLoc = new FlickrAPI(flkBean);
+		FlickrAPI flkLoc = new FlickrAPI(locBean);
 		JsonFlickrApi jfaLoc = flkLoc.getFlickrImage();
 		request.setAttribute("flk_loc_plist", jfaLoc.photos.photo);
 		
