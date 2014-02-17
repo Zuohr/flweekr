@@ -18,12 +18,12 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 public class TwitterLogin implements Action {
-	private Model model;
 	private OAuthService service;
 
+	// private OAuthService service;
+
 	public TwitterLogin(Model model) {
-		this.model = model;
-		this.service = this.model.getService();
+		this.service = model.getService();
 	}
 
 	@Override
@@ -33,17 +33,26 @@ public class TwitterLogin implements Action {
 		User user = (User) session.getAttribute("user");
 		// check if session exists
 		if (user != null) {
-			// return "homepage.jsp";
-			return "twresult.jsp";
+			return "home.do";
 		}
 
 		// check if sign_in_with_twitter button is pressed
 		if ("twitter_sign_in".equals(request.getParameter("sign_in_button"))) {
+			// String callback_id = (String) session.getAttribute("flickr_id");
+			// if (callback_id != null) {
+			// String callbackUrl = String.format("%login.do?flickr_id=%s",
+			// Meta.domain, callback_id);
+			// OAuthService service = new ServiceBuilder()
+			// .provider(TwitterApi.SSL.class).apiKey(model.getKey())
+			// .apiSecret(model.getSecret()).callback(callbackUrl).build();
 			Token requestToken = service.getRequestToken();
-			String result = requestToken.getRawResponse();
-			request.setAttribute("result", result);
+			// String result = requestToken.getRawResponse();
+			// request.setAttribute("result", result);
 			session.setAttribute("requestToken", requestToken);
+			// session.setAttribute("service", service);
+
 			return service.getAuthorizationUrl(requestToken);
+			// }
 		}
 
 		// check if token and verifier is provided
@@ -52,7 +61,10 @@ public class TwitterLogin implements Action {
 		if (oauth_token != null && !oauth_token.isEmpty()
 				&& oauth_verifier != null && !oauth_verifier.isEmpty()) {
 			Token req_token = (Token) session.getAttribute("requestToken");
+			// OAuthService service = (OAuthService) session
+			// .getAttribute("service");
 			session.removeAttribute("reqeustToken");
+			// session.removeAttribute("service");
 			if (oauth_token.equals(req_token.getToken())) {
 				Token accessToken = service.getAccessToken(req_token,
 						new Verifier(oauth_verifier));
@@ -65,11 +77,11 @@ public class TwitterLogin implements Action {
 					user = gson.fromJson(tw_response.getBody(), User.class);
 					user.setAccessToken(accessToken);
 					session.setAttribute("user", user);
-					request.setAttribute("result", String
-							.format("token:%s verifier:%s", oauth_token,
-									oauth_verifier));
-					// return "homepage.jsp";
-					return "detail.jsp";
+					// request.setAttribute("result", String
+					// .format("token:%s verifier:%s", oauth_token,
+					// oauth_verifier));
+
+					return "getdetail.do";
 				}
 			}
 		}

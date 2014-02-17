@@ -27,9 +27,9 @@ public class GetDetail implements Action {
 	private static final String URL = "http://localhost:8080/getdetail.do?photo_id=";
 
 	public GetDetail(Model model) {
-		this.service = model.getService();
 		this.postDAO = model.getPostDAO();
 		this.photoReviewDAO = model.getPhotoReviewDAO();
+		this.service = model.getService();
 	}
 
 	@Override
@@ -39,8 +39,12 @@ public class GetDetail implements Action {
 		String flickr_id = request.getParameter("photo_id");
 
 		if (flickr_id == null || flickr_id.isEmpty()) {
-			return "search.do";
+			flickr_id = (String) request.getSession().getAttribute("flickr_id");
+			if (flickr_id == null || flickr_id.isEmpty()) {
+				return "search.do";
+			}
 		}
+		request.getSession().setAttribute("flickr_id", flickr_id);
 
 		/*
 		 * get picture via flickr api
@@ -56,6 +60,9 @@ public class GetDetail implements Action {
 		JsonFlickrGetInfo info = flkAPI.getImgInfo();
 
 		request.setAttribute("photo_ob", info.photo);
+
+		// set sign with twitter button
+		request.setAttribute("flickr_id", flickr_id);
 
 		// set twitter nearby
 		User user = (User) request.getSession().getAttribute("user");

@@ -20,10 +20,12 @@ public class Model {
 	private PostDAO postDAO;
 	private PhotoReviewDAO photoReviewDAO;
 	private SearchKeyDAO searchKeyDAO;
+	public String key;
+	public String secret;
 
 	public Model(ServletConfig config) throws ServletException {
-		String key = config.getInitParameter("twitter_key");
-		String secret = config.getInitParameter("twitter_secret");
+		this.key = config.getInitParameter("twitter_key");
+		this.secret = config.getInitParameter("twitter_secret");
 		this.service = new ServiceBuilder().provider(TwitterApi.SSL.class)
 				.apiKey(key).apiSecret(secret).callback(callbackUrl).build();
 
@@ -54,5 +56,13 @@ public class Model {
 
 	public SearchKeyDAO getSearchKeyDAO() {
 		return searchKeyDAO;
+	}
+
+	public String getKey() {
+		return key;
+	}
+
+	public String getSecret() {
+		return secret;
 	}
 }
