@@ -166,7 +166,6 @@
 			</div>
 		</div>
 
-
 		<div class="ez_right" style="float: right; margin-top: 65px;">
 
 			<!-- <style>
