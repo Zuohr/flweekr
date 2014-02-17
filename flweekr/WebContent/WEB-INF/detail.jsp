@@ -86,15 +86,15 @@
     </style>
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=panoramio"></script>
     <script>
-	var lat='${map.latitude}';
-	var lon='${map.longitude}';
+	var lat='${requestScope.photo_ob.location.latitude}';
+	var lon='${requestScope.photo_ob.location.longitude}';
 	
 	
 function initialize() {
 
 	
   var mapOptions = {
-    zoom: 12,
+    zoom: 18,
     center: new google.maps.LatLng(lat, lon),
     
   };
