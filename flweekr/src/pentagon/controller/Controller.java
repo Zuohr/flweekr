@@ -16,6 +16,7 @@ import pentagon.action.ActionMap;
 import pentagon.action.GetDetail;
 import pentagon.action.Home;
 import pentagon.action.Mappic;
+import pentagon.action.SampleChart;
 import pentagon.action.Search;
 import pentagon.action.SendStatus;
 import pentagon.action.SetCookie;
@@ -56,6 +57,7 @@ public class Controller extends HttpServlet {
 		actions.addAction(new SetCookie());
 		actions.addAction(new Mappic());
 		actions.addAction(new Weather());
+		actions.addAction(new SampleChart());
 	}
 
 	/**
