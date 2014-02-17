@@ -56,23 +56,27 @@ public class GetDetail implements Action {
 		FlickrAPI flkAPI = new FlickrAPI(flkBean);
 		JsonFlickrGetInfo info = flkAPI.getImgInfo();
 		request.setAttribute("photo_ob", info.photo);
-		
-		
+
 		/*
 		 * get flickr block list of picture by location
-		 * */
-		
+		 */
+		JsonFlickrApi jfaLoc;
 		FlickrBean locBean = new FlickrBean();
 		locBean.setMethod("flickr.photos.search");
-		locBean.setFlickrLat(info.photo.getLocation().latitude);
-		locBean.setFlickrLon(info.photo.getLocation().longitude);
 		locBean.setPerPage("20");
+		if (info.photo.location != null){
+			locBean.setFlickrLat(info.photo.location.latitude);
+			locBean.setFlickrLon(info.photo.location.longitude);
+			FlickrAPI flkLoc = new FlickrAPI(locBean);
+			jfaLoc = flkLoc.getImageByLoc();
+		} else {
+			locBean.setFlickrText("trip");
+			FlickrAPI flkLoc = new FlickrAPI(locBean);
+			jfaLoc = flkLoc.getFlickrImage();
+		}
+
 		
-		FlickrAPI flkLoc = new FlickrAPI(locBean);
-		JsonFlickrApi jfaLoc = flkLoc.getImageByLoc();
 		request.setAttribute("flk_loc_plist", jfaLoc.photos.photo);
-		
-		
 
 		// set sign with twitter button
 		request.setAttribute("flickr_id", flickr_id);

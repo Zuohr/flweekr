@@ -77,7 +77,7 @@ public class Controller extends HttpServlet {
 			String nextStep = processRequest(request, response);
 			proceedToNext(nextStep, request, response);
 		} catch (Exception e) {
-			throw new RuntimeException(e.getCause());
+			throw new RuntimeException(e.getMessage());
 		}
 	}
 
