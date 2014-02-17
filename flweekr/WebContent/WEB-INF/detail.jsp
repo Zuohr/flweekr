@@ -98,7 +98,7 @@
 	<jsp:include page="nav.jsp" />
 
 	<div class="container">
-		<div class="ez_left" style="float: left;">
+		<div class="ez_left" style="float: left;position: absolute;display: inline-block;">
 			<div class="ez_photo" style="margin-top: 60px; margin-left: 15px;">
 				<img class="img-thumbnail" src="${requestScope.photo_ob.imgUrl_b }"
 					width="780">
@@ -166,7 +166,7 @@
 			</div>
 		</div>
 
-		<div class="ez_right" style="float: right; margin-top: 65px;">
+		<div class="ez_right" style="float: right; display: inline-block;margin-left:810px;">
 
 			<!-- <style>
 #map-canvas {

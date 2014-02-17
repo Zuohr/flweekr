@@ -16,13 +16,13 @@ public class SetMap implements Action {
 //		if (btn == null) {
 //			return "mappic.jsp";
 //		} else if ("submit".equals(btn)) {
-			MapBean map = new MapBean();
-			map.setLatitude(40.44);
-			map.setLongitude(-79.999);		
-			request.getSession().setAttribute("map", map);
-            
-//		}
-		return "map.jsp";
+//			MapBean map = new MapBean();
+//			map.setLatitude(40.44);
+//			map.setLongitude(-79.999);		
+//			request.getSession().setAttribute("map", map);
+//            
+////		}
+		return "travel.jsp";
 	}
 
 	@Override

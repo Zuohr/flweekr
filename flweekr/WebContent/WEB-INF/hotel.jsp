@@ -1,12 +1,8 @@
-<!--- need to add border when include   height:450 width:800---->
-
-
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
-  
   <head>
     <title>Place Autocomplete Hotel Search</title>
       <link rel="icon" href="images/favicon.ico">
@@ -27,21 +23,21 @@
     <link rel="stylesheet" href="css/jquery.fancybox.css" type="text/css" media="screen" />
      <script type="text/javascript" src="js/jquery.fancybox.pack.js"></script>
     
-    
-    <jsp:include page="nav.jsp" />
-    
+
  
 
     <style>
       #map-canvas {
         height: 450px;
-     width:800px;
+        width:780px;
+        margin-top:70px;
+        margin-left:20px;
 	
       }
       table {
         font-size: 12px;
-	
-      }
+	    margin-left:0px;
+       }
      
 	
       
@@ -54,7 +50,8 @@
         top: 0px;
         cursor: pointer;
         overflow-x: hidden;
-		
+        margin-top:70px;
+		margin-left:50px;
       }
   
       #locationField{
@@ -64,7 +61,8 @@
         z-index: 5;
         border: 1px solid transparent;
 		top:10px;
-		
+		margin-top:70px;
+		margin-left:130px;
       }
       #controls {
         position: absolute;
@@ -73,8 +71,8 @@
         top: 11px;
 		height:40px;
         z-index: 5;
-     
-		
+        margin-top:70px;
+		margin-left:140px;
       }
       #autocomplete {
         width: 100%;
@@ -394,9 +392,9 @@ function buildIWContent(place) {
   </head>
 
 
-  <body style="margin:0px; padding:0px;margin-top:200px" onload="initialize()">
+  <body style="margin:0px; padding:0px" onload="initialize()">
 
-    <div id="locationField" style="margin-top:200px">
+    <div id="locationField" >
       <input id="autocomplete" placeholder="Enter a city to find hotels" type="text"  style="height:30px; border: 1px solid transparent;
         border-radius: 2px 2px 2px 2px;
         box-sizing: border-box;
@@ -415,7 +413,7 @@ function buildIWContent(place) {
         height: 32px;
         outline: none;
         box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-        margin-top:200px;">
+        ">
         <option value="all">All</option>
         <option value="au">Australia</option>
         <option value="br">Brazil</option>
@@ -435,7 +433,7 @@ function buildIWContent(place) {
 
     <div id="map-canvas"></div>
 
-    <div id="listing" style="margin-top:200px">
+    <div id="listing" >
       <table id="resultsTable">
         <tbody id="results"></tbody>
       </table>
@@ -465,6 +463,5 @@ function buildIWContent(place) {
         </tr>
       </table>
     </div>
-  </body>
- 
+  </body> 
 </html>
