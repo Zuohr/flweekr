@@ -10,7 +10,7 @@ import org.scribe.model.Token;
 import org.scribe.model.Verb;
 import org.scribe.oauth.OAuthService;
 
-import pentagon.flickrbean.Photo;
+import pentagon.flickrbean.JsonFlickrGetInfo;
 import pentagon.twitterbean.Oembed;
 import pentagon.twitterbean.SearchResult;
 import pentagon.twitterbean.Status;
@@ -30,15 +30,15 @@ public class TwitterAPI {
 		this.accessToken = accessToken;
 	}
 
-	public Status[] searchByCoordination(Photo photo, String keyword) {
-		if (photo == null || keyword == null) {
+	public Status[] searchByCoordination(JsonFlickrGetInfo info, String keyword) {
+		if (info == null || keyword == null || keyword.isEmpty()) {
 			return null;
 		}
 		
-		String latitude = photo.getLatitude();
-		String longitude = photo.getLongitude();
+		String latitude = info.photo.location.latitude;
+		String longitude = info.photo.location.longitude;
 		if (latitude == null || latitude.isEmpty() || longitude == null || longitude.isEmpty()) {
-			return null;
+			return searchKeyWordOnly(keyword);
 		}
 		String range = "1mi";
 		String geocode = String.format("%s,%s,%s", latitude, longitude, range);
@@ -49,17 +49,20 @@ public class TwitterAPI {
 		} catch (UnsupportedEncodingException e) {
 			return null;
 		}
-		String query = String.format("q=%s&geocode=%s", keyword, geocode);
+		String query = String.format("q=%s&geocode=%s&count=5", keyword, geocode);
 		return search(query);
 	}
 
 	public Status[] searchKeyWordOnly(String keyword) {
+		if (keyword == null || keyword.isEmpty()) {
+			return null;
+		}
 		try {
 			keyword = URLEncoder.encode(keyword, "UTF-8");
 		} catch (UnsupportedEncodingException e) {
 			return null;
 		}
-		String query = String.format("q=%s", keyword);
+		String query = String.format("q=%s&count=5", keyword);
 		return search(query);
 	}
 

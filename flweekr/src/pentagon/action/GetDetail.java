@@ -15,7 +15,6 @@ import pentagon.dao.PhotoReview;
 import pentagon.dao.PhotoReviewDAO;
 import pentagon.dao.Post;
 import pentagon.dao.PostDAO;
-import pentagon.flickrbean.JsonFlickrApi;
 import pentagon.flickrbean.JsonFlickrGetInfo;
 import pentagon.model.Model;
 import pentagon.model.User;
@@ -57,10 +56,10 @@ public class GetDetail implements Action {
 		flkBean.setFormat("json");
 		
 		FlickrAPI flkAPI = new FlickrAPI(flkBean);
-		JsonFlickrGetInfo jfa = flkAPI.getImgInfo();
+		JsonFlickrGetInfo info = flkAPI.getImgInfo();
 		
-		request.setAttribute("photo_ob", jfa.photo);
-
+		request.setAttribute("photo_ob", info.photo);
+		
 		// set twitter discussion
 		if ("send_tweet".equals(request.getParameter("send_btn"))) {
 			User user = (User) request.getSession().getAttribute("user");
