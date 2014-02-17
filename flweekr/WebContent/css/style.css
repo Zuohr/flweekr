@@ -326,14 +326,14 @@ header h1 a img {
 	background-color: #193149;
 	position: absolute;
 	top: 0;
-	font-size: 13px;
+	font-size: 12px;
 	line-height: 19px;
 	color: #cbc6c6;
 	text-align: left;
 	left: 0;
 	height: 100%;
-	width: 183px;
-	padding: 0 11px;
+	width: 63px;
+	padding: 0 2px;
 	opacity: 0;
 	-webkit-backface-visibility: hidden;
 	-moz-backface-visibility: hidden;
@@ -1065,4 +1065,3 @@ footer {
 #toTop:hover {
 	background-position: right 0;
 }
-
