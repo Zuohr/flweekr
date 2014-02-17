@@ -5,7 +5,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!doctype html>
 <html lang="en">
      <head>
      <title>Gallery</title>
@@ -260,19 +260,8 @@
      </script>
      </head>
 <body>
+
 <jsp:include page="nav.jsp" />
-
-<style>
-#hover{
-display:non
-}
-
-.imgholder:hover #hover{
-display:block;
-
-}
-
-</style>
 
        <section id="wrapper">
        <div id="container">
@@ -288,18 +277,32 @@ display:block;
 					</a>
 					
 				</div>
-				
 				<strong></strong>
-				<p><a href="getdetail.do?photo_id=${plist.id}" style="color:#000; font-weight:bold; font-size:14px">${plist.title}</a></p>
+				<p><a href="getdetail.do?photo_id=${plist.id}" target="_blank" style="color:#000; font-weight:bold; font-size:14px">${plist.title}</a></p>
 				<div class="ez_button">
-				<a href="getdetail.do?photo_id=${plist.id}"><button  type="button" class="btn btn-primary btn-xs"  >Explore</button></a>
+				<a href="getdetail.do?photo_id=${plist.id}" target="_blank"><button  type="button" class="btn btn-primary btn-xs"  >Explore</button></a>
 				<span style="float:right;"><a href="https://twitter.com/share" class="twitter-share-button" data-dnt="true" data-count="none" data-via="twitterapi" id="hover">Tweet</a></span>
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="js/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 				</div>
 			</div>
 	   </c:forEach>
+	   
+	   
 	   </div>
+	   
+
+	   
 	   </section>
- 
+	   
+	   
+	   <div id="container">
+		<div class="ez_button" style="height:20px; width:200px; margin-left:auto; margin-right:auto; margin-bottom:20px;">
+			<div class="btn-group">
+				<a href="?page="><button type="button" class="btn btn-default">Last Page</button></a>
+				<a href="?page="><button type="button" class="btn btn-default">Next Page</button></a>
+			</div>
+		</div>
+		</div>
+		
 </body>
 </html>
