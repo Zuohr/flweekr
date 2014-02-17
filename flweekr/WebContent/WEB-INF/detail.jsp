@@ -38,57 +38,59 @@
 </style>
 
 <script>
-$(document).ready(function() {
-	//vendor script
-	$('#header')
-	.css({ 'top':-50 })
-	.delay(1000)
-	.animate({'top': 0}, 800);
-	
-	$('#footer')
-	.css({ 'bottom':-15 })
-	.delay(1000)
-	.animate({'bottom': 0}, 800);
-	
-	//blocksit define
-	$(window).load( function() {
-		$('#container').BlocksIt({
-			numOfCol: 4,
-			offsetX: 1,
-			offsetY: 8
+	$(document).ready(function() {
+		//vendor script
+		$('#header').css({
+			'top' : -50
+		}).delay(1000).animate({
+			'top' : 0
+		}, 800);
+
+		$('#footer').css({
+			'bottom' : -15
+		}).delay(1000).animate({
+			'bottom' : 0
+		}, 800);
+
+		//blocksit define
+		$(window).load(function() {
+			$('#container').BlocksIt({
+				numOfCol : 4,
+				offsetX : 1,
+				offsetY : 8
+			});
+		});
+
+		//window resize
+		var currentWidth = 1100;
+		$(window).resize(function() {
+			var winWidth = $(window).width();
+			var conWidth;
+			if (winWidth < 660) {
+				conWidth = 440;
+				col = 2
+			} else if (winWidth < 880) {
+				conWidth = 660;
+				col = 3
+			} else if (winWidth < 1100) {
+				conWidth = 880;
+				col = 4;
+			} else {
+				conWidth = 1100;
+				col = 5;
+			}
+
+			if (conWidth != currentWidth) {
+				currentWidth = conWidth;
+				$('#container').width(conWidth);
+				$('#container').BlocksIt({
+					numOfCol : col,
+					offsetX : 1,
+					offsetY : 8
+				});
+			}
 		});
 	});
-	
-	//window resize
-	var currentWidth = 1100;
-	$(window).resize(function() {
-		var winWidth = $(window).width();
-		var conWidth;
-		if(winWidth < 660) {
-			conWidth = 440;
-			col = 2
-		} else if(winWidth < 880) {
-			conWidth = 660;
-			col = 3
-		} else if(winWidth < 1100) {
-			conWidth = 880;
-			col = 4;
-		} else {
-			conWidth = 1100;
-			col = 5;
-		}
-		
-		if(conWidth != currentWidth) {
-			currentWidth = conWidth;
-			$('#container').width(conWidth);
-			$('#container').BlocksIt({
-				numOfCol: col,
-				offsetX: 1,
-				offsetY: 8
-			});
-		}
-	});
-});
 </script>
 </head>
 
@@ -100,27 +102,30 @@ $(document).ready(function() {
 			<div class="ez_photo" style="margin-top: 60px; margin-left: 15px;">
 				<img class="img-thumbnail" src="${requestScope.photo_ob.imgUrl_b }"
 					width="780">
-			<div class="jumbotron"
-					style="background-color: #fff; margin-top:10px; padding-top: 10px; padding-left: 40px; padding-right: 30px; padding-bottom: 10px; max-width: 780px; height: 70px;">
-			 	<div class="ez_photo" style="float:left">
-			 		<Strong>${requestScope.photo_ob.title._content}</Strong>
-			 	</div>
-			 	 <div class="btn-group" style="float:right">
-				 	 <a href=""><button type="button" class="btn btn-primary">I want to go there</button></a>
-	  				 <a href=""><button type="button" class="btn btn-default">I have been there</button></a>
-  				 </div>
-			</div>
+				<div class="jumbotron"
+					style="background-color: #fff; margin-top: 10px; padding-top: 10px; padding-left: 40px; padding-right: 30px; padding-bottom: 10px; max-width: 780px; height: 70px;">
+					<div class="ez_photo" style="float: left">
+						<Strong>${requestScope.photo_ob.title._content}</Strong>
+					</div>
+					<div class="btn-group" style="float: right">
+						<a href="getdetail.do?wish_btn=submit"><button type="button"
+								class="btn btn-primary">I wish to go there</button></a>
+						${requestScope.wish_num } <a href="getdetail.do?been_btn=submit"><button
+								type="button" class="btn btn-default">I have been there</button></a>
+						${requestScope.been_num }
+					</div>
+				</div>
 			</div>
 
 			<div class="ez_twitter" style="margin-top: 10px; margin-left: 15px;">
-
+				<h3>${nearby_title }</h3>
 				<c:forEach var="tweet" items="${requestScope.tw_nearby}">
 					<blockquote class="twitter-tweet" data-link-color="#cc0000">
 						${tweet}</blockquote>
 
 				</c:forEach>
-				<p>-------</p>
 
+				<h3>Twitter comments</h3>
 				<c:forEach var="tweet" items="${requestScope.tw_discuss}">
 					<blockquote class="twitter-tweet" data-link-color="#cc0000">
 						${tweet}</blockquote>
@@ -129,16 +134,32 @@ $(document).ready(function() {
 				<script async src="js/widgets.js" charset="utf-8"></script>
 				<div class="jumbotron"
 					style="background-color: #fff; padding-top: 10px; padding-left: 40px; padding-right: 30px; padding-bottom: 30px; max-width: 780px; height: 190px;">
-					<form id="form" method="POST" action="login.do">
-						<!--  target="_blank"> -->
-						<input type="image" src="img/sign-in-with-twitter-gray.png"
-							name="sign_in_button" value="twitter_sign_in">
-					</form>
+					<c:choose>
+						<c:when test="${empty sessionScope.user}">
+							<form id="form" method="POST" action="login.do">
+								Comment via twitter: <input type="image"
+									src="img/sign-in-with-twitter-gray.png" name="sign_in_button"
+									value="twitter_sign_in">
+							</form>
+						</c:when>
+						<c:otherwise>
+							${sessionScope.user.name }@${sessionScope.user.screen_name }&nbsp;|&nbsp;<a
+								href="logout.do">Sign out</a>
+						</c:otherwise>
+					</c:choose>
 					<form action="getdetail.do" method="POST" id="twitter_text">
 						<textarea class="form-control" rows="3" name="text"
 							form="twitter_text" placeholder="Add a comment..."></textarea>
-						<button type="submit" name="send_btn" value="send_tweet"
-							class="btn btn-primary" style="float: right; margin-top: 10px;">Tweet</button>
+						<c:choose>
+							<c:when test="${empty sessionScope.user }">
+								<button type="submit" name="send_btn" value="send_tweet" disabled="disabled"
+									class="btn btn-default" style="float: right; margin-top: 10px;">Tweet</button>
+							</c:when>
+							<c:otherwise>
+								<button type="submit" name="send_btn" value="send_tweet"
+									class="btn btn-primary" style="float: right; margin-top: 10px;">Tweet</button>
+							</c:otherwise>
+						</c:choose>
 					</form>
 				</div>
 
@@ -225,30 +246,46 @@ $(document).ready(function() {
 	</div>
 	<div class="container">
 		<div class="ez_loc">
-		       <div id="container">
-		       <c:forEach var="plist" items="${requestScope.flk_loc_plist}">
-			      
+			<div id="container">
+				<c:forEach var="plist" items="${requestScope.flk_loc_plist}">
+
 					<div class="grid">
 						<div class="imgholder">
-							
-							<a class="fancybox" title="${plist.title}" href="getdetail.do?photo_id=${plist.id}">
-							
-							<img src="${plist.imgUrl}" />
-							
+
+							<a class="fancybox" title="${plist.title}"
+								href="getdetail.do?photo_id=${plist.id}"> <img
+								src="${plist.imgUrl}" />
+
 							</a>
-							
+
 						</div>
 						<strong></strong>
-						<p><a href="getdetail.do?photo_id=${plist.id}" target="_blank" style="color:#000; font-weight:bold; font-size:14px">${plist.title}</a></p>
+						<p>
+							<a href="getdetail.do?photo_id=${plist.id}" target="_blank"
+								style="color: #000; font-weight: bold; font-size: 14px">${plist.title}</a>
+						</p>
 						<div class="ez_button">
-						<a href="getdetail.do?photo_id=${plist.id}" target="_blank"><button  type="button" class="btn btn-primary btn-xs"  >Explore</button></a>
-						<span style="float:right;"><a href="https://twitter.com/share" class="twitter-share-button" data-dnt="true" data-count="none" data-via="twitterapi" id="hover">Tweet</a></span>
-		<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="js/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+							<a href="getdetail.do?photo_id=${plist.id}" target="_blank"><button
+									type="button" class="btn btn-primary btn-xs">Explore</button></a> <span
+								style="float: right;"><a href="https://twitter.com/share"
+								class="twitter-share-button" data-dnt="true" data-count="none"
+								data-via="twitterapi" id="hover">Tweet</a></span>
+							<script>
+								!function(d, s, id) {
+									var js, fjs = d.getElementsByTagName(s)[0];
+									if (!d.getElementById(id)) {
+										js = d.createElement(s);
+										js.id = id;
+										js.src = "js/widgets.js";
+										fjs.parentNode.insertBefore(js, fjs);
+									}
+								}(document, "script", "twitter-wjs");
+							</script>
 						</div>
 					</div>
-			   </c:forEach>
-			   </div>
-		
+				</c:forEach>
+			</div>
+
 		</div>
 	</div>
 

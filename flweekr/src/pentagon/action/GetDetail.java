@@ -1,5 +1,7 @@
 package pentagon.action;
 
+import java.util.Arrays;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -12,6 +14,9 @@ import pentagon.dao.PhotoReview;
 import pentagon.dao.PhotoReviewDAO;
 import pentagon.dao.Post;
 import pentagon.dao.PostDAO;
+import pentagon.dao.SearchKey;
+import pentagon.dao.SearchKeyComparator;
+import pentagon.dao.SearchKeyDAO;
 import pentagon.flickrbean.JsonFlickrApi;
 import pentagon.flickrbean.JsonFlickrGetInfo;
 import pentagon.model.Model;
@@ -25,11 +30,13 @@ public class GetDetail implements Action {
 	private OAuthService service;
 	private PostDAO postDAO;
 	private PhotoReviewDAO photoReviewDAO;
+	private SearchKeyDAO searchKeyDAO;
 	private static final String URL = "http://localhost:8080/getdetail.do?photo_id=";
 
 	public GetDetail(Model model) {
 		this.postDAO = model.getPostDAO();
 		this.photoReviewDAO = model.getPhotoReviewDAO();
+		this.searchKeyDAO = model.getSearchKeyDAO();
 		this.service = model.getService();
 	}
 
@@ -47,9 +54,7 @@ public class GetDetail implements Action {
 		}
 		request.getSession().setAttribute("flickr_id", flickr_id);
 
-		/*
-		 * get picture via flickr api
-		 */
+		// get picture via flickr api
 		FlickrBean flkBean = new FlickrBean();
 		flkBean.setMethod("flickr.photos.getInfo");
 		flkBean.setFlickrPhotoId(flickr_id);
@@ -57,14 +62,12 @@ public class GetDetail implements Action {
 		JsonFlickrGetInfo info = flkAPI.getImgInfo();
 		request.setAttribute("photo_ob", info.photo);
 
-		/*
-		 * get flickr block list of picture by location
-		 */
+		// get flickr block list of picture by location
 		JsonFlickrApi jfaLoc;
 		FlickrBean locBean = new FlickrBean();
 		locBean.setMethod("flickr.photos.search");
 		locBean.setPerPage("20");
-		if (info.photo.location != null){
+		if (info.photo.location != null) {
 			locBean.setFlickrLat(info.photo.location.latitude);
 			locBean.setFlickrLon(info.photo.location.longitude);
 			FlickrAPI flkLoc = new FlickrAPI(locBean);
@@ -75,7 +78,6 @@ public class GetDetail implements Action {
 			jfaLoc = flkLoc.getFlickrImage();
 		}
 
-		
 		request.setAttribute("flk_loc_plist", jfaLoc.photos.photo);
 
 		// set sign with twitter button
@@ -94,6 +96,9 @@ public class GetDetail implements Action {
 					tw_nearby[i] = oembed.getHtml();
 				}
 				request.setAttribute("tw_nearby", tw_nearby);
+				if (statuses.length > 0) {
+					request.setAttribute("nearby_title", "What people tweets around");
+				}
 			}
 		}
 
@@ -181,6 +186,13 @@ public class GetDetail implements Action {
 		request.setAttribute("nav_explore", "active");
 
 		// set statistics
+		SearchKey[] keys = searchKeyDAO.match();
+		if (keys != null && keys.length > 0) {
+			Arrays.sort(keys, new SearchKeyComparator());
+			int len = Math.min(10, keys.length);
+			SearchKey[] popular_keys = Arrays.copyOfRange(keys, 0, len);
+			request.setAttribute("popular_keys", popular_keys);
+		}
 
 		return "detail.jsp";
 	}
