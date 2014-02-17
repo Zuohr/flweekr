@@ -9,7 +9,7 @@ public class TwitterLogout implements Action {
 	public String perform(HttpServletRequest request,
 			HttpServletResponse response) {
 		request.getSession().removeAttribute("user");
-		return "login.do";
+		return "getdetail.do";
 	}
 
 	@Override

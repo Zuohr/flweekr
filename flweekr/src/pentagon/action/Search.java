@@ -44,10 +44,16 @@ public class Search implements Action {
 		} else {
 			keyWord = "discover";
 			Cookie[] cookies = request.getCookies();
+			boolean found = false;
 			for (Cookie cookie : cookies) {
 				if ("last_search".equals(cookie.getName())) {
 					keyWord = cookie.getValue();
 				}
+			}
+			if (!found) {
+				Cookie cookie = new Cookie("last_search", keyWord);
+				cookie.setMaxAge(30 * 24 * 60 * 60); // 30 days max age
+				response.addCookie(cookie);
 			}
 		}
 		

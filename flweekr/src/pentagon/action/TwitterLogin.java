@@ -65,7 +65,7 @@ public class TwitterLogin implements Action {
 				}
 			}
 		}
-		return "homepage.jsp";
+		return "home.do";
 	}
 
 	@Override
