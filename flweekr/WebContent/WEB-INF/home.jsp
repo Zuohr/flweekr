@@ -61,9 +61,9 @@
 					thumb_links				:	1,			// Individual thumb links for each slide
 					thumbnail_navigation    :   0,			// Thumbnail navigation
 					slides 					:  	[			// Slideshow Images
-														{image : '${imgs["0"]}', title : 'Image Credit: Maria Kazvan', thumb : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/thumbs/kazvan-1.jpg', url : '${img_links["0"]}'},
-														{image : '${imgs["1"]}', title : 'Image Credit: Maria Kazvan', thumb : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/thumbs/kazvan-2.jpg', url : '${img_links["1"]}'},  
-														{image : '${imgs["2"]}', title : 'Image Credit: Maria Kazvan', thumb : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/thumbs/kazvan-3.jpg', url : '${img_links["2"]}'},
+														{image : '${imgs["0"]}', title : 'Image Credit: Maria Kazvan', thumb : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/thumbs/kazvan-1.jpg', url : 'getdetail.do?photo_id=${img_links["0"]}'},
+														{image : '${imgs["1"]}', title : 'Image Credit: Maria Kazvan', thumb : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/thumbs/kazvan-2.jpg', url : 'getdetail.do?photo_id=${img_links["1"]}'},  
+														{image : '${imgs["2"]}', title : 'Image Credit: Maria Kazvan', thumb : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/thumbs/kazvan-3.jpg', url : 'getdetail.do?photo_id=${img_links["2"]}'},
 														
 														
 														
