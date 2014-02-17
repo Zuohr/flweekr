@@ -262,6 +262,18 @@
 <body>
 <jsp:include page="nav.jsp" />
 
+<style>
+#hover{
+display:non
+}
+
+.imgholder:hover #hover{
+display:block;
+
+}
+
+</style>
+
        <section id="wrapper">
        <div id="container">
        <c:forEach var="plist" items="${requestScope.flk_plist}">
@@ -270,15 +282,16 @@
 				<div class="imgholder">
 					
 					<a class="fancybox" title="${plist.title}" href="${plist.imgUrl_b}"><img src="${plist.imgUrl}" /></a>
+					<button  type="button" class="btn btn-primary btn-xs" id="hover" style="margin-top:0px;position:absolute;" >Explore</button>
 				</div>
-				<strong></strong>
+				
 				
 				<p><a href="getdetail.do?photo_id=${plist.id}" style="color:#000; font-weight:bold; font-size:14px">${plist.title}</a></p>
 				<div class="ez_button" style="">
 				
-				<a href="https://twitter.com/share" class="twitter-share-button" data-dnt="true" data-count="none" data-via="twitterapi">Tweet</a>
+				<a href="https://twitter.com/share" class="twitter-share-button" data-dnt="true" data-count="none" data-via="twitterapi" id="hover">Tweet</a>
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="js/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-				<button  type="button" class="btn btn-primary btn-xs" >Explore</button>
+				
 				
 				</div>
 			</div>

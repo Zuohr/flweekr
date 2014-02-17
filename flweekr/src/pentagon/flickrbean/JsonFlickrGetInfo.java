@@ -1,5 +1,5 @@
 package pentagon.flickrbean;
 
 public class JsonFlickrGetInfo {
-	public Photo photo;
+	public PhotoInfo photo;
 }

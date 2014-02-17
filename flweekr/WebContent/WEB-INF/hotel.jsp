@@ -6,27 +6,45 @@
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
+  
   <head>
     <title>Place Autocomplete Hotel Search</title>
-    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
-    <meta charset="utf-8">
-    <style>
-      html, body, #map-canvas {
-        height: 450px;
+      <link rel="icon" href="images/favicon.ico">
+     <link rel="shortcut icon" href="images/favicon.ico" />
+	 <link href="css/bootstrap.min.css" rel="stylesheet">
+	 <link href="css/navbar-fixed-top.css" rel="stylesheet">
      
-	
-      }
-    </style>
+  	 <link rel='stylesheet' href='css/block.css' media='screen' />
+     <script src="js/jquery.js"></script>
+     <script src="js/jquery-migrate-1.1.1.js"></script>
+     <script src="js/superfish.js"></script>
+     <script src="js/jquery.equalheights.js"></script>
+     <script src="js/jquery.easing.1.3.js"></script>
+     <script src="js/jquery.ui.totop.js"></script>
+     <script src="js/touchTouch.jquery.js"></script>
+     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+     <script src="js/blocksit.min.js"></script>
+    <link rel="stylesheet" href="css/jquery.fancybox.css" type="text/css" media="screen" />
+     <script type="text/javascript" src="js/jquery.fancybox.pack.js"></script>
+    
+    
+    <jsp:include page="nav.jsp" />
+    
+ 
 
     <style>
+      #map-canvas {
+        height: 450px;
+     width:800px;
+	
+      }
       table {
         font-size: 12px;
 	
       }
-      #map-canvas {
-        width: 800px;
+     
 	
-      }
+      
       #listing {
         position: absolute;
         width: 200px;
@@ -333,8 +351,7 @@ function buildIWContent(place) {
 
   if (place.formatted_phone_number) {
     document.getElementById('iw-phone-row').style.display = '';
-    document.getElementById('iw-phone').textContent =
-        place.formatted_phone_number;
+    document.getElementById('iw-phone').textContent=place.formatted_phone_number;
   } else {
     document.getElementById('iw-phone-row').style.display = 'none';
   }
@@ -376,11 +393,10 @@ function buildIWContent(place) {
     </script>
   </head>
 
-  <body style="margin:0px; padding:0px;" onload="initialize()">
 
-   
+  <body style="margin:0px; padding:0px;margin-top:200px" onload="initialize()">
 
-    <div id="locationField">
+    <div id="locationField" style="margin-top:200px">
       <input id="autocomplete" placeholder="Enter a city to find hotels" type="text"  style="height:30px; border: 1px solid transparent;
         border-radius: 2px 2px 2px 2px;
         box-sizing: border-box;
@@ -398,7 +414,8 @@ function buildIWContent(place) {
         -moz-box-sizing: border-box;
         height: 32px;
         outline: none;
-        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);">
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+        margin-top:200px;">
         <option value="all">All</option>
         <option value="au">Australia</option>
         <option value="br">Brazil</option>
@@ -418,7 +435,7 @@ function buildIWContent(place) {
 
     <div id="map-canvas"></div>
 
-    <div id="listing">
+    <div id="listing" style="margin-top:200px">
       <table id="resultsTable">
         <tbody id="results"></tbody>
       </table>
@@ -431,22 +448,23 @@ function buildIWContent(place) {
           <td id="iw-url"></td>
         </tr>
         <tr id="iw-address-row" class="iw_table_row">
-          <td class="iw_attribute_name">Address:</td>
+          <td class="iw_attribute_name"></td>
           <td id="iw-address"></td>
         </tr>
         <tr id="iw-phone-row" class="iw_table_row">
-          <td class="iw_attribute_name">Telephone:</td>
+          <td class="iw_attribute_name"></td>
           <td id="iw-phone"></td>
         </tr>
         <tr id="iw-rating-row" class="iw_table_row">
-          <td class="iw_attribute_name">Rating:</td>
+          <td class="iw_attribute_name"></td>
           <td id="iw-rating"></td>
         </tr>
         <tr id="iw-website-row" class="iw_table_row">
-          <td class="iw_attribute_name">Website:</td>
+          <td class="iw_attribute_name"></td>
           <td id="iw-website"></td>
         </tr>
       </table>
     </div>
   </body>
+ 
 </html>

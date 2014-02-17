@@ -9,6 +9,7 @@ import java.net.URL;
 
 import pentagon.apibean.FlickrBean;
 import pentagon.flickrbean.JsonFlickrApi;
+import pentagon.flickrbean.JsonFlickrGetInfo;
 
 import com.google.gson.Gson;
 
@@ -18,24 +19,36 @@ public class FlickrAPI {
 	public FlickrAPI(FlickrBean flkBean) {
 		this.flkBean = flkBean;
 	}
+	
+	public JsonFlickrApi getFlickrImage(){
+		String url = flkBean.getBaseUrl() + "?method=" + flkBean.getMethod()
+				+ "&api_key=" + flkBean.getApiKey() + "&per_page="
+				+ flkBean.getPerPage() + "&format=" + flkBean.getFormat()
+				+ /*
+				 * "&lat="+flkBean.getFlickrLat()+
+				 * "&lon="+flkBean.getFlickrLon()+
+				 * "&content_type="+flkBean.getFlickrContent_type()+
+				 */"&text=" + flkBean.getFlickrText() + "&sort="
+				+ flkBean.getFlickrSort() + "&extras=url_b";
+		String data = queryFlickr(url);
+		data = data.substring("jsonFlickrApi(".length(),
+				data.length() - 1);
+		Gson gson = new Gson();
+		JsonFlickrApi tagbean = gson.fromJson(data, JsonFlickrApi.class);
+		return tagbean;
+	}
+	
+	public JsonFlickrGetInfo getImgInfo(){
+		String url = flkBean.getBaseUrl() + "?method="+ flkBean.getMethod()
+				+ "&api_key=" +flkBean.getApiKey() +"&photo_id="+flkBean.getFlickrPhotoId()
+				+ "&format=" + flkBean.getFormat()+"&nojsoncallback=1";
+		String data = queryFlickr(url);
+		Gson gson = new Gson();
+		JsonFlickrGetInfo tagbean = gson.fromJson(data, JsonFlickrGetInfo.class);
+		return tagbean;
+	}
 
-	public JsonFlickrApi getFlickrImage(String method) {
-		String url = "";
-		if(method.equals("search")){
-				url = flkBean.getBaseUrl() + "?method=" + flkBean.getMethod()
-					+ "&api_key=" + flkBean.getApiKey() + "&per_page="
-					+ flkBean.getPerPage() + "&format=" + flkBean.getFormat()
-					+ /*
-					 * "&lat="+flkBean.getFlickrLat()+
-					 * "&lon="+flkBean.getFlickrLon()+
-					 * "&content_type="+flkBean.getFlickrContent_type()+
-					 */"&text=" + flkBean.getFlickrText() + "&sort="
-					+ flkBean.getFlickrSort() + "&extras=url_b";
-		} else if(method.equals("getInfo")){
-				url = flkBean.getBaseUrl() + "?method="+ flkBean.getMethod()
-					+ "&api_key=" +flkBean.getApiKey() +"&photo_id="+flkBean.getFlickrPhotoId()
-					+ "&format=" + flkBean.getFormat()+"&nojsoncallback=1";
-		}
+	public String queryFlickr(String url) {
 		StringBuffer sb = new StringBuffer();
 		InputStream is = null;
 		InputStreamReader isr = null;
@@ -48,11 +61,8 @@ public class FlickrAPI {
 			while (null != (line = br.readLine())) {
 				sb.append(line);
 			}
-			String str = sb.toString().substring("jsonFlickrApi(".length(),
-					sb.length() - 1);
-			Gson gson = new Gson();
-			JsonFlickrApi tagbean = gson.fromJson(str, JsonFlickrApi.class);
-			return tagbean;
+
+			return sb.toString();
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		} catch (IOException e) {

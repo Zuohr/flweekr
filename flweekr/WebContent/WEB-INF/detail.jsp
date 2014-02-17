@@ -36,7 +36,7 @@
 <div class="container">	
 	<div class="ez_left" style="float:left;">
 		<div class="ez_photo" style="margin-top:60px; margin-left:15px;">
-			<img class="img-thumbnail" src="http://farm9.staticflickr.com/8317/8065539051_e5ed1c2455_b.jpg" width="780">
+			<img class="img-thumbnail" src="${requestScope.photo_ob.imgUrl_b }" width="780">
 		</div>
 	
 		<div class="ez_twitter" style="margin-top:10px; margin-left:15px;">
@@ -70,7 +70,15 @@
     </style>
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
     <script>
+<<<<<<< HEAD
     
+=======
+	var lat='${requestScope.photo_ob.location.latitude}';
+	var lon='${requestScope.photo_ob.location.longitude}';
+	
+	
+function initialize() {
+>>>>>>> branch 'easytrip' of https://github.com/Zuohr/flweekr.git
 
 var lat='${map.latitude}';
 var lon='${map.longitude}';
@@ -78,12 +86,17 @@ var lon='${map.longitude}';
     
 function initialize() {
   var mapOptions = {
+<<<<<<< HEAD
     zoom: 12,
     center: new google.maps.LatLng(40.44, -79.999),
     scrollwheel: false,
     panControl: false,
     streetViewControl: false,
     scaleControl: false,
+=======
+    zoom: 18,
+    center: new google.maps.LatLng(lat, lon),
+>>>>>>> branch 'easytrip' of https://github.com/Zuohr/flweekr.git
     
     mapTypeControlOptions: {
         style: google.maps.MapTypeControlStyle.DROPDOWN_MENU
