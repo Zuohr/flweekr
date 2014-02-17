@@ -52,14 +52,13 @@ public class Search implements Action {
 		flkBean.setPerPage("100");
 		flkBean.setFormat("json");
 		flkBean.setFlickrText(keyWord);
-		// flkBean.setFlickrContent_type("1");
-		// flkBean.setFlickrLat("37.779");
-		// flkBean.setFlickrLon("-122.420");
+		flkBean.setFlickrHasGeo("1");
 		flkBean.setFlickrSort("interestingness-desc");
 
 		FlickrAPI flkAPI = new FlickrAPI(flkBean);
 		JsonFlickrApi jfa = flkAPI.getFlickrImage();
-
+		
+		
 		request.setAttribute("flk_plist", jfa.photos.photo);
 		request.setAttribute("term", keyWord);
 

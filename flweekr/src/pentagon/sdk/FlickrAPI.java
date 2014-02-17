@@ -24,12 +24,9 @@ public class FlickrAPI {
 		String url = flkBean.getBaseUrl() + "?method=" + flkBean.getMethod()
 				+ "&api_key=" + flkBean.getApiKey() + "&per_page="
 				+ flkBean.getPerPage() + "&format=" + flkBean.getFormat()
-				+ /*
-				 * "&lat="+flkBean.getFlickrLat()+
-				 * "&lon="+flkBean.getFlickrLon()+
-				 * "&content_type="+flkBean.getFlickrContent_type()+
-				 */"&text=" + flkBean.getFlickrText() + "&sort="
-				+ flkBean.getFlickrSort() + "&extras=url_b";
+				+ "&text=" + flkBean.getFlickrText() + "&sort="
+				+ flkBean.getFlickrSort() + "&has_geo"+ flkBean.getFlickrHasGeo() 
+				+"&extras=url_b";
 		String data = queryFlickr(url);
 		data = data.substring("jsonFlickrApi(".length(),
 				data.length() - 1);

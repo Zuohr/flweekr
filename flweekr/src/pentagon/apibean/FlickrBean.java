@@ -13,8 +13,17 @@ public class FlickrBean {
     private String flickrLon;
     private String flickrSort;
     private String flickrPhotoId;
+    private String flickrHasGeo;
     
-    public String getFlickrPhotoId() {
+    public String getFlickrHasGeo() {
+		return flickrHasGeo;
+	}
+
+	public void setFlickrHasGeo(String flickrHasGeo) {
+		this.flickrHasGeo = flickrHasGeo;
+	}
+
+	public String getFlickrPhotoId() {
 		return flickrPhotoId;
 	}
 
