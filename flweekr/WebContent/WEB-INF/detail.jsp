@@ -48,7 +48,7 @@
 			</c:forEach>	
 			 <script async src="js/widgets.js" charset="utf-8"></script>
 			<div class="jumbotron" style="background-color:#fff; padding-top:10px; padding-left:40px; padding-right:30px; padding-bottom:30px; max-width:780px; height:190px;">
-				<form id="form" method="POST" action="login.do?photo_id=${requestScope.flickr_id}"><!--  target="_blank"> -->
+				<form id="form" method="POST" action="login.do?callback_id=${requestScope.flickr_id}"><!--  target="_blank"> -->
 					<input type="image" src="img/sign-in-with-twitter-gray.png" name="sign_in_button" value="twitter_sign_in">
 				</form>
 				<form action="getdetail.do" method="POST" id="twitter_text" >
