@@ -26,6 +26,7 @@ public class FlickrAPI {
 				+ flkBean.getPerPage() + "&page="+ flkBean.getFlickPage() + "&format=" + flkBean.getFormat()
 				+ "&text=" + flkBean.getFlickrText() + "&sort="
 				+ flkBean.getFlickrSort() + "&has_geo="+ flkBean.getFlickrHasGeo()
+				+"&safe_search=1&content_type=1"
 				+"&extras=url_b";
 		
 		String data = queryFlickr(url);

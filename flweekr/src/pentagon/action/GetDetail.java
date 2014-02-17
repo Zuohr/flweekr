@@ -69,7 +69,7 @@ public class GetDetail implements Action {
 		if (user != null) {
 			TwitterAPI twapi = new TwitterAPI(user.getAccessToken(), service);
 			Status[] statuses = twapi.searchByCoordination(info,
-					info.photo.titile);
+					info.photo.title._content);
 			if (statuses != null) {
 				String[] tw_nearby = new String[statuses.length];
 				for (int i = 0; i < statuses.length; i++) {
