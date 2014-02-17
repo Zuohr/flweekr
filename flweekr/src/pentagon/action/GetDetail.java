@@ -66,9 +66,10 @@ public class GetDetail implements Action {
 		locBean.setMethod("flickr.photos.search");
 		locBean.setFlickrLat(info.photo.getLocation().latitude);
 		locBean.setFlickrLon(info.photo.getLocation().longitude);
+		locBean.setPerPage("20");
 		
 		FlickrAPI flkLoc = new FlickrAPI(locBean);
-		JsonFlickrApi jfaLoc = flkLoc.getFlickrImage();
+		JsonFlickrApi jfaLoc = flkLoc.getImageByLoc();
 		request.setAttribute("flk_loc_plist", jfaLoc.photos.photo);
 		
 		
@@ -172,7 +173,7 @@ public class GetDetail implements Action {
 			}
 		}
 		request.setAttribute("wish_num", pr.getWish());
-		request.setAttribute("benn_num", pr.getBeen_there());
+		request.setAttribute("been_num", pr.getBeen_there());
 
 		// set statistics
 

@@ -20,6 +20,21 @@ public class FlickrAPI {
 		this.flkBean = flkBean;
 	}
 	
+	public JsonFlickrApi getImageByLoc(){
+		String url = flkBean.getBaseUrl() + "?method=" + flkBean.getMethod()
+				+ "&api_key=" + flkBean.getApiKey() + "&per_page="
+				+ flkBean.getPerPage() + "&format=" + flkBean.getFormat()
+				+ "&sort=" + flkBean.getFlickrSort() + "&lat="+ flkBean.getFlickrLat()+"&lon="+flkBean.getFlickrLon()
+				+"&safe_search=1&content_type=1"+"&text=trip"+"&has_geo="+ flkBean.getFlickrHasGeo()
+				+"&extras=url_b";
+		String data = queryFlickr(url);
+		data = data.substring("jsonFlickrApi(".length(),
+				data.length() - 1);
+		Gson gson = new Gson();
+		JsonFlickrApi tagbean = gson.fromJson(data, JsonFlickrApi.class);
+		return tagbean;
+	}
+	
 	public JsonFlickrApi getFlickrImage(){
 		String url = flkBean.getBaseUrl() + "?method=" + flkBean.getMethod()
 				+ "&api_key=" + flkBean.getApiKey() + "&per_page="

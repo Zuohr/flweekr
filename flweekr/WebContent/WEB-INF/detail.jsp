@@ -36,6 +36,60 @@
 	overflow: hidden;
 }
 </style>
+
+<script>
+$(document).ready(function() {
+	//vendor script
+	$('#header')
+	.css({ 'top':-50 })
+	.delay(1000)
+	.animate({'top': 0}, 800);
+	
+	$('#footer')
+	.css({ 'bottom':-15 })
+	.delay(1000)
+	.animate({'bottom': 0}, 800);
+	
+	//blocksit define
+	$(window).load( function() {
+		$('#container').BlocksIt({
+			numOfCol: 4,
+			offsetX: 1,
+			offsetY: 8
+		});
+	});
+	
+	//window resize
+	var currentWidth = 1100;
+	$(window).resize(function() {
+		var winWidth = $(window).width();
+		var conWidth;
+		if(winWidth < 660) {
+			conWidth = 440;
+			col = 2
+		} else if(winWidth < 880) {
+			conWidth = 660;
+			col = 3
+		} else if(winWidth < 1100) {
+			conWidth = 880;
+			col = 4;
+		} else {
+			conWidth = 1100;
+			col = 5;
+		}
+		
+		if(conWidth != currentWidth) {
+			currentWidth = conWidth;
+			$('#container').width(conWidth);
+			$('#container').BlocksIt({
+				numOfCol: col,
+				offsetX: 1,
+				offsetY: 8
+			});
+		}
+	});
+});
+</script>
 </head>
 
 <body>
@@ -159,8 +213,33 @@
 		</div>
 
 	</div>
-	<div class="ez_loc" style="border:1px solid #000; width:200px; height:200px;">
-	
+	<div class="container">
+		<div class="ez_loc">
+		       <div id="container">
+		       <c:forEach var="plist" items="${requestScope.flk_loc_plist}">
+			      
+					<div class="grid">
+						<div class="imgholder">
+							
+							<a class="fancybox" title="${plist.title}" href="${plist.imgUrl_b}">
+							
+							<img src="${plist.imgUrl}" />
+							
+							</a>
+							
+						</div>
+						<strong></strong>
+						<p><a href="getdetail.do?photo_id=${plist.id}" target="_blank" style="color:#000; font-weight:bold; font-size:14px">${plist.title}</a></p>
+						<div class="ez_button">
+						<a href="getdetail.do?photo_id=${plist.id}" target="_blank"><button  type="button" class="btn btn-primary btn-xs"  >Explore</button></a>
+						<span style="float:right;"><a href="https://twitter.com/share" class="twitter-share-button" data-dnt="true" data-count="none" data-via="twitterapi" id="hover">Tweet</a></span>
+		<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="js/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+						</div>
+					</div>
+			   </c:forEach>
+			   </div>
+		
+		</div>
 	</div>
 
 
