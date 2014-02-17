@@ -10,6 +10,7 @@ import pentagon.apibean.FlickrBean;
 import pentagon.dao.SearchKey;
 import pentagon.dao.SearchKeyDAO;
 import pentagon.flickrbean.JsonFlickrApi;
+import pentagon.model.Meta;
 import pentagon.model.Model;
 import pentagon.sdk.FlickrAPI;
 
@@ -42,22 +43,15 @@ public class Search implements Action {
 				searchKeyDAO.update(searchKey);
 			}
 		} else {
-			keyWord = "discover";
-			Cookie[] cookies = request.getCookies();
-			boolean found = false;
-			for (Cookie cookie : cookies) {
-				if ("last_search".equals(cookie.getName())) {
-					keyWord = cookie.getValue();
-					found = true;
-				}
+			keyWord = Meta.getCookieValue("last_search", request);
+			if (keyWord == null) {
+				keyWord = "discover";
 			}
-			if (!found) {
-				Cookie cookie = new Cookie("last_search", keyWord);
-				cookie.setMaxAge(30 * 24 * 60 * 60); // 30 days max age
-				response.addCookie(cookie);
-			}
+			Cookie cookie = new Cookie("last_search", keyWord);
+			cookie.setMaxAge(30 * 24 * 60 * 60); // 30 days max age
+			response.addCookie(cookie);
 		}
-		
+
 		String[] keySet = keyWord.split("\\s");
 		StringBuilder keyBuilder = new StringBuilder();
 		for (int i = 0; i < keySet.length; i++) {
@@ -67,7 +61,7 @@ public class Search implements Action {
 		String pageNum = "1";
 		request.setAttribute("pageNum", pageNum);
 		pageNum = request.getParameter("page");
-		if (pageNum!=null && Integer.parseInt(pageNum) > 1) {
+		if (pageNum != null && Integer.parseInt(pageNum) > 1) {
 			request.setAttribute("pageNum", pageNum);
 		}
 		FlickrBean flkBean = new FlickrBean();
