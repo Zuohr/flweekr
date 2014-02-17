@@ -62,73 +62,86 @@
 	
 	<div class="ez_right" style="float:right; margin-top:65px;">		
 		
-<style>
-      #map-canvas {
-        height: 100%;
-        margin: 0px;
-        padding: 0px;
-
+   <style>
+     #map-canvas {
+        height: 500px;
+       	overflow:hidden;
       }
-      #panel {
-        position: absolute; 
-        top: 5px;
-        left: 0px;
-        margin-left: -100px;
-        background-color: #fff;
-        padding: 5px;
-        border: 1px solid #999; 
-       
-      }
-	 #photo-panel {
- 		
- 
-		}
     </style>
-    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=panoramio"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
     <script>
-	var lat='${map.latitude}';
-	var lon='${map.longitude}';
-	
-	
-function initialize() {
+    
 
-	
+var lat='${map.latitude}';
+var lon='${map.longitude}';
+
+    
+function initialize() {
   var mapOptions = {
     zoom: 12,
-    center: new google.maps.LatLng(lat, lon),
+    center: new google.maps.LatLng(40.44, -79.999),
+    scrollwheel: false,
+    panControl: false,
+    streetViewControl: false,
+    scaleControl: false,
     
+    mapTypeControlOptions: {
+        style: google.maps.MapTypeControlStyle.DROPDOWN_MENU
+      },
+      zoomControl: true,
+      zoomControlOptions: {
+  
+        position: google.maps.ControlPosition.RIGHT_CENTER,
+      },
   };
-
+  
   var map = new google.maps.Map(document.getElementById('map-canvas'),
       mapOptions);
+  
+  // Add 5 markers to the map at random locations
 
-  var panoramioLayer = new google.maps.panoramio.PanoramioLayer();
-  panoramioLayer.setMap(map);
+ var position = new google.maps.LatLng(lat,lon);
+  
+  
+  var marker = new google.maps.Marker({
+      position: position,
+	  draggable:false,
+      animation: google.maps.Animation.DROP,
+      map: map
+    });
+  marker.setTitle((1).toString());
+  attachSecretMessage(marker, 0); 
+}
 
-  var photoPanel = document.getElementById('photo-panel');
-  map.controls[google.maps.ControlPosition.RIGHT_TOP].push(photoPanel);
+function attachSecretMessage(marker, num) {
+ /*  var message = ['This', 'is', 'the', 'secret', 'message']; */
+ var pic='${map.imgURL}';
 
-  google.maps.event.addListener(panoramioLayer, 'click', function(photo) {
-    var li = document.createElement('li');
-    var link = document.createElement('a');
-    link.innerHTML = photo.featureDetails.title + ': ' +
-      photo.featureDetails.author;
-   // link.setAttribute('href', photo.featureDetails.url);
-  //  li.appendChild(link);
-  //  photoPanel.appendChild(li);
-   // photoPanel.style.display = 'block';
+ /*  var infowindow = new google.maps.InfoWindow({
+    content: '<img src="${map.imgURL}" style="width:200px;height:100px">'
+  }); */
+
+  google.maps.event.addListener(marker, 'click', function() {
+    infowindow.open(marker.get('map'), marker);
   });
+}
+
+google.maps.event.addDomListener(window, 'load', initialize);
+
+function toggleBounce() {
+
+  if (marker.getAnimation() != null) {
+    marker.setAnimation(null);
+  } else {
+    marker.setAnimation(google.maps.Animation.BOUNCE);
+  }
 }
 
 google.maps.event.addDomListener(window, 'load', initialize);
 
     </script>
 
-   <ul id="photo-panel" ></ul>
-    <div id="map-canvas" style="width:290px;height:415px; margin-right:40px; "></div>	
-		
-		
-	</div>
+    <div id="map-canvas" style="width:290px;height:415px; margin-right:40px;"/></div>
 </div>
 
 
