@@ -1,8 +1,5 @@
 package pentagon.action;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -40,7 +37,7 @@ public class GetDetail implements Action {
 			HttpServletResponse response) throws RollbackException {
 
 		String flickr_id = request.getParameter("photo_id");
-		
+
 		if (flickr_id == null || flickr_id.isEmpty()) {
 			return "search.do";
 		}
@@ -54,17 +51,32 @@ public class GetDetail implements Action {
 		flkBean.setMethod("flickr.photos.getInfo");
 		flkBean.setFlickrPhotoId(flickr_id);
 		flkBean.setFormat("json");
-		
+
 		FlickrAPI flkAPI = new FlickrAPI(flkBean);
 		JsonFlickrGetInfo info = flkAPI.getImgInfo();
-		
-		request.setAttribute("photo_ob", info.photo);
-		
-		// set twitter discussion
-		if ("send_tweet".equals(request.getParameter("send_btn"))) {
-			User user = (User) request.getSession().getAttribute("user");
 
-			if (user != null) {
+		request.setAttribute("photo_ob", info.photo);
+
+		// set twitter nearby
+		User user = (User) request.getSession().getAttribute("user");
+		if (user != null) {
+			TwitterAPI twapi = new TwitterAPI(user.getAccessToken(), service);
+			Status[] statuses = twapi.searchByCoordination(info,
+					info.photo.titile);
+			if (statuses != null) {
+				String[] tw_nearby = new String[statuses.length];
+				for (int i = 0; i < statuses.length; i++) {
+					Oembed oembed = twapi.getOembed(statuses[i]).strip();
+					tw_nearby[i] = oembed.getHtml();
+				}
+				request.setAttribute("tw_nearby", tw_nearby);
+			}
+		}
+
+		// set twitter discussion
+		if (user != null) {
+			if ("send_tweet".equals(request.getParameter("send_btn"))) {
+
 				String text = request.getParameter("text");
 				if (text != null && !text.isEmpty()) {
 					TwitterAPI twApi = new TwitterAPI(user.getAccessToken(),
@@ -76,13 +88,8 @@ public class GetDetail implements Action {
 					if (status == null) {
 						request.setAttribute("result", "Send tweet failed.");
 					} else {
-						Oembed oembed = twApi.getOembed(status);
+						Oembed oembed = twApi.getOembed(status).strip();
 						String html = oembed.getHtml();
-						Pattern p = Pattern.compile("<p>.*</a>");
-						Matcher m = p.matcher(html);
-						if (m.find()) {
-							html = m.group();
-						}
 						String twitter_id = status.getId_str();
 						Post post = new Post();
 						post.setFlickr_id(flickr_id);
@@ -96,11 +103,11 @@ public class GetDetail implements Action {
 
 		Post[] posts = postDAO.read(flickr_id);
 		if (posts != null) {
-			String[] oembeds = new String[posts.length];
+			String[] tw_discuss = new String[posts.length];
 			for (int i = 0; i < posts.length; i++) {
-				oembeds[i] = posts[i].getTwitter_url();
+				tw_discuss[i] = posts[i].getTwitter_url();
 			}
-			request.setAttribute("oembeds_list", oembeds);
+			request.setAttribute("tw_discuss", tw_discuss);
 		}
 
 		// set photo like stats
