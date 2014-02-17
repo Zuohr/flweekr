@@ -98,7 +98,7 @@
 	<jsp:include page="nav.jsp" />
 
 	<div class="container">
-		<div class="ez_left" style="float: left;position: absolute;display: inline-block;">
+		<div class="ez_left" style="float: left;">
 			<div class="ez_photo" style="margin-top: 60px; margin-left: 15px;">
 				<img class="img-thumbnail" src="${requestScope.photo_ob.imgUrl_b }"
 					width="780">
@@ -166,14 +166,7 @@
 			</div>
 		</div>
 
-		<div class="ez_right" style="float: right; display: inline-block;margin-left:810px;">
-
-			<!-- <style>
-#map-canvas {
-	height: 500px;
-	overflow: hidden;
-}
-</style> -->
+		<div class="ez_right" style="float:right; margin-top:65px; width:auto;">
 			<script
 				src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
 			<script>
@@ -238,8 +231,7 @@
 				google.maps.event.addDomListener(window, 'load', initialize);
 			</script>
 
-			<div id="map-canvas"
-				style="width: 290px; height: 300px; margin-right: 40px;" /></div>
+			<div id="map-canvas" style="width: 290px; height: 300px; margin-right: 40px;" /></div>
 
 		</div>
 
