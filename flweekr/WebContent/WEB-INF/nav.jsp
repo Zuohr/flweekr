@@ -11,12 +11,14 @@
             <li><a href="#about">About</a></li>
           </ul>
           
+           <form  action="search.do" method="get">
             <div class="input-group" style="margin-top:8px; margin-right:40px; width:300px; float:right;">
-              <input type="text" class="form-control">
+              <input type="text" class="form-control" placeholder="Begin a journey" name="key" value="">
               <span class="input-group-btn">
-                <button class="btn btn-default" type="button">search</button>
+                <button class="btn btn-default" type="submit" value="submit">search</button>
               </span>
             </div><!-- /input-group -->
+            </form>
               
         </div><!--/.nav-collapse -->
       </div>

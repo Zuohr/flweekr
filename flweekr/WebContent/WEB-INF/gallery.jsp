@@ -251,7 +251,7 @@
     				$('#container').width(conWidth);
     				$('#container').BlocksIt({
     					numOfCol: col,
-    					offsetX: 8,
+    					offsetX: 1,
     					offsetY: 8
     				});
     			}
@@ -281,18 +281,20 @@ display:block;
 			<div class="grid">
 				<div class="imgholder">
 					
-					<a class="fancybox" title="${plist.title}" href="${plist.imgUrl_b}"><img src="${plist.imgUrl}" /></a>
+					<a class="fancybox" title="${plist.title}" href="${plist.imgUrl_b}">
+					
+					<img src="${plist.imgUrl}" />
+					
+					</a>
 					
 				</div>
 				
-				
+				<strong></strong>
 				<p><a href="getdetail.do?photo_id=${plist.id}" style="color:#000; font-weight:bold; font-size:14px">${plist.title}</a></p>
-				<div class="ez_button" style="">
-				<button  type="button" class="btn btn-primary btn-xs"  >Explore</button>
-				<a href="https://twitter.com/share" class="twitter-share-button" data-dnt="true" data-count="none" data-via="twitterapi" id="hover">Tweet</a>
+				<div class="ez_button">
+				<a href="getdetail.do?photo_id=${plist.id}"><button  type="button" class="btn btn-primary btn-xs"  >Explore</button></a>
+				<span style="float:right;"><a href="https://twitter.com/share" class="twitter-share-button" data-dnt="true" data-count="none" data-via="twitterapi" id="hover">Tweet</a></span>
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="js/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-				
-				
 				</div>
 			</div>
 	   </c:forEach>

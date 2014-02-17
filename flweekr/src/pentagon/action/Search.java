@@ -44,15 +44,16 @@ public class Search implements Action {
 		} else {
 			keyWord = "travel";
 		}
-
+		String pageNum = request.getParameter("page");
 		FlickrBean flkBean = new FlickrBean();
 		flkBean.setAPIKey("8e2749644cb6405b3ee6a2c7b5f73eef");
 		flkBean.setBaseUrl("http://api.flickr.com/services/rest/");
 		flkBean.setMethod("flickr.photos.search");
-		flkBean.setPerPage("100");
+		flkBean.setPerPage("50");
 		flkBean.setFormat("json");
 		flkBean.setFlickrText(keyWord);
 		flkBean.setFlickrHasGeo("1");
+		flkBean.setFlickPage(pageNum);
 		flkBean.setFlickrSort("interestingness-desc");
 
 		FlickrAPI flkAPI = new FlickrAPI(flkBean);
