@@ -12,6 +12,7 @@ import pentagon.dao.PhotoReview;
 import pentagon.dao.PhotoReviewDAO;
 import pentagon.dao.Post;
 import pentagon.dao.PostDAO;
+import pentagon.flickrbean.JsonFlickrApi;
 import pentagon.flickrbean.JsonFlickrGetInfo;
 import pentagon.model.Model;
 import pentagon.model.User;
@@ -50,16 +51,27 @@ public class GetDetail implements Action {
 		 * get picture via flickr api
 		 */
 		FlickrBean flkBean = new FlickrBean();
-		flkBean.setAPIKey("8e2749644cb6405b3ee6a2c7b5f73eef");
-		flkBean.setBaseUrl("http://api.flickr.com/services/rest/");
 		flkBean.setMethod("flickr.photos.getInfo");
 		flkBean.setFlickrPhotoId(flickr_id);
-		flkBean.setFormat("json");
-
 		FlickrAPI flkAPI = new FlickrAPI(flkBean);
 		JsonFlickrGetInfo info = flkAPI.getImgInfo();
-
 		request.setAttribute("photo_ob", info.photo);
+		
+		
+		/*
+		 * get flickr block list of picture by location
+		 * */
+		
+		FlickrBean locBean = new FlickrBean();
+		locBean.setMethod("flickr.photos.searc");
+		locBean.setFlickrLat(info.photo.getLocation().latitude);
+		locBean.setFlickrLon(info.photo.getLocation().longitude);
+		
+		FlickrAPI flkLoc = new FlickrAPI(flkBean);
+		JsonFlickrApi jfaLoc = flkLoc.getFlickrImage();
+		request.setAttribute("flk_loc_plist", jfaLoc.photos.photo);
+		
+		
 
 		// set sign with twitter button
 		request.setAttribute("flickr_id", flickr_id);

@@ -300,10 +300,10 @@
 			<div class="btn-group">
 				<c:choose>
 				<c:when test="${requestScope.pageNum > 1}" >
-					<a href="?key=${requestScope.searchKey}&page=${requestScope.pageNum-1}"><button type="button" class="btn btn-default">Last Page</button></a>
+					<a href="?key=${requestScope.term}&page=${requestScope.pageNum-1}"><button type="button" class="btn btn-default">Last Page</button></a>
 				</c:when>
 				</c:choose>
-				<a href="?key=${requestScope.searchKey}&page=${requestScope.pageNum+1}"><button type="button" class="btn btn-default">Next Page</button></a>
+				<a href="?key=${requestScope.term}&page=${requestScope.pageNum+1}"><button type="button" class="btn btn-default">Next Page</button></a>
 			</div>
 		</div>
 		</div>

@@ -45,8 +45,6 @@ public class Search implements Action {
 			keyWord = "discover";
 		}
 		
-		request.setAttribute("searchKey", keyWord);
-		
 		String[] keySet = keyWord.split("\\s");
 		StringBuilder keyBuilder = new StringBuilder();
 		for (int i = 0; i < keySet.length; i++) {

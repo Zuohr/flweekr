@@ -1,11 +1,11 @@
 package pentagon.apibean;
 
 public class FlickrBean {
-	private String flickrBaseUrl;
+	private String flickrBaseUrl = "http://api.flickr.com/services/rest/";
 	private String flickrMethod;
-	private String flickrAPIKey;
+	private String flickrAPIKey = "8e2749644cb6405b3ee6a2c7b5f73eef";
 	private String flickrPerPage;
-    private String flickrFormat;
+    private String flickrFormat = "json";
     private String flickrTags;
     private String flickrText;
     private String flickrContent_type;
