@@ -166,6 +166,7 @@
 			</div>
 		</div>
 
+
 		<div class="ez_right" style="float: right; margin-top: 65px;">
 
 			<!-- <style>
@@ -174,6 +175,9 @@
 	overflow: hidden;
 }
 </style> -->
+=======
+		<div class="ez_right" style="float:right; margin-top:65px; width:auto;">
+>>>>>>> branch 'easytrip' of https://github.com/Zuohr/flweekr.git
 			<script
 				src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
 			<script>
@@ -238,8 +242,7 @@
 				google.maps.event.addDomListener(window, 'load', initialize);
 			</script>
 
-			<div id="map-canvas"
-				style="width: 290px; height: 300px; margin-right: 40px;" /></div>
+			<div id="map-canvas" style="width: 290px; height: 300px; margin-right: 40px;" /></div>
 
 		</div>
 
