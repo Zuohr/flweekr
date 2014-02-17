@@ -43,6 +43,12 @@ public class Search implements Action {
 			}
 		} else {
 			keyWord = "discover";
+			Cookie[] cookies = request.getCookies();
+			for (Cookie cookie : cookies) {
+				if ("last_search".equals(cookie.getName())) {
+					keyWord = cookie.getValue();
+				}
+			}
 		}
 		
 		String[] keySet = keyWord.split("\\s");

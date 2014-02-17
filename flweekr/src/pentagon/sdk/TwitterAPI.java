@@ -11,6 +11,7 @@ import org.scribe.model.Verb;
 import org.scribe.oauth.OAuthService;
 
 import pentagon.flickrbean.JsonFlickrGetInfo;
+import pentagon.model.Meta;
 import pentagon.twitterbean.Oembed;
 import pentagon.twitterbean.SearchResult;
 import pentagon.twitterbean.Status;
@@ -46,6 +47,8 @@ public class TwitterAPI {
 		try {
 			keyword = URLEncoder.encode(keyword, "UTF-8");
 			geocode = URLEncoder.encode(geocode, "UTF-8");
+			keyword = Meta.replaceSpecial(keyword);// TODO
+			geocode = Meta.replaceSpecial(geocode);// TODO
 		} catch (UnsupportedEncodingException e) {
 			return null;
 		}
@@ -59,6 +62,7 @@ public class TwitterAPI {
 		}
 		try {
 			keyword = URLEncoder.encode(keyword, "UTF-8");
+			keyword = Meta.replaceSpecial(keyword); //TODO
 		} catch (UnsupportedEncodingException e) {
 			return null;
 		}
@@ -120,6 +124,7 @@ public class TwitterAPI {
 		try {
 			text = StringEscapeUtils.unescapeHtml4(text);
 			text = URLEncoder.encode(text, "UTF-8");
+			text = Meta.replaceSpecial(text); //TODO
 		} catch (UnsupportedEncodingException e) {
 			return null;
 		}
