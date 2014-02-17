@@ -4,8 +4,6 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 
 import org.apache.commons.lang3.StringEscapeUtils;
-import org.scribe.builder.ServiceBuilder;
-import org.scribe.builder.api.TwitterApi;
 import org.scribe.model.OAuthRequest;
 import org.scribe.model.Response;
 import org.scribe.model.Token;
@@ -13,7 +11,6 @@ import org.scribe.model.Verb;
 import org.scribe.oauth.OAuthService;
 
 import pentagon.flickrbean.JsonFlickrGetInfo;
-import pentagon.model.Model;
 import pentagon.twitterbean.Oembed;
 import pentagon.twitterbean.SearchResult;
 import pentagon.twitterbean.Status;
@@ -140,16 +137,4 @@ public class TwitterAPI {
 		}
 	}
 	
-//	public static OAuthService getService (Model model, String callbackUrl) {
-//		String key = model.getKey();
-//		String secret = model.getSecret();
-//		OAuthService service = null;
-//		try {
-//			service = new ServiceBuilder().provider(TwitterApi.SSL.class)
-//				.apiKey(key).apiSecret(secret).callback(callbackUrl).build();
-//		} catch (Exception e) {
-//			// Do nothing
-//		}
-//		return service;
-//	}
 }
