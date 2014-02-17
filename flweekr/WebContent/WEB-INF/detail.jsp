@@ -97,7 +97,7 @@
 <body>
 	<jsp:include page="nav.jsp" />
 
-	<div class="container">
+	<div class="container" >
 		<div class="ez_left" style="float: left;">
 			<div class="ez_photo" style="margin-top: 60px; margin-left: 15px;">
 				<img class="img-thumbnail" src="${requestScope.photo_ob.imgUrl_b }"
@@ -231,7 +231,7 @@
 				google.maps.event.addDomListener(window, 'load', initialize);
 			</script>
 
-			<div id="map-canvas" style="width: 290px; height: 300px; margin-right: 40px;" /></div>
+			<div id="map-canvas" style=" width: 290px; height: 300px; margin-right:40px; " /></div>
 
 		</div>
 
