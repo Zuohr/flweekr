@@ -6,6 +6,8 @@ public class PhotoInfo {
 	public Location location;
 	public Title title;
 
+
+
 	public Description description;
 	public String secret;
 	public String server;
@@ -24,5 +26,8 @@ public class PhotoInfo {
 	
 	public Location getLocation() {
 		return location;
+	}
+	public Title getTitle() {
+		return title;
 	}
 }

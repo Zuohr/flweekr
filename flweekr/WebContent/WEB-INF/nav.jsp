@@ -6,9 +6,9 @@
         <div class="navbar-collapse collapse">
         
          <ul class="nav navbar-nav">
-            <li class="active"><a href="search.do">Gallery</a></li>
-            <li><a href="#">Explore</a></li>
-            <li><a href="#about">About</a></li>
+            <li class="${requestScope.nav_gallery }"><a href="search.do">Gallery</a></li>
+            <li class="${requestScope.nav_explore}"><a href="#">Explore</a></li>
+            <li class="${requestScope.nav_about }"><a href="#about">About</a></li>
           </ul>
           
            <form  action="search.do" method="get">

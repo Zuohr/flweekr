@@ -64,17 +64,24 @@ public class Home implements Action {
 		} else {
 			FlickrBean flkBean = new FlickrBean();
 			flkBean.setMethod("flickr.photos.search");
-			flkBean.setPerPage("3");
+			flkBean.setPerPage("100");
 			flkBean.setFlickrText(last_search+"+trip");
 			flkBean.setFlickrHasGeo("1");
 			flkBean.setFlickrExtra("url_o");
-			flkBean.setFlickrSort("relevance");
+			flkBean.setFlickrSort("interestingness-desc");
 			FlickrAPI flkAPI = new FlickrAPI(flkBean);
 			JsonFlickrApi jfa = flkAPI.getFlickrImage();
-			
-			for(int i = 0; i < 3; i++) {
-				imgs[i] = jfa.photos.photo.get(i).getImgUrl();
-				img_links[i] = jfa.photos.photo.get(i).getId();
+			int i = 0;
+			int j = 0;
+			while(i < 3 && j<jfa.photos.photo.size()){
+				if(jfa.photos.photo.get(j).url_o != null){
+					imgs[i] = jfa.photos.photo.get(j).url_o;
+					img_links[i] = jfa.photos.photo.get(j).getId();
+					i++;
+					j = j+3;
+				} else{
+					j++;
+				}
 			}
 		}
 

@@ -100,6 +100,16 @@ $(document).ready(function() {
 			<div class="ez_photo" style="margin-top: 60px; margin-left: 15px;">
 				<img class="img-thumbnail" src="${requestScope.photo_ob.imgUrl_b }"
 					width="780">
+			<div class="jumbotron"
+					style="background-color: #fff; margin-top:10px; padding-top: 10px; padding-left: 40px; padding-right: 30px; padding-bottom: 10px; max-width: 780px; height: 70px;">
+			 	<div class="ez_photo" style="float:left">
+			 		<Strong>${requestScope.photo_ob.title._content}</Strong>
+			 	</div>
+			 	 <div class="btn-group" style="float:right">
+				 	 <a href=""><button type="button" class="btn btn-primary">I want to go there</button></a>
+	  				 <a href=""><button type="button" class="btn btn-default">I have been there</button></a>
+  				 </div>
+			</div>
 			</div>
 
 			<div class="ez_twitter" style="margin-top: 10px; margin-left: 15px;">
@@ -221,7 +231,7 @@ $(document).ready(function() {
 					<div class="grid">
 						<div class="imgholder">
 							
-							<a class="fancybox" title="${plist.title}" href="${plist.imgUrl_b}">
+							<a class="fancybox" title="${plist.title}" href="getdetail.do?photo_id=${plist.id}">
 							
 							<img src="${plist.imgUrl}" />
 							

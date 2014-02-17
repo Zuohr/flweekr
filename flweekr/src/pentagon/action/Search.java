@@ -84,6 +84,7 @@ public class Search implements Action {
 
 		request.setAttribute("flk_plist", jfa.photos.photo);
 		request.setAttribute("term", keyWord);
+		request.setAttribute("nav_gallery", "active");
 
 		return "gallery.jsp";
 	}

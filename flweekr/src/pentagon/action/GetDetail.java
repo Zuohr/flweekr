@@ -178,6 +178,7 @@ public class GetDetail implements Action {
 		}
 		request.setAttribute("wish_num", pr.getWish());
 		request.setAttribute("been_num", pr.getBeen_there());
+		request.setAttribute("nav_explore", "active");
 
 		// set statistics
 
