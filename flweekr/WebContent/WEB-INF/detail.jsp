@@ -62,7 +62,7 @@
 	
 	<div class="ez_right" style="float:right; margin-top:65px;">		
 		
-   <style>
+<style>
      #map-canvas {
         height: 500px;
        	overflow:hidden;
@@ -70,33 +70,20 @@
     </style>
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
     <script>
-<<<<<<< HEAD
     
-=======
-	var lat='${requestScope.photo_ob.location.latitude}';
-	var lon='${requestScope.photo_ob.location.longitude}';
-	
-	
-function initialize() {
->>>>>>> branch 'easytrip' of https://github.com/Zuohr/flweekr.git
 
-var lat='${map.latitude}';
-var lon='${map.longitude}';
+var lat='${requestScope.photo_ob.location.latitude}';
+var lon='${requestScope.photo_ob.location.longitude}';
 
     
 function initialize() {
   var mapOptions = {
-<<<<<<< HEAD
-    zoom: 12,
-    center: new google.maps.LatLng(40.44, -79.999),
+    zoom: 8,
+    center: new google.maps.LatLng(lat, lon),
     scrollwheel: false,
     panControl: false,
     streetViewControl: false,
     scaleControl: false,
-=======
-    zoom: 18,
-    center: new google.maps.LatLng(lat, lon),
->>>>>>> branch 'easytrip' of https://github.com/Zuohr/flweekr.git
     
     mapTypeControlOptions: {
         style: google.maps.MapTypeControlStyle.DROPDOWN_MENU
@@ -128,11 +115,7 @@ function initialize() {
 
 function attachSecretMessage(marker, num) {
  /*  var message = ['This', 'is', 'the', 'secret', 'message']; */
- var pic='${map.imgURL}';
-
- /*  var infowindow = new google.maps.InfoWindow({
-    content: '<img src="${map.imgURL}" style="width:200px;height:100px">'
-  }); */
+ 
 
   google.maps.event.addListener(marker, 'click', function() {
     infowindow.open(marker.get('map'), marker);
@@ -154,7 +137,8 @@ google.maps.event.addDomListener(window, 'load', initialize);
 
     </script>
 
-    <div id="map-canvas" style="width:290px;height:415px; margin-right:40px;"/></div>
+    <div id="map-canvas" style="width:290px;height:300px; margin-right:40px;"/></div>
+
 </div>
 
 
