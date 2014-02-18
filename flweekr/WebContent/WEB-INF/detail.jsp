@@ -97,43 +97,47 @@
 <body>
 	<jsp:include page="nav.jsp" />
 
-	<div class="container" style="width:1140px;">
-		<div class="ez_left" style="float: left;">
-			<div class="ez_photo" style="margin-top: 60px; margin-left: 10px;">
-				<img class="img-thumbnail" src="${requestScope.photo_ob.imgUrl_b }"
-					width="780">
-				<div class="jumbotron"
-					style="background-color: #fff; margin-top: 10px; padding-top: 10px; padding-left: 40px; padding-right: 30px; padding-bottom: 10px; max-width: 780px; height: 70px;">
-					<div class="ez_photo" style="float: left">
-						<Strong>${requestScope.photo_ob.title._content}</Strong>
+	<div class="container" style="width:1140px; margin-top: 60px;">
+		<div class="ez_left" style="float: left; margin-left: 15px; width:735px;">
+			<div class="ez_photo" >
+				<div class="thumbnail" style="padding-top: 40px; padding-bottom: 20px; height:auto; width:725px;">
+					
+					<img src="${requestScope.photo_ob.imgUrl }">
+					<div style="border-bottom:1px solid #ccc; width:715px; height:50px;">
+						<div style= "width:340px; margin-left:auto; margin-right:auto; margin-top:10px;">
+						<p>
+						<a class="btn btn-primary" href="getdetail.do?wish_btn=submit">I wish to go there  <span class="badge">${requestScope.wish_num } </span></a>	
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						<a class="btn btn-primary" href="getdetail.do?been_btn=submit">I have been there  <span class="badge">${requestScope.been_num }</span></a>
+						</p>
+						</div>
 					</div>
-					<div class="btn-group" style="float: right">
-						<a href="getdetail.do?wish_btn=submit"><button type="button"
-								class="btn btn-primary">I wish to go there</button></a>
-						${requestScope.wish_num } <a href="getdetail.do?been_btn=submit"><button
-								type="button" class="btn btn-default">I have been there</button></a>
-						${requestScope.been_num }
+					<div class="caption" style="margin-left:auto; margin-right:auto; width:500px;">
+						<h3>${requestScope.photo_ob.title._content}</h3>
+						
+
+					
 					</div>
 				</div>
 			</div>
 
-			<div class="ez_twitter" style="margin-top: 10px; margin-left: 15px;">
+			<div class="ez_twitter" style="margin-top: 10px;">
 				<h3>${nearby_title }</h3>
 				<c:forEach var="tweet" items="${requestScope.tw_nearby}">
-					<blockquote class="twitter-tweet" data-link-color="#cc0000">
+					<blockquote class="twitter-tweet">
 						${tweet}</blockquote>
 
 				</c:forEach>
 
 				<h3>Twitter comments</h3>
 				<c:forEach var="tweet" items="${requestScope.tw_discuss}">
-					<blockquote class="twitter-tweet" data-link-color="#cc0000">
+					<blockquote class="twitter-tweet">
 						${tweet}</blockquote>
 
 				</c:forEach>
 				<script async src="js/widgets.js" charset="utf-8"></script>
 				<div class="jumbotron"
-					style="background-color: #fff; padding-top: 10px; padding-left: 40px; padding-right: 30px; padding-bottom: 30px; max-width: 780px; height: 190px;">
+					style="background-color: #fff; padding-top: 10px; padding-left: 40px; padding-right: 30px; width:728px; padding-bottom: 30px;  height: 190px;">
 					<c:choose>
 						<c:when test="${empty sessionScope.user}">
 							<form id="form" method="POST" action="login.do">
@@ -166,7 +170,7 @@
 			</div>
 		</div>
 
-		<div class="ez_right" style=" float:left; margin-left:10px; margin-top:65px; ">
+		<div class="ez_right" style=" float:left; margin-left:15px">
 			<script
 				src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
 			<script>
@@ -231,13 +235,13 @@
 				google.maps.event.addDomListener(window, 'load', initialize);
 			</script>
 
-			<div id="map-canvas" style=" width: 290px; height:290px;  " /></div>
+			<div class="img-thumbnail"  id="map-canvas" style=" width: 305px; height:305px;  " /></div>
 
 		</div>
 
 	</div>
 	<div class="container" >
-		<div class="ez_loc">
+		<div class="ez_loc" >
 			<div id="container">
 				<c:forEach var="plist" items="${requestScope.flk_loc_plist}">
 
