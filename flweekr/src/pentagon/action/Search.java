@@ -70,7 +70,7 @@ public class Search implements Action {
 		flkBean.setFlickrText(keyBuilder.toString() + "trip");
 		flkBean.setFlickrHasGeo("1");
 		flkBean.setFlickPage(pageNum);
-		flkBean.setFlickrExtra("url_b");
+		flkBean.setFlickrExtra("url_o");
 		flkBean.setFlickrSort("interestingness-desc");//
 
 		FlickrAPI flkAPI = new FlickrAPI(flkBean);
