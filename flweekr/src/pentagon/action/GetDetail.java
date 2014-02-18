@@ -146,7 +146,12 @@ public class GetDetail implements Action {
 
 		// set photo like stats
 		PhotoReview pr = new PhotoReview();
-		String country = info.photo.location.country._content;
+		String country = null;
+		try {
+			country = info.photo.location.country._content;
+		} catch (Exception e) {
+			country = null;
+		}
 		try {
 			Transaction.begin();
 			if ("submit".equals(request.getParameter("wish_btn"))) {
