@@ -164,31 +164,31 @@
 			<div class="ez_photo" >
 				<div class="thumbnail" style=" height:auto; width:725px;">
 					
-					<img src="${requestScope.photo_ob.imgUrl_b }">
+					<img src="${requestScope.bestImgUrl}">
 					
 				</div>
 			</div>
-			<div class="thumbnail" style=" width:728px; padding-bottom:30px; ">
-				<div class="caption" style="margin-left:auto; margin-right:auto; width:680px;">
+			<div class="thumbnail" style=" width:728px; height:70px; padding-bottom:30px; ">
+				<div class="caption" style="margin-left:auto; float:left; margin-right:auto; width:360px;">
 					<h4>${requestScope.photo_ob.title._content}</h4>
 				</div>
-				<div class="button_group" style="width:680px; text-align:right">
+				<div class="button_group" style="width:330px; float:right; text-align:right; margin-top:13px; margin-right:5px;">
 				
 				<a class="btn btn-primary" href="getdetail.do?wish_btn=submit">I wish to go there  <span class="badge">${requestScope.wish_num } </span></a>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				&nbsp;&nbsp;&nbsp;
 				<a class="btn btn-primary" href="getdetail.do?been_btn=submit">I have been there  <span class="badge">${requestScope.been_num }</span></a>
 				
 				</div>
 			</div>
 			<div class="ez_twitter" style="margin-top: 10px;">
-				<h3>${nearby_title }</h3>
+				<h4>${nearby_title }</h4>
 				<c:forEach var="tweet" items="${requestScope.tw_nearby}">
 					<blockquote class="twitter-tweet">
 						${tweet}</blockquote>
 
 				</c:forEach>
 
-				<h3 >Twitter comments</h3>
+				
 				<c:forEach var="tweet" items="${requestScope.tw_discuss}">
 					<blockquote class="twitter-tweet">
 						${tweet}</blockquote>
@@ -200,7 +200,7 @@
 					<c:choose>
 						<c:when test="${empty sessionScope.user}">
 							<form id="form" method="POST" action="login.do">
-								Comment via twitter: <input type="image"
+								<input type="image"
 									src="img/sign-in-with-twitter-gray.png" name="sign_in_button"
 									value="twitter_sign_in">
 							</form>
@@ -212,7 +212,7 @@
 					</c:choose>
 					<form action="getdetail.do" method="POST" id="twitter_text">
 						<textarea class="form-control" rows="3" name="text"
-							form="twitter_text" placeholder="Add a comment..."></textarea>
+							form="twitter_text" placeholder="Comment via twitter..."></textarea>
 						<c:choose>
 							<c:when test="${empty sessionScope.user }">
 								<button type="submit" name="send_btn" value="send_tweet" disabled="disabled"
@@ -232,40 +232,37 @@
 		<div class="ez_right" style=" float:left; margin-left:15px; width:310px; ">
 			<div class="img-thumbnail"  id="map-canvas" style=" width: 305px; height:305px;  " /></div>
 	
-			<div class="list-group" style="margin-top:10px;">
-			  <a href="#" class="list-group-item">
+			<ul class="list-group" style="margin-top:10px;">
+			  <li class="list-group-item ">
+			    <h4 class="list-group-item-heading">Location</h4>
+			    <p class="list-group-item-text">${requestScope.photo_ob.location.locality._content}  ${requestScope.photo_ob.location.region._content} ${requestScope.photo_ob.location.country._content}</p>
+			  </li>
+			  <li class="list-group-item">
 			    <h4 class="list-group-item-heading">Description</h4>
 			    <p class="list-group-item-text">${requestScope.photo_ob.description._content}</p>
-			  </a>
-			  <a href="#" class="list-group-item ">
-			    <h4 class="list-group-item-heading">Country</h4>
-			    <p class="list-group-item-text">${requestScope.photo_ob.location.country._content}</p>
-			  </a>
-			  <a href="#" class="list-group-item ">
-			    <h4 class="list-group-item-heading">List group item heading</h4>
-			    <p class="list-group-item-text">...</p>
-			  </a>
-			</div>
+			  </li>
+			  <li class="list-group-item ">
+			    <h4 class="list-group-item-heading">Photographer</h4>
+			    <p class="list-group-item-text">${requestScope.photo_ob.owner.realname}</p>
+			  </li>
+			</ul>
+			<a href="mappic.do" class="btn btn-primary btn-lg" style="width:305px;">I want to go there right now !</a>
 			
 		</div>
 
 	</div>
 	<div class="container" >
 		<div class="ez_loc" >
-			<h3 style="position:relative; left:30px;">Other photos around</h3>
+			<h4 style="position:relative; left:30px;">${requestScope.nearbyPhoto }</h4>
 			<div id="container">
-			
 				<c:forEach var="plist" items="${requestScope.flk_loc_plist}">
-
 					<div class="grid">
 						<div class="imgholder">
 
 							<a class="fancybox" title="${plist.title}"
 								href="getdetail.do?photo_id=${plist.id}"> <img
 								src="${plist.imgUrl}" />
-
 							</a>
-
 						</div>
 						<strong></strong>
 						<p>

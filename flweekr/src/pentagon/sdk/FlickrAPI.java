@@ -10,6 +10,7 @@ import java.net.URL;
 import pentagon.apibean.FlickrBean;
 import pentagon.flickrbean.JsonFlickrApi;
 import pentagon.flickrbean.JsonFlickrGetInfo;
+import pentagon.flickrbean.JsonFlickrGetSize;
 
 import com.google.gson.Gson;
 
@@ -18,6 +19,17 @@ public class FlickrAPI {
 
 	public FlickrAPI(FlickrBean flkBean) {
 		this.flkBean = flkBean;
+	}
+	
+	public JsonFlickrGetSize getImageSize(){
+		String url = flkBean.getBaseUrl() + "?method=" + flkBean.getMethod()
+				+ "&api_key=" + flkBean.getApiKey() +"&photo_id="+flkBean.getFlickrPhotoId()
+				+ "&format=" + flkBean.getFormat() +"&nojsoncallback=1";
+		String data = queryFlickr(url);
+		Gson gson = new Gson();
+		
+		JsonFlickrGetSize tagbean = gson.fromJson(data, JsonFlickrGetSize.class);
+		return tagbean;
 	}
 	
 	public JsonFlickrApi getImageByLoc(){

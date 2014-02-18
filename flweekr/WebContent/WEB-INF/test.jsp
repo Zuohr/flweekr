@@ -20,7 +20,10 @@
 				[ 'Name', 'Height', 'Smokes' ], 
 				<c:forEach var="it" items="${requestScope.rows }">
 				['${it.name}', ${it.value}, true],
-			</c:forEach>]);
+			</c:forEach>
+				['a', 20, true],
+				['a', 30, true],
+				]);
 		var options = {};
 
 		// 'bhg' is a horizontal grouped bar chart in the Google Chart API.

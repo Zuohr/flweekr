@@ -27,8 +27,14 @@ public class Search implements Action {
 
 		String keyWord = request.getParameter("key");
 		if (keyWord != null && !keyWord.isEmpty()) {
+			String[] keySet = keyWord.split("\\s");
+			StringBuilder keyBuilder = new StringBuilder();
+			for (int i = 0; i < keySet.length; i++) {
+				keyBuilder.append(keySet[i] + "+");
+			}
 			// set cookie
-			Cookie cookie = new Cookie("last_search", keyWord);
+			keyWord = keyBuilder.toString();
+			Cookie cookie = new Cookie("last_search",keyWord);
 			cookie.setMaxAge(30 * 24 * 60 * 60); // 30 days max age
 			response.addCookie(cookie);
 			// update database
@@ -52,11 +58,7 @@ public class Search implements Action {
 			response.addCookie(cookie);
 		}
 
-		String[] keySet = keyWord.split("\\s");
-		StringBuilder keyBuilder = new StringBuilder();
-		for (int i = 0; i < keySet.length; i++) {
-			keyBuilder.append(keySet[i] + "+");
-		}
+
 
 		String pageNum = "1";
 		request.setAttribute("pageNum", pageNum);
@@ -66,8 +68,8 @@ public class Search implements Action {
 		}
 		FlickrBean flkBean = new FlickrBean();
 		flkBean.setMethod("flickr.photos.search");
-		flkBean.setPerPage("120");
-		flkBean.setFlickrText(keyBuilder.toString() + "trip");
+		flkBean.setPerPage("50");
+		flkBean.setFlickrText(keyWord + "trip");
 		flkBean.setFlickrHasGeo("1");
 		flkBean.setFlickPage(pageNum);
 		flkBean.setFlickrExtra("url_o");

@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.genericdao.RollbackException;
 
+import pentagon.apibean.FlickrBean;
 import pentagon.dao.CountryStats;
 import pentagon.dao.CountryStatsDAO;
 import pentagon.dao.SearchKey;
@@ -15,7 +16,9 @@ import pentagon.dao.SearchKeyDAO;
 import pentagon.dao.ViewHistory;
 import pentagon.dao.ViewHistoryComparator;
 import pentagon.dao.ViewHistoryDAO;
+import pentagon.flickrbean.JsonFlickrGetInfo;
 import pentagon.model.Model;
+import pentagon.sdk.FlickrAPI;
 
 public class GetStats implements Action {
 	private SearchKeyDAO searchKeyDAO;
@@ -32,9 +35,10 @@ public class GetStats implements Action {
 	public String perform(HttpServletRequest request,
 			HttpServletResponse response) throws RollbackException {
 		// get top search key
+		// SearchKey -> kewy
 		SearchKey[] skeys = getTopSearchKeys();
 		if (skeys != null) {
-			request.setAttribute("top_search_title", "Most Searched Topic");
+			request.setAttribute("top_search_title", "Most Popular Key Words");
 			request.setAttribute("top_search_data", skeys);
 		}
 
@@ -48,14 +52,25 @@ public class GetStats implements Action {
 
 		// get most viewed
 		ViewHistory[] topView = getViewHistory();
+		JsonFlickrGetInfo[] infoArray = new JsonFlickrGetInfo[5];
 		if (topView != null) {
 			request.setAttribute("history_title", "Most Viewed Places");
+			for(int i = 0; i < 5; i++){
+				FlickrBean flkBean = new FlickrBean();
+				flkBean.setMethod("flickr.photos.getInfo");
+				flkBean.setFlickrPhotoId(topView[i].getFlickr_id());
+				FlickrAPI flkAPI = new FlickrAPI(flkBean);
+				infoArray[i] = flkAPI.getImgInfo();
+			}
+			
+			request.setAttribute("topViewPhoto", infoArray);
 			/*
 			 * get photo info fro Flickr API
 			 */
 		}
+		request.setAttribute("nav_trend", "active");
 
-		return "stats.jsp";
+		return "chart.jsp";
 	}
 
 	@Override

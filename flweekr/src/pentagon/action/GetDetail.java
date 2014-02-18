@@ -18,6 +18,7 @@ import pentagon.dao.ViewHistory;
 import pentagon.dao.ViewHistoryDAO;
 import pentagon.flickrbean.JsonFlickrApi;
 import pentagon.flickrbean.JsonFlickrGetInfo;
+import pentagon.flickrbean.JsonFlickrGetSize;
 import pentagon.model.Meta;
 import pentagon.model.Model;
 import pentagon.model.User;
@@ -65,12 +66,44 @@ public class GetDetail implements Action {
 		FlickrAPI flkAPI = new FlickrAPI(flkBean);
 		JsonFlickrGetInfo info = flkAPI.getImgInfo();
 		request.setAttribute("photo_ob", info.photo);
+		
+		// get flickr image size and url
+		
+		JsonFlickrGetSize jfaSize;
+		FlickrBean sizeBean = new FlickrBean();
+		sizeBean.setMethod("flickr.photos.getSizes");
+		sizeBean.setFlickrPhotoId(flickr_id);
+		FlickrAPI flkSize = new FlickrAPI(sizeBean);
+		jfaSize = flkSize.getImageSize();
+		int numSize = jfaSize.sizes.size.size()-1;
+		String bestUrl = info.photo.getImgUrl();
+		
+		while(numSize >= 0){
+			String label = jfaSize.sizes.size.get(numSize).label;
+			if(!jfaSize.sizes.size.get(numSize).source.endsWith(".jpg")){
+				numSize--;
+				continue;
+			}
+			if("Large".equals(label)){
+				bestUrl = jfaSize.sizes.size.get(numSize).source;
+				break;
+			} else if("Medium 800".equals(label)){
+				bestUrl = jfaSize.sizes.size.get(numSize).source;
+				break;
+			} else if("Medium 640".equals(label)){
+				bestUrl = jfaSize.sizes.size.get(numSize).source;
+				break;
+			} 
+			numSize--;
+		}
+		request.setAttribute("bestImgUrl", bestUrl);
+
 
 		// get flickr block list of picture by location
 		JsonFlickrApi jfaLoc;
 		FlickrBean locBean = new FlickrBean();
 		locBean.setMethod("flickr.photos.search");
-		locBean.setPerPage("20");
+		locBean.setPerPage("10");
 		if (info.photo.location != null) {
 			locBean.setFlickrLat(info.photo.location.latitude);
 			locBean.setFlickrLon(info.photo.location.longitude);
@@ -81,9 +114,14 @@ public class GetDetail implements Action {
 			FlickrAPI flkLoc = new FlickrAPI(locBean);
 			jfaLoc = flkLoc.getFlickrImage();
 		}
+		if(jfaLoc.photos.photo.size() != 0){
+			request.setAttribute("flk_loc_plist", jfaLoc.photos.photo);
+			request.setAttribute("nearbyPhoto", "Nearby Photos");
+		}
+		
 
-		request.setAttribute("flk_loc_plist", jfaLoc.photos.photo);
-
+		
+		
 		// set sign with twitter button
 		request.setAttribute("flickr_id", flickr_id);
 

@@ -6,12 +6,20 @@ public class PhotoInfo {
 	public Location location;
 	public Title title;
 	public Description description;
+	public Owner owner;
 
+	public Owner getOwner() {
+		return owner;
+	}
 	public String secret;
 	public String server;
 	public String farm;
 	public String id;
 	
+	public String getId() {
+		return id;
+	}
+
 	public String getImgUrl() {
 		imgUrl = "http://farm" + farm + ".static.flickr.com/" + server + "/" + id + "_" + secret + ".jpg";
 		return imgUrl;

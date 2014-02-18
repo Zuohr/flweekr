@@ -14,6 +14,7 @@ import org.genericdao.RollbackException;
 import pentagon.action.Action;
 import pentagon.action.ActionMap;
 import pentagon.action.GetDetail;
+import pentagon.action.GetStats;
 import pentagon.action.Home;
 import pentagon.action.Mappic;
 import pentagon.action.SampleChart;
@@ -58,6 +59,7 @@ public class Controller extends HttpServlet {
 		actions.addAction(new Mappic());
 		actions.addAction(new Weather());
 		actions.addAction(new SampleChart());
+		actions.addAction(new GetStats(model));
 	}
 
 	/**

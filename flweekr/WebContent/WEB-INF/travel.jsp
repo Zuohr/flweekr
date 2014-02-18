@@ -28,6 +28,9 @@
      
      <link rel="stylesheet" href="css/jquery.fancybox.css" type="text/css" media="screen" />
      <script type="text/javascript" src="js/jquery.fancybox.pack.js"></script>
+  
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=panoramio"></script>
+   <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>
 </head> 
 
 <body>
@@ -36,41 +39,72 @@
 <div class="container">	
 	<div class="ez_left" style="float:left;position: absolute;
 		display: inline-block; ">
-		<jsp:include page="hotel.jsp" />
+		
+		<jsp:include page="hotel.jsp"/>
+		
+	
+
+		
 	
 	</div>
 	
-	<div class="ez_right" style="float:left; margin-top:70px;display: inline-block;margin-left:810px;">		
+	<div class="ez_right" style="float:left; margin-top:70px;display: inline-block;margin-left:795px;">		
 		
 <ul class="list-group" >
   <li class="list-group-item" style="width:290px;">
-    <span class="badge" style="width:50px;">$40</span>
-    1
+    <span class="badge" style="width:50px;">$340</span>
+  <a href="#">Flight: Seattle to Pittsburgh </a>  
   </li>
   
    <li class="list-group-item" style="width:290px;margin-right:35px;">
-    <span class="badge" style="width:50px;">$40</span>
-    2
+    <span class="badge" style="width:50px;">$420</span>
+  <a href="#">Flight: LA to Pittsburgh </a>
   </li>
   
    <li class="list-group-item" style="width:290px;margin-right:35px;">
-    <span class="badge" style="width:50px;">$40</span>
-    3
+    <span class="badge" style="width:50px;">$540</span>
+   <a href="#">Flight: Seattle to Boston </a>
   </li>
   
    <li class="list-group-item" style="width:290px;margin-right:35px;">
-    <span class="badge" style="width:50px;">$40</span>
-    4
+    <span class="badge" style="width:50px;">$240</span>
+   <a href="#">Flight: Chicago to Pittsburgh </a>
   </li>
   
    <li class="list-group-item" style="width:290px;margin-right:35px;">
-    <span class="badge" style="width:50px;">$40</span>
-    5
+    <span class="badge" style="width:50px;">$290</span>
+    <a href="#">Flight: New York to Boston </a>
   </li>
-  
 </ul>
  
- 
+ <ul class="list-group" >
+  <li class="list-group-item" style="width:290px;">
+    <span class="badge" style="width:50px;">$120</span>
+   <a href="#">Hotel: Pittsburgh </a>
+  </li>
+  
+   <li class="list-group-item" style="width:290px;margin-right:35px;">
+    <span class="badge" style="width:50px;">$190</span>
+   <a href="#">Hotel: Chicago </a>
+  </li>
+  
+   <li class="list-group-item" style="width:290px;margin-right:35px;">
+    <span class="badge" style="width:50px;">$240</span>
+  <a href="#">Hotel: New York </a>
+  </li>
+  
+   <li class="list-group-item" style="width:290px;margin-right:35px;">
+    <span class="badge" style="width:50px;">$220</span>
+    <a href="#">Hotel: Boston </a>
+  </li>
+  
+   <li class="list-group-item" style="width:290px;margin-right:35px;">
+    <span class="badge" style="width:50px;">$150</span>
+   <a href="#">Hotel: LA </a>
+  </li>
+</ul>
+
+
  
  
  
