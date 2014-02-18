@@ -174,9 +174,9 @@
 				</div>
 				<div class="button_group" style="width:330px; float:right; text-align:right; margin-top:13px; margin-right:5px;">
 				
-				<a class="btn btn-primary" href="getdetail.do?wish_btn=submit">I wish to go there  <span class="badge">${requestScope.wish_num } </span></a>
+				<a class="btn btn-primary" href="getdetail.do?wish_btn=submit&photo_id=${sessionScope.flickr_id }">I wish to go there  <span class="badge">${requestScope.wish_num } </span></a>
 				&nbsp;&nbsp;&nbsp;
-				<a class="btn btn-primary" href="getdetail.do?been_btn=submit">I have been there  <span class="badge">${requestScope.been_num }</span></a>
+				<a class="btn btn-primary" href="getdetail.do?been_btn=submit&photo_id=${sessionScope.flickr_id }">I have been there  <span class="badge">${requestScope.been_num }</span></a>
 				
 				</div>
 			</div>
@@ -199,7 +199,7 @@
 					style="background-color: #fff; padding-top: 10px; padding-left: 40px; padding-right: 30px; width:728px; padding-bottom: 30px;  height: 190px;">
 					<c:choose>
 						<c:when test="${empty sessionScope.user}">
-							<form id="form" method="POST" action="login.do">
+							<form id="form" method="POST" action="login.do?photo_id=${sessionScope.flickr_id }">
 								<input type="image"
 									src="img/sign-in-with-twitter-gray.png" name="sign_in_button"
 									value="twitter_sign_in">
@@ -210,7 +210,7 @@
 								href="logout.do">Sign out</a>
 						</c:otherwise>
 					</c:choose>
-					<form action="getdetail.do" method="POST" id="twitter_text">
+					<form action="getdetail.do?photo_id=${sessionScope.flickr_id }" method="POST" id="twitter_text">
 						<textarea class="form-control" rows="3" name="text"
 							form="twitter_text" placeholder="Comment via twitter..."></textarea>
 						<c:choose>
@@ -266,11 +266,11 @@
 						</div>
 						<strong></strong>
 						<p>
-							<a href="getdetail.do?photo_id=${plist.id}" target="_blank"
+							<a href="getdetail.do?photo_id=${plist.id}"
 								style="color: #000; font-weight: bold; font-size: 14px">${plist.title}</a>
 						</p>
 						<div class="ez_button">
-							<a href="getdetail.do?photo_id=${plist.id}" target="_blank"><button
+							<a href="getdetail.do?photo_id=${plist.id}"><button
 									type="button" class="btn btn-primary btn-xs">Explore</button></a> <span
 								style="float: right;"><a href="https://twitter.com/share"
 								class="twitter-share-button" data-dnt="true" data-count="none"

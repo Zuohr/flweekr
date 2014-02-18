@@ -36,6 +36,7 @@ public class TwitterLogin implements Action {
 
 		// check if sign_in_with_twitter button is pressed
 		if ("twitter_sign_in".equals(request.getParameter("sign_in_button"))) {
+			
 			Token requestToken = service.getRequestToken();
 			session.setAttribute("requestToken", requestToken);
 			return service.getAuthorizationUrl(requestToken);

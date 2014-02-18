@@ -143,7 +143,7 @@
                  
                  <label for="input_q">
                     <span>EasyTrip</span>
-                    <input type="text" placeholder="begin a journey" name="key" value="">
+                    <input type="text" placeholder="A word in heart..." name="key" value="">
                  </label>
                  <input type="submit" value="submit">
                

@@ -16,7 +16,7 @@
           
            <form  action="search.do" method="get">
             <div class="input-group" style="margin-top:8px; margin-right:40px; width:300px; float:right;">
-              <input type="text" class="form-control" placeholder="Begin a journey" name="key" value="">
+              <input type="text" class="form-control" placeholder="A word in heart..." name="key" value="">
               <span class="input-group-btn">
                 <button class="btn btn-default" type="submit" value="submit">search</button>
               </span>
