@@ -8,10 +8,14 @@ import org.genericdao.Transaction;
 import org.scribe.oauth.OAuthService;
 
 import pentagon.apibean.FlickrBean;
+import pentagon.dao.CountryStats;
+import pentagon.dao.CountryStatsDAO;
 import pentagon.dao.PhotoReview;
 import pentagon.dao.PhotoReviewDAO;
 import pentagon.dao.Post;
 import pentagon.dao.PostDAO;
+import pentagon.dao.ViewHistory;
+import pentagon.dao.ViewHistoryDAO;
 import pentagon.flickrbean.JsonFlickrApi;
 import pentagon.flickrbean.JsonFlickrGetInfo;
 import pentagon.model.Model;
@@ -25,11 +29,15 @@ public class GetDetail implements Action {
 	private OAuthService service;
 	private PostDAO postDAO;
 	private PhotoReviewDAO photoReviewDAO;
+	private ViewHistoryDAO viewHistoryDAO;
+	private CountryStatsDAO countryStatsDAO;
 	private static final String URL = "http://localhost:8080/getdetail.do?photo_id=";
 
 	public GetDetail(Model model) {
 		this.postDAO = model.getPostDAO();
 		this.photoReviewDAO = model.getPhotoReviewDAO();
+		this.viewHistoryDAO = model.getViewHistoryDAO();
+		this.countryStatsDAO = model.getCountryStatsDAO();
 		this.service = model.getService();
 	}
 
@@ -46,6 +54,9 @@ public class GetDetail implements Action {
 			}
 		}
 		request.getSession().setAttribute("flickr_id", flickr_id);
+
+		// update view history
+		updateViewHistory(flickr_id);
 
 		// get picture via flickr api
 		FlickrBean flkBean = new FlickrBean();
@@ -135,6 +146,7 @@ public class GetDetail implements Action {
 
 		// set photo like stats
 		PhotoReview pr = new PhotoReview();
+		String country = info.photo.location.country._content;
 		try {
 			Transaction.begin();
 			if ("submit".equals(request.getParameter("wish_btn"))) {
@@ -148,6 +160,10 @@ public class GetDetail implements Action {
 					pr.setWish(pr.getWish() + 1);
 					photoReviewDAO.update(pr);
 				}
+				// update wish table
+				if (country != null && !country.trim().isEmpty()) {
+					updateWish(country);
+				}
 			} else if ("submit".equals(request.getParameter("been_btn"))) {
 				pr = photoReviewDAO.read(flickr_id);
 				if (pr == null) {
@@ -158,6 +174,10 @@ public class GetDetail implements Action {
 				} else {
 					pr.setBeen_there(pr.getBeen_there() + 1);
 					photoReviewDAO.update(pr);
+				}
+				// update been table
+				if (country != null && !country.trim().isEmpty()) {
+					updateBeen(country);
 				}
 			}
 			if (pr.getFlickr_id() == null) {
@@ -185,6 +205,47 @@ public class GetDetail implements Action {
 	@Override
 	public String getName() {
 		return "getdetail.do";
+	}
+
+	private void updateBeen(String country) throws RollbackException {
+		CountryStats c = countryStatsDAO.read(country);
+		if (c == null) {
+			c = new CountryStats();
+			c.setName(country);
+			c.setWished(0);
+			c.setBeen(1);
+			countryStatsDAO.create(c);
+		} else {
+			c.setBeen(c.getBeen() + 1);
+			countryStatsDAO.update(c);
+		}
+	}
+
+	private void updateWish(String country) throws RollbackException {
+		CountryStats c = countryStatsDAO.read(country);
+		if (c == null) {
+			c = new CountryStats();
+			c.setName(country);
+			c.setWished(1);
+			c.setBeen(0);
+			countryStatsDAO.create(c);
+		} else {
+			c.setWished(c.getWished() + 1);
+			countryStatsDAO.update(c);
+		}
+	}
+
+	private void updateViewHistory(String flickr_id) throws RollbackException {
+		ViewHistory viewHistory = viewHistoryDAO.read(flickr_id);
+		if (viewHistory == null) {
+			viewHistory = new ViewHistory();
+			viewHistory.setFlickr_id(flickr_id);
+			viewHistory.setCount(1);
+			viewHistoryDAO.create(viewHistory);
+		} else {
+			viewHistory.setCount(viewHistory.getCount() + 1);
+			viewHistoryDAO.update(viewHistory);
+		}
 	}
 
 }
