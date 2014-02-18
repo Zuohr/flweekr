@@ -185,15 +185,6 @@ public class GetDetail implements Action {
 		request.setAttribute("been_num", pr.getBeen_there());
 		request.setAttribute("nav_explore", "active");
 
-		// set statistics
-		SearchKey[] keys = searchKeyDAO.match();
-		if (keys != null && keys.length > 0) {
-			Arrays.sort(keys, new SearchKeyComparator());
-			int len = Math.min(10, keys.length);
-			SearchKey[] popular_keys = Arrays.copyOfRange(keys, 0, len);
-			request.setAttribute("popular_keys", popular_keys);
-		}
-
 		return "detail.jsp";
 	}
 

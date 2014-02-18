@@ -12,10 +12,11 @@ public class SampleChart implements Action {
 			HttpServletResponse response) throws RollbackException {
 		Item[] items = new Item[5];
 		for (int i = 0; i < 5; i++) {
+			items[i] = new Item();
 			items[i].setName("name" + i);
 			items[i].setValue(i);
 		}
-		request.setAttribute("items", items);
+		request.setAttribute("rows", items);
 		return "test.jsp";
 	}
 
