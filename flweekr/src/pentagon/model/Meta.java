@@ -4,7 +4,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 
 public class Meta {
-	public static final String domain = "http://theeasytrip.com:8080/easytrip/";
+	public static final String domain = "http://www.theeasytrip.com/";
 
 	public static String replaceSpecial(String text) {
 		text = text.replace("+", "%20");
