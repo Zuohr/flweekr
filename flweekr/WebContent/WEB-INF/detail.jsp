@@ -168,7 +168,7 @@
 					
 				</div>
 			</div>
-			<div class="thumbnail" style="padding-top: 10px; padding-left: 40px; padding-right: 30px; width:728px; padding-bottom: 30px;  height: 190px;">
+			<div class="thumbnail" style=" width:728px; padding-bottom: 40px;  height: 190px;">
 				<div class="caption" style="margin-left:auto; margin-right:auto; width:680px;">
 					<h3>${requestScope.photo_ob.title._content}</h3>
 				</div>
