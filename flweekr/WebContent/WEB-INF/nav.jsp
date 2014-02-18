@@ -9,7 +9,7 @@
          	<li><a href="home.do">Home</a></li>
             <li class="${requestScope.nav_gallery }"><a href="search.do">Gallery</a></li>
             <li class="${requestScope.nav_explore}"><a href="#">Explore</a></li>
-            <li class="${requestScope.nav_trend}"><a href="#">Trend</a></li>
+            <li class="${requestScope.nav_trend}"><a href="getstats.do">Trend</a></li>
             <li class="${requestScope.nav_about }"><a href="#about">About</a></li>
           </ul>
           
