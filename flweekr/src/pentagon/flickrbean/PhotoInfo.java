@@ -6,6 +6,7 @@ public class PhotoInfo {
 	public Location location;
 	public Title title;
 	public Description description;
+
 	public String secret;
 	public String server;
 	public String farm;
@@ -26,5 +27,8 @@ public class PhotoInfo {
 	}
 	public Title getTitle() {
 		return title;
+	}
+	public Description getDescription() {
+		return description;
 	}
 }

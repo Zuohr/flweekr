@@ -170,7 +170,7 @@
 			</div>
 			<div class="thumbnail" style=" width:728px; padding-bottom:30px; ">
 				<div class="caption" style="margin-left:auto; margin-right:auto; width:680px;">
-					<h3>${requestScope.photo_ob.title._content}</h3>
+					<h4>${requestScope.photo_ob.title._content}</h4>
 				</div>
 				<div class="button_group" style="width:680px; text-align:right">
 				
@@ -229,8 +229,24 @@
 			</div>
 		</div>
 
-		<div class="ez_right" style=" float:left; margin-left:15px">
+		<div class="ez_right" style=" float:left; margin-left:15px; width:310px; ">
 			<div class="img-thumbnail"  id="map-canvas" style=" width: 305px; height:305px;  " /></div>
+	
+			<div class="list-group" style="margin-top:10px;">
+			  <a href="#" class="list-group-item">
+			    <h4 class="list-group-item-heading">Description</h4>
+			    <p class="list-group-item-text">${requestScope.photo_ob.description._content}</p>
+			  </a>
+			  <a href="#" class="list-group-item ">
+			    <h4 class="list-group-item-heading">Country</h4>
+			    <p class="list-group-item-text">${requestScope.photo_ob.location.country._content}</p>
+			  </a>
+			  <a href="#" class="list-group-item ">
+			    <h4 class="list-group-item-heading">List group item heading</h4>
+			    <p class="list-group-item-text">...</p>
+			  </a>
+			</div>
+			
 		</div>
 
 	</div>
