@@ -271,7 +271,7 @@
 			<div class="grid">
 				<div class="imgholder">
 
-					<a class="fancybox" title="${plist.title}" href="${plist.url_o}">
+					<a class="fancybox" title="${plist.title}" href="${plist.imgUrl_b}">
 					<img src="${plist.imgUrl}" />
 					</a>
 				
