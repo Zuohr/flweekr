@@ -200,7 +200,7 @@
 					<c:choose>
 						<c:when test="${empty sessionScope.user}">
 							<form id="form" method="POST" action="login.do">
-								Comment via twitter: <input type="image"
+								<input type="image"
 									src="img/sign-in-with-twitter-gray.png" name="sign_in_button"
 									value="twitter_sign_in">
 							</form>
@@ -212,7 +212,7 @@
 					</c:choose>
 					<form action="getdetail.do" method="POST" id="twitter_text">
 						<textarea class="form-control" rows="3" name="text"
-							form="twitter_text" placeholder="Add a comment..."></textarea>
+							form="twitter_text" placeholder="Comment via twitter..."></textarea>
 						<c:choose>
 							<c:when test="${empty sessionScope.user }">
 								<button type="submit" name="send_btn" value="send_tweet" disabled="disabled"
