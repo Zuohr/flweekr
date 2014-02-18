@@ -266,8 +266,7 @@
        <section id="wrapper">
        <div id="container">
        <c:forEach var="plist" items="${requestScope.flk_plist}">
-    	 <c:choose>
-	 	 <c:when test="${!empty plist.url_o}">
+
 			<div class="grid">
 				<div class="imgholder">
 
@@ -285,8 +284,7 @@
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="js/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 				</div>
 			</div>
-		</c:when>
-		</c:choose>
+
 	   </c:forEach>
 	   
 	   
