@@ -1,7 +1,5 @@
 package pentagon.action;
 
-import java.util.Arrays;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -14,9 +12,6 @@ import pentagon.dao.PhotoReview;
 import pentagon.dao.PhotoReviewDAO;
 import pentagon.dao.Post;
 import pentagon.dao.PostDAO;
-import pentagon.dao.SearchKey;
-import pentagon.dao.SearchKeyComparator;
-import pentagon.dao.SearchKeyDAO;
 import pentagon.flickrbean.JsonFlickrApi;
 import pentagon.flickrbean.JsonFlickrGetInfo;
 import pentagon.model.Model;
@@ -30,13 +25,11 @@ public class GetDetail implements Action {
 	private OAuthService service;
 	private PostDAO postDAO;
 	private PhotoReviewDAO photoReviewDAO;
-	private SearchKeyDAO searchKeyDAO;
 	private static final String URL = "http://localhost:8080/getdetail.do?photo_id=";
 
 	public GetDetail(Model model) {
 		this.postDAO = model.getPostDAO();
 		this.photoReviewDAO = model.getPhotoReviewDAO();
-		this.searchKeyDAO = model.getSearchKeyDAO();
 		this.service = model.getService();
 	}
 
@@ -97,7 +90,8 @@ public class GetDetail implements Action {
 				}
 				request.setAttribute("tw_nearby", tw_nearby);
 				if (statuses.length > 0) {
-					request.setAttribute("nearby_title", "What people tweets around");
+					request.setAttribute("nearby_title",
+							"What people tweets around");
 				}
 			}
 		}
