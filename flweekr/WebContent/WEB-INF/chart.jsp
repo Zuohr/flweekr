@@ -167,8 +167,7 @@
 	google.setOnLoadCallback(drawVisualization);
 </script>
 
-
-			<div id="visualization2" style="width: 280px; height: 160px;position:absolute;top:90px;right:100px;"></div>
+<div id="visualization2" style="width: 280px; height: 160px;position:absolute;top:90px;right:100px;"></div>
 
 
 	
