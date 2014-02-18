@@ -8,7 +8,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-<title>Gallery</title>
+<title>Chart</title>
 <meta charset="utf-8">
 <link rel="icon" href="images/favicon.ico">
 <link rel="shortcut icon" href="images/favicon.ico" />
@@ -45,12 +45,10 @@
     function drawVisualization() {
       var data = google.visualization.arrayToDataTable([
         ['Country', 'Popularity'],
-        ['Germany', 200],
-        ['United States', 300],
-        ['Brazil', 400],
-        ['Canada', 500],
-        ['France', 600],
-        ['RU', 700],
+        <c:forEach var="it" items="${requestScope.wish_list}">
+        ['${it.name}', ${it.been}],
+       </c:forEach>
+       
       ]);
     
       var geomap = new google.visualization.GeoMap(
@@ -62,8 +60,7 @@
     google.setOnLoadCallback(drawVisualization);
   </script>
 
-
-
+<div>${wish_title}</div>
 			<div id="visualization"></div>
 
 			<script type='text/javascript'>
@@ -74,12 +71,10 @@
 	function drawA() {
       var data = google.visualization.arrayToDataTable([
         ['Country', 'Popularity'],
-        ['Germany', 200],
-        ['United States', 300],
-        ['Brazil', 400],
-        ['Canada', 500],
-        ['France', 600],
-        ['RU', 100],
+        <c:forEach var="it" items="${requestScope.wish_list }">
+        ['${it.name}', ${it.wished}],
+       </c:forEach>
+        
       ]);
     
       var geomap = new google.visualization.GeoMap(
@@ -100,8 +95,7 @@
 	
 	
   </script>
-
-
+<div>${been_title} </div>
 			<div id="visualization1"></div>
 
 
@@ -124,13 +118,10 @@
 	function drawVisualization() {
 		// Create and populate the data table.
 		var data = google.visualization.arrayToDataTable([
-				[ 'Name', 'Height', 'Smokes' ], 
-				<c:forEach var="it" items="${requestScope.rows }">
-				['${it.name}', ${it.value}, true],
-			</c:forEach>
-				['a', 20, true],
-				['a', 30, true],
-				]);
+				[ 'Name', '${top_search_title}'], 
+				<c:forEach var="it" items="${requestScope.top_search_data }">
+				['${it.keyword}', ${it.number}],
+			</c:forEach>]);
 		var options = {};
 
 		// 'bhg' is a horizontal grouped bar chart in the Google Chart API.
@@ -139,13 +130,13 @@
 
 		// Add a data range.
 		var min = 0;
-		var max = 700;
+		var max = 10;
 		options.chds = min + ',' + max;
 
 		// Now add data point labels at the end of each bar.
 
 		// Add meters suffix to the labels.
-		var meters = 'N** m';
+		var meters = 'N** ';
 
 		// Draw labels in pink.
 		var color = 'ff3399';
@@ -160,7 +151,7 @@
 		var allbars = -1;
 
 		// 10 pixels font size for the labels.
-		var fontSize = 10;
+		var fontSize = 15;
 
 		// Priority is not so important here, but Google Chart API requires it.
 		var priority = 0;
@@ -175,7 +166,9 @@
 
 	google.setOnLoadCallback(drawVisualization);
 </script>
-			<div id="visualization2" style="width: 280px; height: 160px;position:absolute;top:70px;right:100px;"></div>
+
+
+			<div id="visualization2" style="width: 280px; height: 160px;position:absolute;top:90px;right:100px;"></div>
 
 
 	

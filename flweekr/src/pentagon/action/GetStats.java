@@ -32,9 +32,10 @@ public class GetStats implements Action {
 	public String perform(HttpServletRequest request,
 			HttpServletResponse response) throws RollbackException {
 		// get top search key
+		// SearchKey -> kewy
 		SearchKey[] skeys = getTopSearchKeys();
 		if (skeys != null) {
-			request.setAttribute("top_search_title", "Most Searched Topic");
+			request.setAttribute("top_search_title", "Hotest Topic");
 			request.setAttribute("top_search_data", skeys);
 		}
 
@@ -55,7 +56,7 @@ public class GetStats implements Action {
 			 */
 		}
 
-		return "stats.jsp";
+		return "chart.jsp";
 	}
 
 	@Override
