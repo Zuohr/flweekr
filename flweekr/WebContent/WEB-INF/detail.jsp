@@ -36,7 +36,69 @@
 	overflow: hidden;
 }
 </style>
+			<script
+				src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+			<script>
+				var lat = '${requestScope.photo_ob.location.latitude}';
+				var lon = '${requestScope.photo_ob.location.longitude}';
 
+				function initialize() {
+					var mapOptions = {
+						zoom : 8,
+						center : new google.maps.LatLng(lat, lon),
+						scrollwheel : false,
+						panControl : false,
+						streetViewControl : false,
+						scaleControl : false,
+
+						mapTypeControlOptions : {
+							style : google.maps.MapTypeControlStyle.DROPDOWN_MENU
+						},
+						zoomControl : true,
+						zoomControlOptions : {
+
+							position : google.maps.ControlPosition.RIGHT_CENTER,
+						},
+					};
+
+					var map = new google.maps.Map(document
+							.getElementById('map-canvas'), mapOptions);
+
+					// Add 5 markers to the map at random locations
+
+					var position = new google.maps.LatLng(lat, lon);
+
+					var marker = new google.maps.Marker({
+						position : position,
+						draggable : false,
+						animation : google.maps.Animation.DROP,
+						map : map
+					});
+					marker.setTitle((1).toString());
+					attachSecretMessage(marker, 0);
+				}
+
+				function attachSecretMessage(marker, num) {
+					/*  var message = ['This', 'is', 'the', 'secret', 'message']; */
+
+					google.maps.event.addListener(marker, 'click', function() {
+						infowindow.open(marker.get('map'), marker);
+					});
+				}
+
+				google.maps.event.addDomListener(window, 'load', initialize);
+
+				function toggleBounce() {
+
+					if (marker.getAnimation() != null) {
+						marker.setAnimation(null);
+					} else {
+						marker.setAnimation(google.maps.Animation.BOUNCE);
+					}
+				}
+
+				google.maps.event.addDomListener(window, 'load', initialize);
+			</script>
 <script>
 	$(document).ready(function() {
 		//vendor script
@@ -114,9 +176,6 @@
 					</div>
 					<div class="caption" style="margin-left:auto; margin-right:auto; width:500px;">
 						<h3>${requestScope.photo_ob.title._content}</h3>
-						
-
-					
 					</div>
 				</div>
 			</div>
@@ -171,72 +230,7 @@
 		</div>
 
 		<div class="ez_right" style=" float:left; margin-left:15px">
-			<script
-				src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
-			<script>
-				var lat = '${requestScope.photo_ob.location.latitude}';
-				var lon = '${requestScope.photo_ob.location.longitude}';
-
-				function initialize() {
-					var mapOptions = {
-						zoom : 8,
-						center : new google.maps.LatLng(lat, lon),
-						scrollwheel : false,
-						panControl : false,
-						streetViewControl : false,
-						scaleControl : false,
-
-						mapTypeControlOptions : {
-							style : google.maps.MapTypeControlStyle.DROPDOWN_MENU
-						},
-						zoomControl : true,
-						zoomControlOptions : {
-
-							position : google.maps.ControlPosition.RIGHT_CENTER,
-						},
-					};
-
-					var map = new google.maps.Map(document
-							.getElementById('map-canvas'), mapOptions);
-
-					// Add 5 markers to the map at random locations
-
-					var position = new google.maps.LatLng(lat, lon);
-
-					var marker = new google.maps.Marker({
-						position : position,
-						draggable : false,
-						animation : google.maps.Animation.DROP,
-						map : map
-					});
-					marker.setTitle((1).toString());
-					attachSecretMessage(marker, 0);
-				}
-
-				function attachSecretMessage(marker, num) {
-					/*  var message = ['This', 'is', 'the', 'secret', 'message']; */
-
-					google.maps.event.addListener(marker, 'click', function() {
-						infowindow.open(marker.get('map'), marker);
-					});
-				}
-
-				google.maps.event.addDomListener(window, 'load', initialize);
-
-				function toggleBounce() {
-
-					if (marker.getAnimation() != null) {
-						marker.setAnimation(null);
-					} else {
-						marker.setAnimation(google.maps.Animation.BOUNCE);
-					}
-				}
-
-				google.maps.event.addDomListener(window, 'load', initialize);
-			</script>
-
 			<div class="img-thumbnail"  id="map-canvas" style=" width: 305px; height:305px;  " /></div>
-
 		</div>
 
 	</div>

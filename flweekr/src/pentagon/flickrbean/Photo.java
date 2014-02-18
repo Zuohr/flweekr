@@ -18,6 +18,10 @@ public class Photo {
 
 
 
+	public String getUrl_o() {
+		return url_o;
+	}
+
 	public String latitude;
 	public String longitude;
 	
