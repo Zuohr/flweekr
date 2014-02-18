@@ -431,7 +431,7 @@ function buildIWContent(place) {
       </select>
     </div>
 
-    <div id="map-canvas"></div>
+    <div class="img-thumbnail" style="height:480px;" id="map-canvas"></div>
 
     <div id="listing" >
       <table id="resultsTable">

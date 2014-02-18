@@ -16,6 +16,10 @@ public class PhotoInfo {
 	public String farm;
 	public String id;
 	
+	public String getId() {
+		return id;
+	}
+
 	public String getImgUrl() {
 		imgUrl = "http://farm" + farm + ".static.flickr.com/" + server + "/" + id + "_" + secret + ".jpg";
 		return imgUrl;

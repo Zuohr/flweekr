@@ -164,7 +164,7 @@
 			<div class="ez_photo" >
 				<div class="thumbnail" style=" height:auto; width:725px;">
 					
-					<img src="${requestScope.photo_ob.imgUrl_b }">
+					<img src="${requestScope.bestImgUrl}">
 					
 				</div>
 			</div>
@@ -253,7 +253,7 @@
 	</div>
 	<div class="container" >
 		<div class="ez_loc" >
-			<h4 style="position:relative; left:30px;">Other photos around</h4>
+			<h4 style="position:relative; left:30px;">${requestScope.nearbyPhoto }</h4>
 			<div id="container">
 				<c:forEach var="plist" items="${requestScope.flk_loc_plist}">
 					<div class="grid">

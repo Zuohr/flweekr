@@ -8,7 +8,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-<title>Chart</title>
+<title>Trend</title>
 <meta charset="utf-8">
 <link rel="icon" href="images/favicon.ico">
 <link rel="shortcut icon" href="images/favicon.ico" />
@@ -151,17 +151,28 @@
 	<jsp:include page="nav.jsp" />
 
 
-<div id="container" style="margin-top:60px; height:1050px;">
+<div id="container" style="margin-top:60px; height:1400px;">
 
 
-<div class = "ez_map_left" style="float:left; width:700px;">
+<div class = "ez_map_left" style="float:left; width:780px;">
 	<h3>${wish_title}</h3>
-			<div id="visualization"></div>
+			<div class="img-thumbnail"  id="visualization"></div>
 
 	<h3>${been_title} </h3>
-			<div id="visualization1"></div>
+			<div class="img-thumbnail"  id="visualization1"></div>
+	<h3>${requestScope.top_search_title }</h3>
+	<div class="img-thumbnail"  id="visualization2" style=" margin-top:10px; margin-right:20px; width: 760px;"></div>
+	
 </div>
-<div id="visualization2" style="float:right; margin-top:58px; margin-right:20px; width: 280px; height: 160px;"></div>
+<div class="ez_map_right" style="float:right; width:300px;">
+	<h3>Top 5 Viewed Photos</h3>
+	<c:forEach var="plist" items="${requestScope.topViewPhoto }">
+	<div style="margin-bottom:5px;">
+		<a href="getdetail.do?photo_id=${plist.photo.id}"><img class="img-thumbnail" src="${plist.photo.imgUrl}" width="280"></a>
+	</div>
+	</c:forEach>
+</div>
+
 
 </div>
 

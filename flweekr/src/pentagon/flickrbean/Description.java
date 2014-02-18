@@ -16,7 +16,9 @@ public class Description {
 		if (m.find()) {
 			return "This photo has no description";
 		}
-
+		if(_content.length() > 400){
+			return _content.substring(0, 400)+"...";
+		}
 		return _content;
 	}
 }

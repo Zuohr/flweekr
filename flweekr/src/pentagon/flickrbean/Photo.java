@@ -31,6 +31,9 @@ public class Photo {
 	}
 
 	public String getTitle() {
+		if(title.length()>35){
+			return title.substring(0, 35)+"...";
+		}
 		return title;
 	}
 
