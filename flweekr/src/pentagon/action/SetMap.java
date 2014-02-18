@@ -3,9 +3,6 @@ package pentagon.action;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import pentagon.action.SampleChart.Item;
-import pentagon.google.MapBean;
-
 public class SetMap implements Action {
 
 	@Override
