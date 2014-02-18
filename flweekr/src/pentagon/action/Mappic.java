@@ -15,9 +15,9 @@ public class Mappic implements Action {
 		MapBean map = new MapBean();
 		map.setLatitude(40.44);
 		map.setLongitude(-79.999);
-		map.setImgURL("http://upload.wikimedia.org/wikipedia/commons/6/61/Pittsburgh_skyline_night.jpg");
+		
 		request.setAttribute("map", map);
-		return "mappic.jsp";
+		return "travel.jsp";
 	}
 
 	@Override

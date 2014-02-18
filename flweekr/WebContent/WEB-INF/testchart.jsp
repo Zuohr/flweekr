@@ -18,9 +18,9 @@
       function drawVisualization(){
         // Create and populate the data table.
         var data = google.visualization.arrayToDataTable([
-          ['Name', 'Height', 'Smokes']
+          ['Name', 'Height', 'Smokes'],
           <c:forEach var="item" items="${items}">
-          ,['${item.name}', '${item.value}', 'h']
+          ['${item.name}', '${item.value}', 'h'],
           </c:forEach>
         ]);
       

@@ -3,7 +3,9 @@
       html, body, #map-canvas {
         height: 100%;
         margin: 0px;
-        padding: 0px
+        padding: 0px;
+       
+        
       }
       #panel {
         position: absolute;
@@ -39,18 +41,18 @@ function initialize() {
 
 	
   var mapOptions = {
-    zoom: 16,
+    zoom: 14,
     center: new google.maps.LatLng(lat, lon),
     scrollwheel: false,
   };
 
-  var map = new google.maps.Map(document.getElementById('map-canvas'),
+  var map = new google.maps.Map(document.getElementById('map-canvas1'),
       mapOptions);
 
   var panoramioLayer = new google.maps.panoramio.PanoramioLayer();
   panoramioLayer.setMap(map);
 
-  var photoPanel = document.getElementById('photo-panel');
+  var photoPanel = document.getElementById('photo-panel1');
   map.controls[google.maps.ControlPosition.RIGHT_TOP].push(photoPanel);
 
   google.maps.event.addListener(panoramioLayer, 'click', function(photo) {
@@ -68,7 +70,7 @@ function initialize() {
 google.maps.event.addDomListener(window, 'load', initialize);
 
     </script>
- <ul id="photo-panel">
-      <li><strong></strong></li>
+ <ul id="photo-panel1">
+     
     </ul>
-    <div id="map-canvas"></div>
+    <div id="map-canvas1" style=" width:740px; height:450px;"></div>

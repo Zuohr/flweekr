@@ -29,9 +29,9 @@
     <style>
       #map-canvas {
         height: 450px;
-        width:780px;
+        width:740px;
         margin-top:70px;
-        margin-left:20px;
+        margin-left:40px;
 	
       }
       table {
@@ -46,12 +46,12 @@
         width: 200px;
         height: 450px;
         overflow: auto;
-        left: 600px;
+        left: 580px;
         top: 0px;
         cursor: pointer;
         overflow-x: hidden;
         margin-top:70px;
-		margin-left:0px;
+		
       }
   
       #locationField{
@@ -62,7 +62,7 @@
         border: 1px solid transparent;
 		top:10px;
 		margin-top:70px;
-		margin-left:90px;
+		margin-left:70px;
       }
       #controls {
         position: absolute;
@@ -72,7 +72,7 @@
 		height:40px;
         z-index: 5;
         margin-top:70px;
-		margin-left:100px;
+		margin-left:80px;
       }
       #autocomplete {
         width: 100%;
@@ -110,6 +110,7 @@
     </style>
 
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>
+    
     <script>
 // This example uses the autocomplete feature of the Google Places API.
 // It allows the user to find all hotels in a given place, within a given
@@ -178,14 +179,12 @@ var countries = {
   }
 };
 
+
 function initialize() {
   var myOptions = {
     zoom: countries['us'].zoom,
     center: countries['us'].center,
-    mapTypeControl: false,
-    panControl: false,
-    zoomControl: false,
-    streetViewControl: false
+  
   };
 
   map = new google.maps.Map(document.getElementById('map-canvas'), myOptions);
@@ -210,6 +209,7 @@ function initialize() {
   google.maps.event.addDomListener(document.getElementById('country'), 'change',
       setAutocompleteCountry);
 }
+
 
 // When the user selects a city, get the place details for the city and
 // zoom the map in on the city.
@@ -463,5 +463,8 @@ function buildIWContent(place) {
         </tr>
       </table>
     </div>
+    
+   
+    
   </body> 
 </html>

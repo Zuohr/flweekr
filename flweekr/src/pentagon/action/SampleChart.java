@@ -10,14 +10,21 @@ public class SampleChart implements Action {
 	@Override
 	public String perform(HttpServletRequest request,
 			HttpServletResponse response) throws RollbackException {
-		Item[] items = new Item[5];
-		for (int i = 0; i < 5; i++) {
-			items[i] = new Item();
-			items[i].setName("name" + i);
-			items[i].setValue(i);
-		}
-		request.setAttribute("rows", items);
-		return "test.jsp";
+//		    Item[] items = new Item[2];
+//		
+//			items[0] =new Item();
+//			items[0].setName("China");
+//			items[0].setValue(50);
+//			items[1] =new Item();
+//			items[1].setName("Canada");
+//			items[1].setValue(150);
+//			
+//			
+//			
+//				
+//		request.setAttribute("rows", items);
+		
+		return "chart.jsp";
 	}
 
 	@Override
