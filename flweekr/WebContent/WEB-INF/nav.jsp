@@ -6,9 +6,9 @@
         <div class="navbar-collapse collapse">
         
          <ul class="nav navbar-nav">
-         	<li><a href="home.do">Home</a></li>
+         	
             <li class="${requestScope.nav_gallery }"><a href="search.do">Gallery</a></li>
-            <li class="${requestScope.nav_explore}"><a href="getdetail.do">Explore</a></li>
+         
             <li class="${requestScope.nav_travel}"><a href="mappic.do">Travel</a></li>
             <li class="${requestScope.nav_trend}"><a href="getstats.do">Trend</a></li>
             <li class="${requestScope.nav_about }"><a href="#about">About</a></li>

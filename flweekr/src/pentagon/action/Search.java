@@ -51,7 +51,7 @@ public class Search implements Action {
 		} else {
 			keyWord = Meta.getCookieValue("last_search", request);
 			if (keyWord == null) {
-				keyWord = "discover";
+				keyWord = "discover+";
 			}
 			Cookie cookie = new Cookie("last_search", keyWord);
 			cookie.setMaxAge(30 * 24 * 60 * 60); // 30 days max age
