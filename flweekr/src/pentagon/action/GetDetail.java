@@ -18,6 +18,7 @@ import pentagon.dao.ViewHistory;
 import pentagon.dao.ViewHistoryDAO;
 import pentagon.flickrbean.JsonFlickrApi;
 import pentagon.flickrbean.JsonFlickrGetInfo;
+import pentagon.model.Meta;
 import pentagon.model.Model;
 import pentagon.model.User;
 import pentagon.sdk.FlickrAPI;
@@ -31,7 +32,6 @@ public class GetDetail implements Action {
 	private PhotoReviewDAO photoReviewDAO;
 	private ViewHistoryDAO viewHistoryDAO;
 	private CountryStatsDAO countryStatsDAO;
-	private static final String URL = "http://localhost:8080/getdetail.do?photo_id=";
 
 	public GetDetail(Model model) {
 		this.postDAO = model.getPostDAO();
@@ -116,8 +116,8 @@ public class GetDetail implements Action {
 					TwitterAPI twApi = new TwitterAPI(user.getAccessToken(),
 							service);
 					// add website url
-					text += String.format(" --from EasyTrip %s%s", URL,
-							flickr_id);
+					text += String.format(" --from EasyTrip %s%s%s",
+							Meta.domain, "getdetail.do?photo_id=", flickr_id);
 					Status status = twApi.sendStatus(text);
 					if (status == null) {
 						request.setAttribute("result", "Send tweet failed.");

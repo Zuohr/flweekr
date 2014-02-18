@@ -35,10 +35,18 @@ public class TwitterAPI {
 		if (info == null || keyword == null || keyword.isEmpty()) {
 			return null;
 		}
-		
-		String latitude = info.photo.location.latitude;
-		String longitude = info.photo.location.longitude;
-		if (latitude == null || latitude.isEmpty() || longitude == null || longitude.isEmpty()) {
+
+		String latitude;
+		String longitude;
+		try {
+			latitude = info.photo.location.latitude;
+			longitude = info.photo.location.longitude;
+		} catch (Exception e) {
+			latitude = null;
+			longitude = null;
+		}
+		if (latitude == null || latitude.isEmpty() || longitude == null
+				|| longitude.isEmpty()) {
 			return searchKeyWordOnly(keyword);
 		}
 		String range = "1mi";
@@ -52,7 +60,8 @@ public class TwitterAPI {
 		} catch (UnsupportedEncodingException e) {
 			return null;
 		}
-		String query = String.format("q=%s&geocode=%s&count=5", keyword, geocode);
+		String query = String.format("q=%s&geocode=%s&count=5", keyword,
+				geocode);
 		return search(query);
 	}
 
@@ -62,7 +71,7 @@ public class TwitterAPI {
 		}
 		try {
 			keyword = URLEncoder.encode(keyword, "UTF-8");
-			keyword = Meta.replaceSpecial(keyword); //TODO
+			keyword = Meta.replaceSpecial(keyword); // TODO
 		} catch (UnsupportedEncodingException e) {
 			return null;
 		}
@@ -90,7 +99,7 @@ public class TwitterAPI {
 		if (statuses == null) {
 			return new Oembed[] {};
 		}
-		
+
 		int len = statuses.length;
 		Oembed[] result = new Oembed[len];
 		for (int i = 0; i < len; i++) {
@@ -124,7 +133,7 @@ public class TwitterAPI {
 		try {
 			text = StringEscapeUtils.unescapeHtml4(text);
 			text = URLEncoder.encode(text, "UTF-8");
-			text = Meta.replaceSpecial(text); //TODO
+			text = Meta.replaceSpecial(text); // TODO
 		} catch (UnsupportedEncodingException e) {
 			return null;
 		}
@@ -141,5 +150,5 @@ public class TwitterAPI {
 			return result;
 		}
 	}
-	
+
 }
