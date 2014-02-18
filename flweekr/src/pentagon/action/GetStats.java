@@ -35,7 +35,7 @@ public class GetStats implements Action {
 		// SearchKey -> kewy
 		SearchKey[] skeys = getTopSearchKeys();
 		if (skeys != null) {
-			request.setAttribute("top_search_title", "Hotest Topic");
+			request.setAttribute("top_search_title", "Hottest Topic");
 			request.setAttribute("top_search_data", skeys);
 		}
 
