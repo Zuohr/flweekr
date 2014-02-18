@@ -42,7 +42,7 @@ public class FlickrAPI {
 				+ "&text=" + flkBean.getFlickrText() + "&sort="
 				+ flkBean.getFlickrSort() + "&has_geo="+ flkBean.getFlickrHasGeo()
 				+"&safe_search=1&content_type=1"
-				+"&extras="+flkBean.getFlickrExtra();
+				+"&extras=url_o";
 		
 		String data = queryFlickr(url);
 		data = data.substring("jsonFlickrApi(".length(),

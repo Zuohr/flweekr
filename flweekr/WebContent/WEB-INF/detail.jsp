@@ -165,21 +165,19 @@
 				<div class="thumbnail" style=" height:auto; width:725px;">
 					
 					<img src="${requestScope.photo_ob.imgUrl_b }">
-					<div style="border-bottom:1px solid #ccc; width:715px; height:50px;">
-						<div style= "width:340px; margin-left:auto; margin-right:auto; margin-top:10px;">
-						<p>
-						<a class="btn btn-primary" href="getdetail.do?wish_btn=submit">I wish to go there  <span class="badge">${requestScope.wish_num } </span></a>	
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-						<a class="btn btn-primary" href="getdetail.do?been_btn=submit">I have been there  <span class="badge">${requestScope.been_num }</span></a>
-						</p>
-						</div>
-					</div>
-					<div class="caption" style="margin-left:auto; margin-right:auto; width:500px;">
-						<h3>${requestScope.photo_ob.title._content}</h3>
-					</div>
+					
 				</div>
 			</div>
-
+			<div class="thumbnail" style="padding-top: 10px; padding-left: 40px; padding-right: 30px; width:728px; padding-bottom: 30px;  height: 190px;">
+				<div class="caption" style="margin-left:auto; margin-right:auto; width:680px;">
+					<h3>${requestScope.photo_ob.title._content}</h3>
+				</div>
+				<p>
+				<a class="btn btn-primary" href="getdetail.do?wish_btn=submit">I wish to go there  <span class="badge">${requestScope.wish_num } </span></a>	
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<a class="btn btn-primary" href="getdetail.do?been_btn=submit">I have been there  <span class="badge">${requestScope.been_num }</span></a>
+				</p>
+			</div>
 			<div class="ez_twitter" style="margin-top: 10px;">
 				<h3>${nearby_title }</h3>
 				<c:forEach var="tweet" items="${requestScope.tw_nearby}">
