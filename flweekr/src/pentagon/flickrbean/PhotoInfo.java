@@ -6,7 +6,11 @@ public class PhotoInfo {
 	public Location location;
 	public Title title;
 	public Description description;
+	public Owner owner;
 
+	public Owner getOwner() {
+		return owner;
+	}
 	public String secret;
 	public String server;
 	public String farm;

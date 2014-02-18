@@ -70,7 +70,7 @@ public class GetDetail implements Action {
 		JsonFlickrApi jfaLoc;
 		FlickrBean locBean = new FlickrBean();
 		locBean.setMethod("flickr.photos.search");
-		locBean.setPerPage("20");
+		locBean.setPerPage("10");
 		if (info.photo.location != null) {
 			locBean.setFlickrLat(info.photo.location.latitude);
 			locBean.setFlickrLon(info.photo.location.longitude);

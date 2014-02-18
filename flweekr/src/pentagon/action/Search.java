@@ -66,7 +66,7 @@ public class Search implements Action {
 		}
 		FlickrBean flkBean = new FlickrBean();
 		flkBean.setMethod("flickr.photos.search");
-		flkBean.setPerPage("120");
+		flkBean.setPerPage("50");
 		flkBean.setFlickrText(keyBuilder.toString() + "trip");
 		flkBean.setFlickrHasGeo("1");
 		flkBean.setFlickPage(pageNum);
