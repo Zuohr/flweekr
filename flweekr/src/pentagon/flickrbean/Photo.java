@@ -14,6 +14,7 @@ public class Photo {
 	public String originalformat;
 	public String imgUrl;
 	public String imgUrl_b;
+	public String imgUrl_m;
 	public String url_o;
 
 
@@ -47,6 +48,11 @@ public class Photo {
 	public String getImgUrl_b() {
 		imgUrl_b = "http://farm" + farm + ".static.flickr.com/" + server + "/" + id + "_" + secret + "_b.jpg";
 		return imgUrl_b;
+	}
+
+	public String getImgUrl_m() {
+		imgUrl_b = "http://farm" + farm + ".static.flickr.com/" + server + "/" + id + "_" + secret + "_m.jpg";
+		return imgUrl_m;
 	}
 	
 	public String getId() {
