@@ -162,9 +162,9 @@
 	<div class="container" style="width:1140px; margin-top: 60px;">
 		<div class="ez_left" style="float: left; margin-left: 15px; width:735px;">
 			<div class="ez_photo" >
-				<div class="thumbnail" style="padding-top: 40px; padding-bottom: 20px; height:auto; width:725px;">
+				<div class="thumbnail" style=" height:auto; width:725px;">
 					
-					<img src="${requestScope.photo_ob.imgUrl }">
+					<img src="${requestScope.photo_ob.imgUrl_b }">
 					<div style="border-bottom:1px solid #ccc; width:715px; height:50px;">
 						<div style= "width:340px; margin-left:auto; margin-right:auto; margin-top:10px;">
 						<p>
