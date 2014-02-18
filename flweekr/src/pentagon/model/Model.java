@@ -9,9 +9,11 @@ import org.scribe.builder.ServiceBuilder;
 import org.scribe.builder.api.TwitterApi;
 import org.scribe.oauth.OAuthService;
 
+import pentagon.dao.CountryStatsDAO;
 import pentagon.dao.PhotoReviewDAO;
 import pentagon.dao.PostDAO;
 import pentagon.dao.SearchKeyDAO;
+import pentagon.dao.ViewHistoryDAO;
 
 public class Model {
 	private OAuthService service;
@@ -20,6 +22,8 @@ public class Model {
 	private PostDAO postDAO;
 	private PhotoReviewDAO photoReviewDAO;
 	private SearchKeyDAO searchKeyDAO;
+	private CountryStatsDAO countryStatsDAO;
+	private ViewHistoryDAO viewHistoryDAO;
 	public String key;
 	public String secret;
 
@@ -36,6 +40,8 @@ public class Model {
 			this.postDAO = new PostDAO("post", cp);
 			this.photoReviewDAO = new PhotoReviewDAO("photo_review", cp);
 			this.searchKeyDAO = new SearchKeyDAO("search", cp);
+			this.countryStatsDAO = new CountryStatsDAO("contry_stats", cp);
+			this.viewHistoryDAO = new ViewHistoryDAO("view_history", cp);
 		} catch (DAOException e) {
 			e.printStackTrace();
 			throw new ServletException(e.getMessage());
@@ -64,5 +70,13 @@ public class Model {
 
 	public String getSecret() {
 		return secret;
+	}
+
+	public CountryStatsDAO getCountryStatsDAO() {
+		return countryStatsDAO;
+	}
+
+	public ViewHistoryDAO getViewHistoryDAO() {
+		return viewHistoryDAO;
 	}
 }
