@@ -40,7 +40,7 @@ public class Model {
 			this.postDAO = new PostDAO("post", cp);
 			this.photoReviewDAO = new PhotoReviewDAO("photo_review", cp);
 			this.searchKeyDAO = new SearchKeyDAO("search", cp);
-			this.countryStatsDAO = new CountryStatsDAO("contry_stats", cp);
+			this.countryStatsDAO = new CountryStatsDAO("country_stats", cp);
 			this.viewHistoryDAO = new ViewHistoryDAO("view_history", cp);
 		} catch (DAOException e) {
 			e.printStackTrace();
