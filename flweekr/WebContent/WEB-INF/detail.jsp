@@ -168,15 +168,17 @@
 					
 				</div>
 			</div>
-			<div class="thumbnail" style=" width:728px; padding-bottom: 40px;  height: 190px;">
+			<div class="thumbnail" style=" width:728px; padding-bottom:30px; ">
 				<div class="caption" style="margin-left:auto; margin-right:auto; width:680px;">
 					<h3>${requestScope.photo_ob.title._content}</h3>
 				</div>
-				<p>
-				<a class="btn btn-primary" href="getdetail.do?wish_btn=submit">I wish to go there  <span class="badge">${requestScope.wish_num } </span></a>	
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<div class="button_group" style="width:680px; text-align:right">
+				
+				<a class="btn btn-primary" href="getdetail.do?wish_btn=submit">I wish to go there  <span class="badge">${requestScope.wish_num } </span></a>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				<a class="btn btn-primary" href="getdetail.do?been_btn=submit">I have been there  <span class="badge">${requestScope.been_num }</span></a>
-				</p>
+				
+				</div>
 			</div>
 			<div class="ez_twitter" style="margin-top: 10px;">
 				<h3>${nearby_title }</h3>
@@ -186,7 +188,7 @@
 
 				</c:forEach>
 
-				<h3>Twitter comments</h3>
+				<h3 >Twitter comments</h3>
 				<c:forEach var="tweet" items="${requestScope.tw_discuss}">
 					<blockquote class="twitter-tweet">
 						${tweet}</blockquote>
@@ -234,7 +236,9 @@
 	</div>
 	<div class="container" >
 		<div class="ez_loc" >
+			<h3 style="position:relative; left:30px;">Other photos around</h3>
 			<div id="container">
+			
 				<c:forEach var="plist" items="${requestScope.flk_loc_plist}">
 
 					<div class="grid">

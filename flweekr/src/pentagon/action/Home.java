@@ -57,7 +57,7 @@ public class Home implements Action {
 		} else {
 			FlickrBean flkBean = new FlickrBean();
 			flkBean.setMethod("flickr.photos.search");
-			flkBean.setPerPage("100");
+			flkBean.setPerPage("200");
 			flkBean.setFlickrText(last_search + "+trip");
 			flkBean.setFlickrHasGeo("1");
 			flkBean.setFlickrExtra("url_o");
