@@ -52,10 +52,11 @@ public class GetStats implements Action {
 
 		// get most viewed
 		ViewHistory[] topView = getViewHistory();
-		JsonFlickrGetInfo[] infoArray = new JsonFlickrGetInfo[5];
-		if (topView != null) {
+		if (topView != null && topView.length > 0) {
 			request.setAttribute("history_title", "Most Viewed Places");
-			for(int i = 0; i < 5; i++){
+			int len = Math.min(5, topView.length);
+			JsonFlickrGetInfo[] infoArray = new JsonFlickrGetInfo[len];
+			for(int i = 0; i < len; i++){
 				FlickrBean flkBean = new FlickrBean();
 				flkBean.setMethod("flickr.photos.getInfo");
 				flkBean.setFlickrPhotoId(topView[i].getFlickr_id());
