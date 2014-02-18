@@ -181,14 +181,14 @@
 				</div>
 			</div>
 			<div class="ez_twitter" style="margin-top: 10px;">
-				<h3>${nearby_title }</h3>
+				<h4>${nearby_title }</h4>
 				<c:forEach var="tweet" items="${requestScope.tw_nearby}">
 					<blockquote class="twitter-tweet">
 						${tweet}</blockquote>
 
 				</c:forEach>
 
-				<h3 >Twitter comments</h3>
+				
 				<c:forEach var="tweet" items="${requestScope.tw_discuss}">
 					<blockquote class="twitter-tweet">
 						${tweet}</blockquote>
@@ -245,29 +245,24 @@
 			    <h4 class="list-group-item-heading">Photographer</h4>
 			    <p class="list-group-item-text">${requestScope.photo_ob.owner.realname}</p>
 			  </li>
-
-
 			</ul>
+			<a href="mappic.do" class="btn btn-primary btn-lg" style="width:305px;">I want to go there right now !</a>
 			
 		</div>
 
 	</div>
 	<div class="container" >
 		<div class="ez_loc" >
-			<h3 style="position:relative; left:30px;">Other photos around</h3>
+			<h4 style="position:relative; left:30px;">Other photos around</h4>
 			<div id="container">
-			
 				<c:forEach var="plist" items="${requestScope.flk_loc_plist}">
-
 					<div class="grid">
 						<div class="imgholder">
 
 							<a class="fancybox" title="${plist.title}"
 								href="getdetail.do?photo_id=${plist.id}"> <img
 								src="${plist.imgUrl}" />
-
 							</a>
-
 						</div>
 						<strong></strong>
 						<p>

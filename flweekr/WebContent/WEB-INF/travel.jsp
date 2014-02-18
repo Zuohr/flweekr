@@ -40,10 +40,10 @@
 	<div class="ez_left" style="float:left;position: absolute;
 		display: inline-block; ">
 		
-		<iframe src="setmap.do" frameborder="0"  marginheight="0"   marginwidth="0"  scrolling="no" style=" width:790px; height:450px;"></iframe>
+		<jsp:include page="hotel.jsp"/>
 		
 	
-		<div style="position:absolute;margin-top:10px;margin-left:40px;"><jsp:include page="mappic.jsp" /></div>
+
 		
 	
 	</div>
@@ -104,32 +104,7 @@
   </li>
 </ul>
 
-<ul class="list-group" >
-  <li class="list-group-item" style="width:290px;">
-    <span class="badge" style="width:50px;">$410</span>
-    <a href="#">Trip: LA </a>
-  </li>
-  
-   <li class="list-group-item" style="width:290px;margin-right:35px;">
-    <span class="badge" style="width:50px;">$240</span>
-        <a href="#">Trip: Miami </a>
-  </li>
-  
-   <li class="list-group-item" style="width:290px;margin-right:35px;">
-    <span class="badge" style="width:50px;">$430</span>
-        <a href="#">Trip: Boston </a>
-  </li>
-  
-   <li class="list-group-item" style="width:290px;margin-right:35px;">
-    <span class="badge" style="width:50px;">$820</span>
-        <a href="#">Trip: Cancun </a>
-  </li>
-  
-   <li class="list-group-item" style="width:290px;margin-right:35px;">
-    <span class="badge" style="width:50px;">$490</span>
-        <a href="#">Trip: Moon </a>
-  </li>
-</ul>
+
  
  
  

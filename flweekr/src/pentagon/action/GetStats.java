@@ -55,6 +55,7 @@ public class GetStats implements Action {
 			 * get photo info fro Flickr API
 			 */
 		}
+		request.setAttribute("nav_trend", "active");
 
 		return "chart.jsp";
 	}

@@ -17,6 +17,7 @@ public class Mappic implements Action {
 		map.setLongitude(-79.999);
 		
 		request.setAttribute("map", map);
+		request.setAttribute("nav_travel", "active");
 		return "travel.jsp";
 	}
 

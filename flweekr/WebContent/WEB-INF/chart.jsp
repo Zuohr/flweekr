@@ -32,89 +32,13 @@
 <script type="text/javascript" src="js/jquery.fancybox.pack.js"></script>
 
 <script type='text/javascript' src='https://www.google.com/jsapi'></script>
-</head>
-<body>
-	<jsp:include page="nav.jsp" />
 
-	<section id="wrapper">
-		<div id="container">
-
-			<script type='text/javascript'>
-   google.load('visualization', '1', {packages: ['geomap']});
-
-    function drawVisualization() {
-      var data = google.visualization.arrayToDataTable([
-        ['Country', 'Popularity'],
-        <c:forEach var="it" items="${requestScope.wish_list}">
-        ['${it.name}', ${it.been}],
-       </c:forEach>
-       
-      ]);
-    
-      var geomap = new google.visualization.GeoMap(
-          document.getElementById('visualization'));
-      geomap.draw(data, {width: 760, height: 450});
-    }
-    
-
-    google.setOnLoadCallback(drawVisualization);
-  </script>
-
-<div>${wish_title}</div>
-			<div id="visualization"></div>
-
-			<script type='text/javascript'>
-   google.load('visualization', '1', {packages: ['geomap']});
-
-    
-    
-	function drawA() {
-      var data = google.visualization.arrayToDataTable([
-        ['Country', 'Popularity'],
-        <c:forEach var="it" items="${requestScope.wish_list }">
-        ['${it.name}', ${it.wished}],
-       </c:forEach>
-        
-      ]);
-    
-      var geomap = new google.visualization.GeoMap(
-          document.getElementById('visualization1'));
-      geomap.draw(data, {width: 760, height: 450});
-    }
-	
-	
-    
-       function drawVisualization() {
-               drawA();
-               
-
-            }
-
-    google.setOnLoadCallback(drawVisualization);
-	
-	
-	
-  </script>
-<div>${been_title} </div>
-			<div id="visualization1"></div>
-
-
-		</div>
-
-
-	</section>
-
-
-
-	
-
-		
  <script type="text/javascript">
 	google.load('visualization', '1', {
 		packages : [ 'imagechart' ]
 	});
 </script>
-			<script type="text/javascript">
+<script type="text/javascript">
 	function drawVisualization() {
 		// Create and populate the data table.
 		var data = google.visualization.arrayToDataTable([
@@ -167,8 +91,87 @@
 	google.setOnLoadCallback(drawVisualization);
 </script>
 
+			<script type='text/javascript'>
+   google.load('visualization', '1', {packages: ['geomap']});
 
-			<div id="visualization2" style="width: 280px; height: 160px;position:absolute;top:90px;right:100px;"></div>
+    function drawVisualization() {
+      var data = google.visualization.arrayToDataTable([
+        ['Country', 'Popularity'],
+        <c:forEach var="it" items="${requestScope.wish_list}">
+        ['${it.name}', ${it.been}],
+       </c:forEach>
+       
+      ]);
+    
+      var geomap = new google.visualization.GeoMap(
+          document.getElementById('visualization'));
+      geomap.draw(data, {width: 760, height: 450});
+    }
+    
+
+    google.setOnLoadCallback(drawVisualization);
+  </script>
+  
+ <script type='text/javascript'>
+   google.load('visualization', '1', {packages: ['geomap']});
+
+    
+    
+	function drawA() {
+      var data = google.visualization.arrayToDataTable([
+        ['Country', 'Popularity'],
+        <c:forEach var="it" items="${requestScope.wish_list }">
+        ['${it.name}', ${it.wished}],
+       </c:forEach>
+        
+      ]);
+    
+      var geomap = new google.visualization.GeoMap(
+          document.getElementById('visualization1'));
+      geomap.draw(data, {width: 760, height: 450});
+    }
+	
+	
+    
+       function drawVisualization() {
+               drawA();
+               
+
+            }
+
+    google.setOnLoadCallback(drawVisualization);
+	
+	
+	
+  </script>
+ 
+
+</head>
+<body>
+	<jsp:include page="nav.jsp" />
+
+
+<div id="container" style="margin-top:60px; height:1050px;">
+
+
+<div class = "ez_map_left" style="float:left; width:700px;">
+	<h3>${wish_title}</h3>
+			<div id="visualization"></div>
+
+	<h3>${been_title} </h3>
+			<div id="visualization1"></div>
+</div>
+<div id="visualization2" style="float:right; margin-top:58px; margin-right:20px; width: 280px; height: 160px;"></div>
+
+</div>
+
+
+
+
+
+	
+
+
 
 
 	
