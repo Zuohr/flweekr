@@ -18,14 +18,14 @@ import pentagon.dao.ViewHistoryDAO;
 import pentagon.model.Model;
 
 public class GetStats implements Action {
-	private SearchKeyDAO skDAO;
-	private ViewHistoryDAO vDAO;
-	private CountryStatsDAO cDAO;
+	private SearchKeyDAO searchKeyDAO;
+	private ViewHistoryDAO viewHistoryDAO;
+	private CountryStatsDAO countryStatsDAO;
 
 	public GetStats(Model model) {
-		this.skDAO = model.getSearchKeyDAO();
-		this.vDAO = model.getViewHistoryDAO();
-		this.cDAO = model.getCountryStatsDAO();
+		this.searchKeyDAO = model.getSearchKeyDAO();
+		this.viewHistoryDAO = model.getViewHistoryDAO();
+		this.countryStatsDAO = model.getCountryStatsDAO();
 	}
 
 	@Override
@@ -64,7 +64,7 @@ public class GetStats implements Action {
 	}
 
 	private ViewHistory[] getViewHistory() throws RollbackException {
-		ViewHistory[] all = vDAO.match();
+		ViewHistory[] all = viewHistoryDAO.match();
 		if (all != null && all.length > 0) {
 			Arrays.sort(all, new ViewHistoryComparator());
 			int len = Math.min(10, all.length);
@@ -76,7 +76,7 @@ public class GetStats implements Action {
 	}
 
 	private CountryStats[] getCountryStats() throws RollbackException {
-		CountryStats[] result = cDAO.match();
+		CountryStats[] result = countryStatsDAO.match();
 		if (result != null && result.length > 0) {
 			return result;
 		} else {
@@ -85,7 +85,7 @@ public class GetStats implements Action {
 	}
 
 	private SearchKey[] getTopSearchKeys() throws RollbackException {
-		SearchKey[] keys = skDAO.match();
+		SearchKey[] keys = searchKeyDAO.match();
 		if (keys != null && keys.length > 0) {
 			Arrays.sort(keys, new SearchKeyComparator());
 			int len = Math.min(10, keys.length);
